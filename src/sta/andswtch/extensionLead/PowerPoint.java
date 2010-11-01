@@ -1,4 +1,6 @@
-package dhbw.sta.andswtch;
+package sta.andswtch.extensionLead;
+
+import sta.andswtch.network.ConnectionManager;
 
 public class PowerPoint {
 	
