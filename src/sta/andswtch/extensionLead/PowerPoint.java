@@ -1,6 +1,5 @@
 package sta.andswtch.extensionLead;
 
-import sta.andswtch.network.ConnectionManager;
 
 public class PowerPoint {
 	
@@ -8,46 +7,40 @@ public class PowerPoint {
 	private int id;
 	private boolean enabled;
 	private boolean on;
-	private ConnectionManager connectionManager;
 	
-	PowerPoint(int id, String name, boolean enable, boolean on) {
-		
+	public PowerPoint(int id, String name, boolean enable, boolean on) {
+		this.id = id;
+		this.name = name;
+		this.enabled = enable;
+		this.on = on;
 	}
 	
-	public void changeState(boolean on) {
-		
+	public void setState(boolean on) {
+		this.on = on;
 	}
 	
-	public void changeState(boolean on, int time) {
-		
-	}
-	
-	public void enable() {
-		
-	}
-	
-	public void disable() {
-		
+	public void setEnable(boolean enabled) {
+		this.enabled = enabled;
 	}
 	
 	public void setName(String name) {
-		
+		this.name = name;
 	}
 	
 	public String getName() {
-		return null;
+		return this.name;
 	}
 	
 	public int getId() {
-		return 0;
+		return this.id;
 	}
 	
 	public boolean isEnabled() {
-		return false;
+		return this.enabled;
 	}
 	
 	public boolean isOn() {
-		return false;
+		return this.on;
 	}
 	
 }
