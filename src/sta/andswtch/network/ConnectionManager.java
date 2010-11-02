@@ -1,47 +1,46 @@
 package sta.andswtch.network;
 
-import java.net.InetAddress;
-
 public class ConnectionManager implements IConnectionManager {
-	
-	private InetAddress host;
+
+	private String host;
 	private int portIn;
 	private int portOut;
 	private String user;
 	private String password;
-	
-	public ConnectionManager(InetAddress host, int portIn, int portOut) {
-		
+
+	public ConnectionManager(String host, int portIn, int portOut, String user,
+			String password) {
+		this.host = host;
+		this.portIn = portIn;
+		this.portOut = portOut;
+		this.user = user;
+		this.password = password;
 	}
 
 	@Override
 	public void errorAlert() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public InetAddress getHost() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getHost() {
+		return this.host;
 	}
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.password;
 	}
 
 	@Override
 	public int getPortIn() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.portIn;
 	}
 
 	@Override
 	public int getPortOut() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.portOut;
 	}
 
 	@Override
@@ -52,8 +51,7 @@ public class ConnectionManager implements IConnectionManager {
 
 	@Override
 	public String getUser() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.user;
 	}
 
 	@Override
@@ -63,15 +61,19 @@ public class ConnectionManager implements IConnectionManager {
 	}
 
 	@Override
-	public void setConfig(InetAddress host, int portIn, int portOut) {
-		// TODO Auto-generated method stub
-		
+	public void setConfig(String host, int portIn, int portOut, String user,
+			String password) {
+		this.host = host;
+		this.portIn = portIn;
+		this.portOut = portOut;
+		this.user = user;
+		this.password = password;
 	}
 
 	@Override
 	public void updateDatastructure(String response) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 }
