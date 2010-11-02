@@ -3,9 +3,9 @@ package sta.andswtch.network;
 import sta.andswtch.extensionLead.Config;
 
 public class ConnectionManager implements IConnectionManager {
-	
+
 	private Config config;
-		
+
 	public ConnectionManager(Config config) {
 		this.config = config;
 	}

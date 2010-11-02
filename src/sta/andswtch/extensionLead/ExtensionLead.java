@@ -73,15 +73,15 @@ public class ExtensionLead implements IExtensionLead {
 	@Override
 	public void init() {
 		this.powerPointsCount = testPowerPointsCount;
-		this.config = new Config(testHost, testPortIn,
-				testPortOut, testUser, testPassword);
+		this.config = new Config(testHost, testPortIn, testPortOut, testUser,
+				testPassword);
 		this.connectionManager = new ConnectionManager(this.config);
-		
+
 		for (int id = 0; id < this.powerPointsCount; id++) {
 			this.addPowerPoint(id, "pP_0" + id, true, false);
 		}
 		this.responseProcessor = new ResponseProcessor(this.powerPoints);
-		
+
 		this.sendUpdateMessage();
 	}
 
@@ -140,11 +140,9 @@ public class ExtensionLead implements IExtensionLead {
 			String password) {
 
 		if (this.config == null) {
-			this.config = new Config(host, portIn,
-					portOut, user, password);
+			this.config = new Config(host, portIn, portOut, user, password);
 		} else {
-			this.config.setConfig(host, portIn, portOut, user,
-					password);
+			this.config.setConfig(host, portIn, portOut, user, password);
 		}
 	}
 
