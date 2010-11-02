@@ -6,12 +6,13 @@ import sta.andswtch.network.ConnectionManager;
 import sta.andswtch.network.ResponseProcessor;
 
 public class ExtensionLead implements IExtensionLead {
-	
-	private List<PowerPoint> powerPoints; 
+
+	private List<PowerPoint> powerPoints;
+	private Config config;
 	private ConnectionManager connectionManager;
 	private ResponseProcessor responseProcessor;
 	private int powerPointsCount;
-	
+
 	// test static final variables
 	private static final int testPowerPointsCount = 3;
 	private static final String testHost = "127.0.0.1";
@@ -19,43 +20,39 @@ public class ExtensionLead implements IExtensionLead {
 	private static final int testPortOut = 1132;
 	private static final String testUser = "admin";
 	private static final String testPassword = "anel";
-	
-	
+
 	public ExtensionLead() {
-		this.powerPointsCount = testPowerPointsCount;
 		init();
 	}
-	
-	private void addPowerPoint(int id, String name, boolean enable, 
-			boolean on) {
-		
+
+	private void addPowerPoint(int id, String name, boolean enable, boolean on) {
 		this.powerPoints.add(new PowerPoint(id, name, enable, on));
 	}
 
 	@Override
 	public void errorAlert() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public String getHost() {
-		return this.connectionManager.getHost();
+		return this.config.getHost();
 	}
 
 	@Override
 	public String getPassword() {
-		return this.connectionManager.getPassword();
+		return this.config.getPassword();
 	}
 
 	@Override
 	public int getPortIn() {
-		return this.connectionManager.getPortIn();
+		return this.config.getPortIn();
 	}
 
 	@Override
 	public int getPortOut() {
-		return this.connectionManager.getPortOut();
+		return this.config.getPortOut();
 	}
 
 	@Override
@@ -70,16 +67,22 @@ public class ExtensionLead implements IExtensionLead {
 
 	@Override
 	public String getUser() {
-		return this.connectionManager.getUser();
+		return this.config.getUser();
 	}
 
 	@Override
 	public void init() {
-		this.connectionManager = new ConnectionManager(testHost, testPortIn, testPortOut, testUser, testPassword);
-		this.sendUpdateMessage();
-		for(int id = 0; id < this.powerPointsCount; id++) {
+		this.powerPointsCount = testPowerPointsCount;
+		this.config = new Config(testHost, testPortIn,
+				testPortOut, testUser, testPassword);
+		this.connectionManager = new ConnectionManager(this.config);
+		
+		for (int id = 0; id < this.powerPointsCount; id++) {
 			this.addPowerPoint(id, "pP_0" + id, true, false);
 		}
+		this.responseProcessor = new ResponseProcessor(this.powerPoints);
+		
+		this.sendUpdateMessage();
 	}
 
 	@Override
@@ -95,51 +98,53 @@ public class ExtensionLead implements IExtensionLead {
 	@Override
 	public void sendState(int id, boolean on) {
 		// TODO depends on the response something like that
-		//this.powerPoints.get(id).setState(on);
-		
+		// this.powerPoints.get(id).setState(on);
+
 	}
 
 	@Override
 	public void sendState(int id, boolean on, int time) {
 		// TODO depends on the response something like that
 		// after the specified time
-		//this.powerPoints.get(id).setState(on);
-		
+		// this.powerPoints.get(id).setState(on);
+
 	}
 
 	@Override
 	public void sendStateAll(boolean on) {
 		// TODO depends on the response something like that
-		//for(int id = 0; id < this.powerPointsCount; id++) {
-		//	this.powerPoints.get(id).setState(on);
-		//}
-		
+		// for(int id = 0; id < this.powerPointsCount; id++) {
+		// this.powerPoints.get(id).setState(on);
+		// }
+
 	}
 
 	@Override
 	public void sendStateAll(boolean on, int time) {
 		// TODO depends on the response something like that
 		// after the specified time
-		//for(int id = 0; id < this.powerPointsCount; id++) {
-		//	this.powerPoints.get(id).setState(on);
-		//}
-		
+		// for(int id = 0; id < this.powerPointsCount; id++) {
+		// this.powerPoints.get(id).setState(on);
+		// }
+
 	}
 
 	@Override
 	public void sendUpdateMessage() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public void setConfig(String host, int portIn, int portOut,
-			String user, String password) {
+	public void setConfig(String host, int portIn, int portOut, String user,
+			String password) {
 
-		if(this.connectionManager == null) {
-			this.connectionManager = new ConnectionManager(host, portIn, portOut, user, password);
+		if (this.config == null) {
+			this.config = new Config(host, portIn,
+					portOut, user, password);
 		} else {
-			this.connectionManager.setConfig(host, portIn, portOut, user, password);
+			this.config.setConfig(host, portIn, portOut, user,
+					password);
 		}
 	}
 
@@ -150,10 +155,10 @@ public class ExtensionLead implements IExtensionLead {
 
 	@Override
 	public void updateDatastructure(String response) {
-		if(this.responseProcessor == null) {
+		if (this.responseProcessor == null) {
 			this.responseProcessor = new ResponseProcessor(this.powerPoints);
 		}
 		this.responseProcessor.processResponse(response);
 	}
-		
+
 }
