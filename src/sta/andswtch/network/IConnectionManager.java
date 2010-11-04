@@ -2,9 +2,9 @@ package sta.andswtch.network;
 
 public interface IConnectionManager {
 
-	public String getUpdate();
+	public void getUpdate();
 
-	public String sendReceive(String command);
+	public void sendReceive(String command);
 
 	public void updateDatastructure(String response);
 

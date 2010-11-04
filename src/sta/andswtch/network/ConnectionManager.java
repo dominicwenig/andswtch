@@ -17,15 +17,13 @@ public class ConnectionManager implements IConnectionManager {
 	}
 
 	@Override
-	public String getUpdate() {
+	public void getUpdate() {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
-	public String sendReceive(String command) {
+	public void sendReceive(String command) {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
