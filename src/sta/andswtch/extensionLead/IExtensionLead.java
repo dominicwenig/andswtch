@@ -41,4 +41,7 @@ public interface IExtensionLead {
 
 	public String getPassword();
 
+	//only for v0.0 
+	public String getResponse();
+	
 }

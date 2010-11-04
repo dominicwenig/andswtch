@@ -6,6 +6,8 @@ import sta.andswtch.extensionLead.PowerPoint;
 
 public class ResponseProcessor {
 
+	//TODO  (michi) does this class belong to the extensionLead package?
+	
 	private List<PowerPoint> powerPoints;
 
 	public ResponseProcessor(List<PowerPoint> powerPoints) {

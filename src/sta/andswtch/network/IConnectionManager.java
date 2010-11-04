@@ -9,5 +9,7 @@ public interface IConnectionManager {
 	public void updateDatastructure(String response);
 
 	public void errorAlert();
+	
+
 
 }
