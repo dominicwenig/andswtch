@@ -1,5 +1,6 @@
 package sta.andswtch.extensionLead;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import sta.andswtch.gui.AndSwtch;
@@ -82,9 +83,12 @@ public class ExtensionLead implements IExtensionLead {
 				testPassword);
 		this.connectionManager = new ConnectionManager(this.config, this);
 
-//		for (int id = 0; id < this.powerPointsCount; id++) {
-//			this.addPowerPoint(id, "pP_0" + id, true, false);
-//		}
+		this.powerPoints = new ArrayList<PowerPoint>();
+		
+		
+		for (int id = 0; id < this.powerPointsCount; id++) {
+			this.addPowerPoint(id, "pP_0" + id, true, false);
+		}
 		this.responseProcessor = new ResponseProcessor(this.powerPoints);
 
 		this.sendUpdateMessage();
