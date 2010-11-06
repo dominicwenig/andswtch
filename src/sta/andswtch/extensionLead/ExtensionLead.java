@@ -4,7 +4,6 @@ import java.util.List;
 
 import sta.andswtch.gui.AndSwtch;
 import sta.andswtch.network.ConnectionManager;
-import sta.andswtch.network.ResponseProcessor;
 
 public class ExtensionLead implements IExtensionLead {
 

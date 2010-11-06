@@ -1,12 +1,10 @@
-package sta.andswtch.network;
+package sta.andswtch.extensionLead;
 
 import java.util.List;
 
-import sta.andswtch.extensionLead.PowerPoint;
 
 public class ResponseProcessor {
 
-	//TODO  (michi) does this class belong to the extensionLead package?
 	
 	private List<PowerPoint> powerPoints;
 
