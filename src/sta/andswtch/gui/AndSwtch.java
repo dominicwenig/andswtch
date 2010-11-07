@@ -42,6 +42,12 @@ public class AndSwtch extends Activity {
 		
 	}
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+		updateActivity();
+	}
+
 	public void onOff(View v) {
 		
 		

@@ -19,5 +19,7 @@ public class Sender {
 		DatagramPacket packet = new DatagramPacket(data, data.length, destAddress, destPort);
 		
 		sendSocket.send(packet);
+		
+		sendSocket.close();
 	}
 }
