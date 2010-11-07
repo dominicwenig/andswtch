@@ -6,8 +6,8 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 public class Sender {
-
 	
+		
 	public void send(String destHost, int destPort, String command) throws IOException{
 		
 		byte[] data = command.getBytes();

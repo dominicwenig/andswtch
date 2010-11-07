@@ -69,6 +69,7 @@ public class Receiver implements Runnable {
 			
 		}  catch (SocketTimeoutException e){
 			conManager.errorAlert();
+			socket.close();
 		}  catch (Exception e) {
 			Log.e(TAG, "S: Error", e);
 		}
