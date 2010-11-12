@@ -2,10 +2,8 @@ package sta.andswtch.extensionLead;
 
 import java.util.List;
 
-
 public class ResponseProcessor {
 
-	
 	private List<PowerPoint> powerPoints;
 
 	public ResponseProcessor(List<PowerPoint> powerPoints) {

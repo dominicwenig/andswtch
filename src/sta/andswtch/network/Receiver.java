@@ -12,87 +12,100 @@ import java.util.Enumeration;
 import android.util.Log;
 
 public class Receiver implements Runnable {
-	
-	private DatagramSocket socket;
-    private Thread thread;
-    private boolean shutdown = true;
-    DatagramPacket packet;
-    IConnectionManager conManager;
-    
-    private static final String TAG = Receiver.class.getName();
-	
-    
-    public Receiver(ConnectionManager conManager){
-    	this.conManager = conManager;
-    }
-    
-    
-	public void start(int port) throws IOException {
-		
-		InetAddress localIP = getLocalIpAddress();
-		
-		Log.d(TAG, "try to create a DatagramSocket" + localIP.getHostAddress()+":"+port);
 
-		thread = new Thread(this, "Andswtch UDP_Server");
-		socket = new DatagramSocket(port, getLocalIpAddress());
-		
-        if (shutdown == true){
-        	Log.d(TAG, "starting server at  " + localIP.getHostAddress()+":"+port);
-            thread.start();
-        }
-        else{
-        	Log.e(TAG,"there is already a server running");
-        	//TODO error handling?
-        }
-        
-        
+	private static final String TAG = Receiver.class.getName();
+
+	private DatagramSocket socket;
+	private Thread thread;
+	/**
+	 * a status variable to determine if the server is currently running or not.
+	 */
+	private boolean inactive = true;
+	DatagramPacket packet;
+	IConnectionManager conManager;
+
+	public Receiver(ConnectionManager conManager) {
+		this.conManager = conManager;
 	}
-	
-	
-	
+
+	public void start(int port) throws IOException {
+
+		InetAddress localIP = getLocalIpAddress();
+		String localIPString = localIP.getHostAddress();
+
+		Log.d(TAG, "try to create a DatagramSocket" + localIPString + ":"
+				+ port);
+
+		this.thread = new Thread(this, "Andswtch UDP_Server");
+		this.socket = new DatagramSocket(port, localIP);
+
+		if (inactive == true) {
+			Log.d(TAG, "starting server at  " + localIPString + ":" + port);
+			this.thread.start();
+		} else {
+			Log.e(TAG, "there is already a server running");
+			// TODO error handling?
+		}
+
+	}
+
 	public void run() {
 		try {
-			socket.setSoTimeout(3000);
-		
-			 byte[] buf = new byte[400];
-			
-			packet = new DatagramPacket(buf, buf.length);
+			this.socket.setSoTimeout(3000);
+
+			byte[] buf = new byte[200];
+
+			this.packet = new DatagramPacket(buf, buf.length);
 			Log.d(TAG, "Server: Receiving...");
-			
+
 			/* Receive the UDP-Packet */
-			socket.receive(packet);
-			Log.d(TAG, "Server: Received: '" + new String(packet.getData()) + "'");
+			this.socket.receive(this.packet);
+			Log.d(TAG, "Server: Received: '"
+					+ new String(this.packet.getData()) + "'");
 			Log.d(TAG, "Server: Done.");
-			
-			conManager.updateDatastructure(new String(packet.getData()));
-			
-			
-		}  catch (SocketTimeoutException e){
-			conManager.errorAlert();
-			socket.close();
-		}  catch (Exception e) {
+
+			this.conManager.updateDatastructure(new String(this.packet
+					.getData()));
+
+		} catch (SocketTimeoutException e) {
+			this.conManager.errorAlert();
+			this.socket.close();
+		} catch (Exception e) {
 			Log.e(TAG, "S: Error", e);
 		}
-        socket.close();
-        shutdown =true;
+		this.socket.close();
+		this.inactive = true;
 	}
-	
-	
-	public InetAddress getLocalIpAddress() {
-	    try {
-	        for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
-	            NetworkInterface intf = en.nextElement();
-	            for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
-	                InetAddress inetAddress = enumIpAddr.nextElement();
-	                if (!inetAddress.isLoopbackAddress()) {
-	                	Log.d(TAG, "inetAddress is: " + inetAddress.getHostAddress().toString());
-	                    return inetAddress;
-	                }
-	            }
-	        }
-	    } catch (SocketException ex) {
-	        Log.e(TAG, "error while attemting to find out the local IP: "+ex.toString());
-	    }
-	    return null;
+
+	/**
+	 * gets the first (!!) local ip address, which is not the loopbackaddress.
+	 * 
+	 * @return
+	 */
+	private InetAddress getLocalIpAddress() {
+		/**
+		 * works if you are connected to a wifi network. if you want to use it
+		 * over vpn connection, this should be changed
+		 */
+		try {
+			for (Enumeration<NetworkInterface> en = NetworkInterface
+					.getNetworkInterfaces(); en.hasMoreElements();) {
+				NetworkInterface intf = en.nextElement();
+				for (Enumeration<InetAddress> enumIpAddr = intf
+						.getInetAddresses(); enumIpAddr.hasMoreElements();) {
+					InetAddress inetAddress = enumIpAddr.nextElement();
+					if (!inetAddress.isLoopbackAddress()) {
+						Log.d(TAG, "inetAddress is: "
+								+ inetAddress.getHostAddress().toString());
+						return inetAddress;
+					}
+				}
+			}
+		} catch (SocketException ex) {
+			Log.e(TAG,
+					"error while attemting to find out the local IP: "
+							+ ex.toString());
+		}
+		return null;
 	}
 }

@@ -14,15 +14,15 @@ public class ExtensionLead implements IExtensionLead {
 	private ResponseProcessor responseProcessor;
 	private AndSwtch andSwtch;
 	private int powerPointsCount;
-	
-	//is only for prototype v0.0 :), will be removed
+
+	// is only for prototype v0.0 :), will be removed
 	private String response = "nothing";
 
 	// test static final variables
 	private static final int testPowerPointsCount = 3;
 	private static final String testHost = "192.168.178.21";
-	private static final int testPortIn = 1132;
-	private static final int testPortOut = 1133;
+	private static final int testExtensionLeadSenderPort = 1133;
+	private static final int testExtensionLeadReceiverPort = 1132;
 	private static final String testUser = "admin";
 	private static final String testPassword = "anel";
 
@@ -35,57 +35,48 @@ public class ExtensionLead implements IExtensionLead {
 		this.powerPoints.add(new PowerPoint(id, name, enable, on));
 	}
 
-
 	public void errorAlert() {
 		// TODO Auto-generated method stub
 
 	}
 
-
 	public String getHost() {
 		return this.config.getHost();
 	}
-
 
 	public String getPassword() {
 		return this.config.getPassword();
 	}
 
-
 	public int getPortIn() {
-		return this.config.getPortIn();
+		return this.config.getExtensionLeadSenderPort();
 	}
-
 
 	public int getPortOut() {
-		return this.config.getPortOut();
+		return this.config.getExtensionLeadReceiverPort();
 	}
-
 
 	public String getPowerPointName(int id) {
 		return this.powerPoints.get(id).getName();
 	}
 
-
 	public int getPowerPointsCount() {
 		return this.powerPointsCount;
 	}
-
 
 	public String getUser() {
 		return this.config.getUser();
 	}
 
-
 	public void init() {
-		this.powerPointsCount = testPowerPointsCount;
-		this.config = new Config(testHost, testPortIn, testPortOut, testUser,
-				testPassword);
-		this.connectionManager = new ConnectionManager(this.config, this);
 
 		this.powerPoints = new ArrayList<PowerPoint>();
-		
-		
+		this.powerPointsCount = testPowerPointsCount;
+
+		this.config = new Config(testHost, testExtensionLeadSenderPort,
+				testExtensionLeadReceiverPort, testUser, testPassword);
+		this.connectionManager = new ConnectionManager(this.config, this);
+
 		for (int id = 0; id < this.powerPointsCount; id++) {
 			this.addPowerPoint(id, "pP_0" + id, true, false);
 		}
@@ -94,16 +85,13 @@ public class ExtensionLead implements IExtensionLead {
 		this.sendUpdateMessage();
 	}
 
-
 	public boolean isPowerPointEnable(int id) {
 		return this.powerPoints.get(id).isEnabled();
 	}
 
-
 	public boolean isPowerPointOn(int id) {
 		return this.powerPoints.get(id).isOn();
 	}
-
 
 	public void sendState(int id, boolean on) {
 		// TODO depends on the response something like that
@@ -111,14 +99,12 @@ public class ExtensionLead implements IExtensionLead {
 
 	}
 
-
 	public void sendState(int id, boolean on, int time) {
 		// TODO depends on the response something like that
 		// after the specified time
 		// this.powerPoints.get(id).setState(on);
 
 	}
-
 
 	public void sendStateAll(boolean on) {
 		// TODO depends on the response something like that
@@ -137,12 +123,10 @@ public class ExtensionLead implements IExtensionLead {
 
 	}
 
-
 	public void sendUpdateMessage() {
-		connectionManager.getUpdate();
+		connectionManager.sendUpdateRequest();
 
 	}
-
 
 	public void setConfig(String host, int portIn, int portOut, String user,
 			String password) {
@@ -154,31 +138,27 @@ public class ExtensionLead implements IExtensionLead {
 		}
 	}
 
-
 	public void setPowerPointName(int id, String name) {
 		this.powerPoints.get(id).setName(name);
 	}
 
-
 	public void updateDatastructure(String response) {
-//		if (this.responseProcessor == null) {
-//			this.responseProcessor = new ResponseProcessor(this.powerPoints);
-//		}
-//		this.responseProcessor.processResponse(response);
-		
-		//for now, will be changed later, that the responseprocessor is processing the data.
+		// if (this.responseProcessor == null) {
+		// this.responseProcessor = new ResponseProcessor(this.powerPoints);
+		// }
+		// this.responseProcessor.processResponse(response);
+
+		// for now, will be changed later, that the responseprocessor is
+		// processing the data.
 		this.response = response;
-		
+
 		andSwtch.updateActivity();
-		
-		
-		
+
 	}
-	
-	
+
 	public String getResponse() {
 		return response;
-		
+
 	}
 
 }

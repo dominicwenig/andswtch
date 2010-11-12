@@ -3,25 +3,26 @@ package sta.andswtch.extensionLead;
 public class Config {
 
 	private String host;
-	private int portIn;
-	private int portOut;
+
+	private int extensionLeadSenderPort;
+	private int extensionLeadReceiverPort;
 	private String user;
 	private String password;
 
-	public Config(String host, int portIn, int portOut, String user,
-			String password) {
+	public Config(String host, int extensionLeadSenderPort,
+			int extensionLeadReceiverPort, String user, String password) {
 		this.host = host;
-		this.portIn = portIn;
-		this.portOut = portOut;
+		this.extensionLeadSenderPort = extensionLeadSenderPort;
+		this.extensionLeadReceiverPort = extensionLeadReceiverPort;
 		this.user = user;
 		this.password = password;
 	}
 
-	public void setConfig(String host, int portIn, int portOut, String user,
-			String password) {
+	public void setConfig(String host, int extensionLeadSenderPort,
+			int extensionLeadReceiverPort, String user, String password) {
 		this.host = host;
-		this.portIn = portIn;
-		this.portOut = portOut;
+		this.extensionLeadSenderPort = extensionLeadSenderPort;
+		this.extensionLeadReceiverPort = extensionLeadReceiverPort;
 		this.user = user;
 		this.password = password;
 	}
@@ -30,12 +31,12 @@ public class Config {
 		return this.host;
 	}
 
-	public int getPortIn() {
-		return this.portIn;
+	public int getExtensionLeadSenderPort() {
+		return this.extensionLeadSenderPort;
 	}
 
-	public int getPortOut() {
-		return this.portOut;
+	public int getExtensionLeadReceiverPort() {
+		return this.extensionLeadReceiverPort;
 	}
 
 	public String getUser() {
