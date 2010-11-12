@@ -6,7 +6,7 @@ public interface IExtensionLead {
 
 	public void sendUpdateMessage();
 
-	public void sendState(int id, boolean on);
+	public void switchState(int id);
 
 	public void sendState(int id, boolean on, int time);
 

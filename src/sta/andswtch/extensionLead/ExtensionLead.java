@@ -93,33 +93,21 @@ public class ExtensionLead implements IExtensionLead {
 		return this.powerPoints.get(id).isOn();
 	}
 
-	public void sendState(int id, boolean on) {
-		// TODO depends on the response something like that
-		// this.powerPoints.get(id).setState(on);
+
+	
+	public void switchState(int id) {
+		// TODO send a command to the extension lead to switch the state
 
 	}
 
 	public void sendState(int id, boolean on, int time) {
-		// TODO depends on the response something like that
-		// after the specified time
-		// this.powerPoints.get(id).setState(on);
-
+		this.connectionManager.sendState(id, on, time);
 	}
 
 	public void sendStateAll(boolean on) {
-		// TODO depends on the response something like that
-		// for(int id = 0; id < this.powerPointsCount; id++) {
-		// this.powerPoints.get(id).setState(on);
-		// }
-
 	}
 
 	public void sendStateAll(boolean on, int time) {
-		// TODO depends on the response something like that
-		// after the specified time
-		// for(int id = 0; id < this.powerPointsCount; id++) {
-		// this.powerPoints.get(id).setState(on);
-		// }
 
 	}
 

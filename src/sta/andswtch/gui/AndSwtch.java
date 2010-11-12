@@ -43,19 +43,24 @@ public class AndSwtch extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		updateActivity();
+		this.extLead.sendUpdateMessage();
 	}
 
 	public void onOff(View v) {
 
-		extLead.sendUpdateMessage();
+		//this.extLead.sendUpdateMessage();
+		//this.extLead.sendState(2, false,0);
+		
 
 		TextView tv;
 		int id = v.getId();
 		if (id == findViewById(R.id.Button01).getId()) {
+			this.extLead.sendState(2, false,0);
+			
 			tv = (TextView) findViewById(R.id.TextView01);
 			tv.setText("clicked pP01");
 		} else if (id == findViewById(R.id.Button02).getId()) {
+			this.extLead.sendState(2, true,0);
 			tv = (TextView) findViewById(R.id.TextView02);
 			tv.setText("clicked pP02");
 		} else if (id == findViewById(R.id.Button03).getId()) {

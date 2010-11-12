@@ -23,7 +23,7 @@ public class Receiver implements Runnable {
 	private boolean inactive = true;
 	DatagramPacket packet;
 	IConnectionManager conManager;
-
+	
 	public Receiver(ConnectionManager conManager) {
 		this.conManager = conManager;
 	}
@@ -53,7 +53,7 @@ public class Receiver implements Runnable {
 		try {
 			this.socket.setSoTimeout(3000);
 
-			byte[] buf = new byte[200];
+			byte[] buf = new byte[400];
 
 			this.packet = new DatagramPacket(buf, buf.length);
 			Log.d(TAG, "Server: Receiving...");
