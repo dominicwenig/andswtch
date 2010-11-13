@@ -48,25 +48,26 @@ public class AndSwtch extends Activity {
 
 	public void onOff(View v) {
 
-		//this.extLead.sendUpdateMessage();
-		//this.extLead.sendState(2, false,0);
-		
+		// this.extLead.sendUpdateMessage();
+		// this.extLead.sendState(2, false,0);
 
 		TextView tv;
 		int id = v.getId();
 		if (id == findViewById(R.id.Button01).getId()) {
-			this.extLead.sendState(2, false,0);
-			
+			this.extLead.sendState(2, true, 3);
+
 			tv = (TextView) findViewById(R.id.TextView01);
 			tv.setText("clicked pP01");
 		} else if (id == findViewById(R.id.Button02).getId()) {
-			this.extLead.sendState(2, true,0);
+			this.extLead.sendState(2, false, 3);
 			tv = (TextView) findViewById(R.id.TextView02);
 			tv.setText("clicked pP02");
 		} else if (id == findViewById(R.id.Button03).getId()) {
+			this.extLead.sendState(3, true, 3);
 			tv = (TextView) findViewById(R.id.TextView03);
 			tv.setText("clicked pP03");
 		} else if (id == findViewById(R.id.Button04).getId()) {
+			this.extLead.sendState(3, false, 3);
 			tv = (TextView) findViewById(R.id.TextView04);
 			tv.setText("clicked eL");
 		}
@@ -85,15 +86,15 @@ public class AndSwtch extends Activity {
 		@Override
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-				case 1: {
-					alert.setMessage(extLead.getResponse());
-					alert.show();
-					break;
-				}
-				default: {
-					super.handleMessage(msg);
-					break;
-				}
+			case 1: {
+				alert.setMessage(extLead.getResponse());
+				alert.show();
+				break;
+			}
+			default: {
+				super.handleMessage(msg);
+				break;
+			}
 			}
 		}
 	};

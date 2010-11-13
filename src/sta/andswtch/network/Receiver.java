@@ -23,7 +23,7 @@ public class Receiver implements Runnable {
 	private boolean inactive = true;
 	DatagramPacket packet;
 	IConnectionManager conManager;
-	
+
 	public Receiver(ConnectionManager conManager) {
 		this.conManager = conManager;
 	}

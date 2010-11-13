@@ -19,12 +19,9 @@ public class ConnectionManager implements IConnectionManager {
 	private static final String TAG = ConnectionManager.class.getName();
 
 	private static final String GET_STATUS = "wer da?";
-	
-	
+
 	private static final String ON = "on";
 	private static final String OFF = "off";
-	
-	
 
 	public ConnectionManager(Config config, ExtensionLead extLead) {
 		this.config = config;
@@ -77,17 +74,24 @@ public class ConnectionManager implements IConnectionManager {
 		extLead.updateDatastructure(response);
 	}
 
-
 	public void sendState(int id, boolean on, int time) {
 		String status;
-		
-		if(on){
-			status=ON;
+
+		if (on) {
+			status = ON;
+		} else {
+			status = OFF;
 		}
-		else{
-			status=OFF;
-		}
-		sendAndReceive("Sw_"+status+Integer.toString(id)+this.config.getUser()+this.config.getPassword());
+
+		sendAndReceive("Sw_" + status + Integer.toString(id)
+				+ this.config.getUser() + this.config.getPassword());
+
+		// time does not work right now. - has to be evaluated, how to build the
+		// command string
+	}
+
+	public void sendState(int id, boolean on) {
+		sendState(id, on, 0);
 	}
 
 }
