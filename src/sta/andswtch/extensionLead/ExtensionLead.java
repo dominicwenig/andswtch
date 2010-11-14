@@ -96,7 +96,7 @@ public class ExtensionLead implements IExtensionLead {
 	public void switchState(int id) {
 		boolean on = this.powerPoints.get(id - 1).isOn();
 		
-		this.connectionManager.sendState(id, !on, 0);
+		this.connectionManager.sendState(id, !on);
 	}
 
 	public void sendState(int id, boolean on, int time) {

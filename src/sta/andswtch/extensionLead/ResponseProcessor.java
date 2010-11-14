@@ -58,7 +58,11 @@ public class ResponseProcessor {
 			}
 			
 		} else {
-			Log.e(TAG, "To many parts received, please check the names of the power points");
+			if(reParts[reParts.length - 1].trim().equalsIgnoreCase("Err")) {
+				Log.e(TAG, "Error occured within the response");
+			} else {
+				Log.e(TAG, "To many parts received, please check the names of the power points");
+			}
 		}
 		
 	}
