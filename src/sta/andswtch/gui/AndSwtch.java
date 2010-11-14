@@ -1,31 +1,56 @@
 package sta.andswtch.gui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import sta.andswtch.R;
 import sta.andswtch.extensionLead.ExtensionLead;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
 
 public class AndSwtch extends Activity {
-
-	AlertDialog alert;
-	ExtensionLead extLead;
-
+	
+	private AlertDialog alert;
+	private ExtensionLead extLead;
+	private List<Button> buttons;
+	private Handler handlerEvent = new Handler() {
+			@Override
+			public void handleMessage(Message msg) {
+				switch (msg.what) {
+					case 1: {
+						alert.setMessage(extLead.getResponse());
+						alert.show();
+						for(int i = 1; i < buttons.size(); i++) {
+							checkState(buttons.get(i - 1));
+						}
+						break;
+					}
+					default: {
+						super.handleMessage(msg);
+						break;
+					}
+				}
+			}
+		};
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-
-		extLead = new ExtensionLead(this);
-
+		
+		// create the extension lead
+		this.extLead = new ExtensionLead(this);
+		init();
+		
 		// will be removed later, it is just a method to create a alert dialog
-
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage("dialog");
 		builder.setCancelable(false);
@@ -37,9 +62,16 @@ public class AndSwtch extends Activity {
 					}
 				});
 		alert = builder.create();
-
 	}
-
+	
+	private void init() {
+		this.buttons = new ArrayList<Button>();
+		this.buttons.add((Button) findViewById(R.id.Button01));
+		this.buttons.add((Button) findViewById(R.id.Button02));
+		this.buttons.add((Button) findViewById(R.id.Button03));
+		this.buttons.add((Button) findViewById(R.id.Button04));
+	}
+	
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -47,55 +79,39 @@ public class AndSwtch extends Activity {
 	}
 
 	public void onOff(View v) {
-
-		// this.extLead.sendUpdateMessage();
-		// this.extLead.sendState(2, false,0);
-
-		TextView tv;
 		int id = v.getId();
-		if (id == findViewById(R.id.Button01).getId()) {
-			this.extLead.sendState(2, true, 3);
-
-			tv = (TextView) findViewById(R.id.TextView01);
-			tv.setText("clicked pP01");
-		} else if (id == findViewById(R.id.Button02).getId()) {
-			this.extLead.sendState(2, false, 3);
-			tv = (TextView) findViewById(R.id.TextView02);
-			tv.setText("clicked pP02");
-		} else if (id == findViewById(R.id.Button03).getId()) {
-			this.extLead.sendState(3, true, 3);
-			tv = (TextView) findViewById(R.id.TextView03);
-			tv.setText("clicked pP03");
-		} else if (id == findViewById(R.id.Button04).getId()) {
-			this.extLead.sendState(3, false, 3);
-			tv = (TextView) findViewById(R.id.TextView04);
-			tv.setText("clicked eL");
+		if (id == this.buttons.get(0).getId()) {
+			this.extLead.switchState(1);
+		} else if (id == this.buttons.get(1).getId()) {
+			this.extLead.switchState(2);
+		} else if (id == this.buttons.get(2).getId()) {
+			this.extLead.switchState(3);
+		} else if (id == this.buttons.get(3).getId()) {
+			this.extLead.sendStateAll(true);
 		}
-
 	}
 
 	public void updateActivity() {
 		Message msg = new Message();
 		msg.what = 1;
-		handlerEvent.sendMessage(msg);
-
+		this.handlerEvent.sendMessage(msg);
 	}
-
-	private Handler handlerEvent = new Handler() {
-
-		@Override
-		public void handleMessage(Message msg) {
-			switch (msg.what) {
-			case 1: {
-				alert.setMessage(extLead.getResponse());
-				alert.show();
-				break;
-			}
-			default: {
-				super.handleMessage(msg);
-				break;
-			}
-			}
+	
+	private void checkState(Button btn) {
+		if(this.extLead.isPowerPointOn(Integer.parseInt((String) btn.getTag()))) {
+			this.setOn(btn);
+		} else {
+			this.setOff(btn);
 		}
-	};
+	}
+	
+	private void setOn(Button btn) {
+		btn.setBackgroundColor(Color.GREEN);
+		btn.setText("ON");
+	}
+	
+	private void setOff(Button btn) {
+		btn.setBackgroundColor(Color.RED);
+		btn.setText("OFF");
+	}
 }

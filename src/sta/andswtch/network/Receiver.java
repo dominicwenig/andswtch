@@ -14,16 +14,16 @@ import android.util.Log;
 public class Receiver implements Runnable {
 
 	private static final String TAG = Receiver.class.getName();
-
-	private DatagramSocket socket;
-	private Thread thread;
+	
 	/**
 	 * a status variable to determine if the server is currently running or not.
 	 */
 	private boolean inactive = true;
-	DatagramPacket packet;
-	IConnectionManager conManager;
-
+	private ConnectionManager conManager;
+	private DatagramSocket socket;
+	private Thread thread;
+	private DatagramPacket packet;
+	
 	public Receiver(ConnectionManager conManager) {
 		this.conManager = conManager;
 	}
@@ -102,10 +102,10 @@ public class Receiver implements Runnable {
 				}
 			}
 		} catch (SocketException ex) {
-			Log.e(TAG,
-					"error while attemting to find out the local IP: "
-							+ ex.toString());
+			Log.e(TAG, "error while attemting to find out the local IP: "
+					+ ex.toString());
 		}
 		return null;
 	}
+	
 }

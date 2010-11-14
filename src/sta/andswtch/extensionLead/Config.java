@@ -3,7 +3,6 @@ package sta.andswtch.extensionLead;
 public class Config {
 
 	private String host;
-
 	private int extensionLeadSenderPort;
 	private int extensionLeadReceiverPort;
 	private String user;

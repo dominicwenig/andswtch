@@ -57,7 +57,7 @@ public class ExtensionLead implements IExtensionLead {
 	}
 
 	public String getPowerPointName(int id) {
-		return this.powerPoints.get(id).getName();
+		return this.powerPoints.get(id - 1).getName();
 	}
 
 	public int getPowerPointsCount() {
@@ -69,16 +69,16 @@ public class ExtensionLead implements IExtensionLead {
 	}
 
 	public void init() {
-
+		
 		this.powerPoints = new ArrayList<PowerPoint>();
 		this.powerPointsCount = testPowerPointsCount;
-
+		
 		this.config = new Config(testHost, testExtensionLeadSenderPort,
 				testExtensionLeadReceiverPort, testUser, testPassword);
 		this.connectionManager = new ConnectionManager(this.config, this);
-
-		for (int id = 0; id < this.powerPointsCount; id++) {
-			this.addPowerPoint(id, "pP_0" + id, true, false);
+		
+		for (int id = 1; id <= this.powerPointsCount; id++) {
+			this.addPowerPoint(id - 1, "Nr. " + id, true, false);
 		}
 		this.responseProcessor = new ResponseProcessor(this.powerPoints);
 
@@ -86,18 +86,17 @@ public class ExtensionLead implements IExtensionLead {
 	}
 
 	public boolean isPowerPointEnable(int id) {
-		return this.powerPoints.get(id).isEnabled();
+		return this.powerPoints.get(id - 1).isEnabled();
 	}
 
 	public boolean isPowerPointOn(int id) {
-		return this.powerPoints.get(id).isOn();
+		return this.powerPoints.get(id - 1).isOn();
 	}
 
 	public void switchState(int id) {
-		boolean on = powerPoints.get(id).isOn();
-
-		this.connectionManager.sendState(id, !on);
-
+		boolean on = this.powerPoints.get(id - 1).isOn();
+		
+		this.connectionManager.sendState(id, !on, 0);
 	}
 
 	public void sendState(int id, boolean on, int time) {
@@ -105,6 +104,7 @@ public class ExtensionLead implements IExtensionLead {
 	}
 
 	public void sendStateAll(boolean on) {
+		
 	}
 
 	public void sendStateAll(boolean on, int time) {
@@ -112,13 +112,11 @@ public class ExtensionLead implements IExtensionLead {
 	}
 
 	public void sendUpdateMessage() {
-		connectionManager.sendUpdateRequest();
-
+		this.connectionManager.sendUpdateRequest();
 	}
 
 	public void setConfig(String host, int portIn, int portOut, String user,
 			String password) {
-
 		if (this.config == null) {
 			this.config = new Config(host, portIn, portOut, user, password);
 		} else {
@@ -127,26 +125,23 @@ public class ExtensionLead implements IExtensionLead {
 	}
 
 	public void setPowerPointName(int id, String name) {
-		this.powerPoints.get(id).setName(name);
+		this.powerPoints.get(id - 1).setName(name);
 	}
 
 	public void updateDatastructure(String response) {
-		// if (this.responseProcessor == null) {
-		// this.responseProcessor = new ResponseProcessor(this.powerPoints);
-		// }
-		// this.responseProcessor.processResponse(response);
+		if (this.responseProcessor == null) {
+			this.responseProcessor = new ResponseProcessor(this.powerPoints);
+		}
+		this.responseProcessor.processResponse(response);
 
-		// for now, will be changed later, that the responseprocessor is
-		// processing the data.
+
+		// for testing purpose we create a message box with the response string
 		this.response = response;
-
-		andSwtch.updateActivity();
-
+		this.andSwtch.updateActivity();		
 	}
 
 	public String getResponse() {
 		return response;
-
 	}
-
+	
 }
