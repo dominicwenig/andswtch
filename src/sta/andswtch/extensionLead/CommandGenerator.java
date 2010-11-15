@@ -78,7 +78,7 @@ public class CommandGenerator {
 			timeBuf.append('0');
 	    }
 		
-	    ByteBuffer byteBuffer = ByteBuffer.allocate(2);
+	    ByteBuffer byteBuffer = ByteBuffer.allocate(2) ;
 	    byte eachByte;
 
 	    for (int i = 0; i < 2; i++) {
@@ -100,6 +100,36 @@ public class CommandGenerator {
 		
 		//"wer da?"
 		return GET_STATUS;
+	}
+	
+	
+	//testing
+	public byte[] generateTestDelayedCommand(int id, boolean on) {
+		//TODO this is very bad :D - change that
+		// TODO evaluate, if only switching off is supported by the anel-extensionLead and take out the boolean if necessary
+		
+		
+		
+		byte [] begin = "St_".getBytes();
+		byte [] byteStatus = evaluateOnBoolean(on).getBytes();
+		byte [] byteId = Integer.toString(id).getBytes();
+		byte [] time = {0,5};
+		byte [] user = this.config.getUser().getBytes();
+		byte [] password = this.config.getPassword().getBytes();
+		
+		
+		ByteBuffer buf = ByteBuffer.allocate(500);
+		
+		buf.put(begin);
+		buf.put(byteStatus);
+		buf.put(byteId);
+		buf.put(time);
+		buf.put(user);
+		buf.put(password);
+		
+		buf.flip();
+		
+		return buf.array();
 	}
 	
 }

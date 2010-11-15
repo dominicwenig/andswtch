@@ -106,7 +106,7 @@ public class ExtensionLead implements IExtensionLead {
 
 	public void sendState(int id, boolean on, int time) {
 		
-		String command = this.commandGenerator.generateSwitchDelayedCommand(id, on, time);
+		byte [] command = this.commandGenerator.generateTestDelayedCommand(id, on);
 		
 		this.connectionManager.sendAndReceive(command);
 	}

@@ -15,10 +15,10 @@ public class Sender {
 	 * @param command
 	 * @throws IOException
 	 */
-	public void send(String destHost, int destPort, String command)
+	public void send(String destHost, int destPort, byte[] data)
 			throws IOException {
 
-		byte[] data = command.getBytes();
+		//byte[] data = command.getBytes();
 
 		InetAddress destAddress = InetAddress.getByName(destHost);
 

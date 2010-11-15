@@ -2,7 +2,7 @@ package sta.andswtch.network;
 
 public interface IConnectionManager {
 
-	public void sendAndReceive(String command);
+	public void sendAndReceive(byte[] command);
 
 	public void updateDatastructure(String response);
 
