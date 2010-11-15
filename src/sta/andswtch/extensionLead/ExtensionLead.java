@@ -12,6 +12,7 @@ public class ExtensionLead implements IExtensionLead {
 	private Config config;
 	private ConnectionManager connectionManager;
 	private ResponseProcessor responseProcessor;
+	private CommandGenerator commandGenerator;
 	private AndSwtch andSwtch;
 	private int powerPointsCount;
 
@@ -81,6 +82,8 @@ public class ExtensionLead implements IExtensionLead {
 			this.addPowerPoint(id - 1, "Nr. " + id, true, false);
 		}
 		this.responseProcessor = new ResponseProcessor(this.powerPoints);
+		
+		this.commandGenerator = new CommandGenerator(this.config);
 
 		this.sendUpdateMessage();
 	}
@@ -96,23 +99,31 @@ public class ExtensionLead implements IExtensionLead {
 	public void switchState(int id) {
 		boolean on = this.powerPoints.get(id - 1).isOn();
 		
-		this.connectionManager.sendState(id, !on);
+		String command = this.commandGenerator.generateSwitchCommand(id, !on);
+		
+		this.connectionManager.sendAndReceive(command);
 	}
 
 	public void sendState(int id, boolean on, int time) {
-		this.connectionManager.sendState(id, on, time);
+		
+		String command = this.commandGenerator.generateSwitchDelayedCommand(id, on, time);
+		
+		this.connectionManager.sendAndReceive(command);
 	}
 
 	public void sendStateAll(boolean on) {
+		//TODO fill this method
 		
 	}
 
 	public void sendStateAll(boolean on, int time) {
-
+		//TODO implement this method
 	}
 
 	public void sendUpdateMessage() {
-		this.connectionManager.sendUpdateRequest();
+		String command = this.commandGenerator.generateStatusUpdateCommand();
+		
+		this.connectionManager.sendAndReceive(command);
 	}
 
 	public void setConfig(String host, int portIn, int portOut, String user,

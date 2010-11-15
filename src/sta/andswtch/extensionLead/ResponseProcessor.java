@@ -22,15 +22,15 @@ public class ResponseProcessor {
 		
 		String[] reParts = response.split(":");
 				
-		Log.e(TAG, "ResponseProcessor received: " + response);
-		Log.e(TAG, "this response consist of " + reParts.length + " parts.");
+		Log.d(TAG, "ResponseProcessor received: " + response);
+		Log.d(TAG, "this response consist of " + reParts.length + " parts.");
 		
 		if(reParts.length == 16) {
 			// the power points are at the positions 7 - 14 
 			// -> array starts with 0
 			// -> reParts[6] - reParts[13]
 			for(int i = 1; i <= this.powerPoints.size(); i++) {
-				Log.e(TAG, "PowerPoint " + String.valueOf(i) 
+				Log.d(TAG, "PowerPoint " + String.valueOf(i) 
 						+ " has the value " + reParts[i + 5]);
 				// 0 - off - false
 				// 1 - on - true
@@ -44,7 +44,7 @@ public class ResponseProcessor {
 			int seg_dis = Integer.parseInt(reParts[14]);
 			String binaryString = Integer.toBinaryString(seg_dis);
 			
-			Log.e(TAG, "Segment Disabled Value is " + seg_dis 
+			Log.d(TAG, "Segment Disabled Value is " + seg_dis 
 					+ " represents " + binaryString);
 			
 			for(int i = 1; i <= this.powerPoints.size(); i++) {
