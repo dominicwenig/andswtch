@@ -14,7 +14,7 @@ import android.util.Log;
 public class Receiver implements Runnable {
 
 	private static final String TAG = Receiver.class.getName();
-	
+
 	/**
 	 * a status variable to determine if the server is currently running or not.
 	 */
@@ -23,7 +23,7 @@ public class Receiver implements Runnable {
 	private DatagramSocket socket;
 	private Thread thread;
 	private DatagramPacket packet;
-	
+
 	public Receiver(ConnectionManager conManager) {
 		this.conManager = conManager;
 	}
@@ -51,7 +51,7 @@ public class Receiver implements Runnable {
 
 	public void run() {
 		try {
-			this.socket.setSoTimeout(3000);
+			this.socket.setSoTimeout(2000);
 
 			byte[] buf = new byte[400];
 
@@ -68,7 +68,7 @@ public class Receiver implements Runnable {
 					.getData()));
 
 		} catch (SocketTimeoutException e) {
-			this.conManager.errorAlert();
+			this.conManager.errorAlert("Connection timed out");
 			this.socket.close();
 		} catch (Exception e) {
 			Log.e(TAG, "S: Error", e);
@@ -102,10 +102,12 @@ public class Receiver implements Runnable {
 				}
 			}
 		} catch (SocketException ex) {
-			Log.e(TAG, "error while attemting to find out the local IP: "
-					+ ex.toString());
+			this.conManager.errorAlert("no network permission");
+			Log.e(TAG,
+					"error while attemting to find out the local IP: "
+							+ ex.toString());
 		}
 		return null;
 	}
-	
+
 }

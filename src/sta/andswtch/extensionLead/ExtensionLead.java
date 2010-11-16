@@ -17,7 +17,7 @@ public class ExtensionLead implements IExtensionLead {
 	private int powerPointsCount;
 
 	// is only for prototype v0.0 :), will be removed
-	private String response = "nothing";
+	private String errorMessage = "nothing";
 
 	// test static final variables
 	private static final int testPowerPointsCount = 3;
@@ -34,11 +34,6 @@ public class ExtensionLead implements IExtensionLead {
 
 	private void addPowerPoint(int id, String name, boolean enable, boolean on) {
 		this.powerPoints.add(new PowerPoint(id, name, enable, on));
-	}
-
-	public void errorAlert() {
-		// TODO Auto-generated method stub
-
 	}
 
 	public String getHost() {
@@ -70,19 +65,19 @@ public class ExtensionLead implements IExtensionLead {
 	}
 
 	public void init() {
-		
+
 		this.powerPoints = new ArrayList<PowerPoint>();
 		this.powerPointsCount = testPowerPointsCount;
-		
+
 		this.config = new Config(testHost, testExtensionLeadSenderPort,
 				testExtensionLeadReceiverPort, testUser, testPassword);
 		this.connectionManager = new ConnectionManager(this.config, this);
-		
+
 		for (int id = 1; id <= this.powerPointsCount; id++) {
 			this.addPowerPoint(id - 1, "Nr. " + id, true, false);
 		}
 		this.responseProcessor = new ResponseProcessor(this.powerPoints);
-		
+
 		this.commandGenerator = new CommandGenerator(this.config);
 
 		this.sendUpdateMessage();
@@ -98,31 +93,32 @@ public class ExtensionLead implements IExtensionLead {
 
 	public void switchState(int id) {
 		boolean on = this.powerPoints.get(id - 1).isOn();
-		
+
 		String command = this.commandGenerator.generateSwitchCommand(id, !on);
-		
+
 		this.connectionManager.sendAndReceive(command);
 	}
 
 	public void sendState(int id, boolean on, int time) {
-		
-		byte [] command = this.commandGenerator.generateTestDelayedCommand(id, on);
-		
+
+		byte[] command = this.commandGenerator.generateSwitchDelayedCommand(id,
+				on, time);
+
 		this.connectionManager.sendAndReceive(command);
 	}
 
 	public void sendStateAll(boolean on) {
-		//TODO fill this method
-		
+		// TODO fill this method
+
 	}
 
 	public void sendStateAll(boolean on, int time) {
-		//TODO implement this method
+		// TODO implement this method
 	}
 
 	public void sendUpdateMessage() {
 		String command = this.commandGenerator.generateStatusUpdateCommand();
-		
+
 		this.connectionManager.sendAndReceive(command);
 	}
 
@@ -145,14 +141,17 @@ public class ExtensionLead implements IExtensionLead {
 		}
 		this.responseProcessor.processResponse(response);
 
-
-		// for testing purpose we create a message box with the response string
-		this.response = response;
-		this.andSwtch.updateActivity();		
+		this.andSwtch.updateActivity();
 	}
 
-	public String getResponse() {
-		return response;
+	public String getErrorMessage() {
+		return errorMessage;
 	}
 	
+	public void errorOccured(String message){
+		this.errorMessage = message;
+		this.andSwtch.showErrorMessage();
+	}
+	
+
 }

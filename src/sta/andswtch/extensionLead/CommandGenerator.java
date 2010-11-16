@@ -2,134 +2,98 @@ package sta.andswtch.extensionLead;
 
 import java.nio.ByteBuffer;
 
-import android.util.Log;
-
 public class CommandGenerator {
-	
+
 	private Config config;
-	
+
 	private static final String TAG = CommandGenerator.class.getName();
-	
+
 	private static final String GET_STATUS = "wer da?";
-	
-	
+
 	public CommandGenerator(Config config) {
 		super();
 		this.config = config;
 	}
-	
+
 	/**
 	 * evaluates the boolean
 	 * 
 	 * @param on
 	 * @return "on" if boolean is true, "off" otherwise
 	 */
-	private String evaluateOnBoolean(boolean on){
-		if(on){
+	private String evaluateOnBoolean(boolean on) {
+		if (on) {
 			return "on";
-		}
-		else {
+		} else {
 			return "off";
 		}
 	}
-	
+
 	public String generateSwitchCommand(int id, boolean on) {
-		
-		//"Sw_[on|off][id][user][password]"
-		return ("Sw_"+evaluateOnBoolean(on)+Integer.toString(id)+this.config.getUser()+this.config.getPassword());
-	}
-	
-	public String generateSwitchDelayedCommand(int id, boolean on, int time) {
-		
-		/*
-		 * "St_[on|off][id][time][user][password]"
-		 * time as 16 bit integer!!
-		 */
-		return ("St_"+evaluateOnBoolean(on)+id+evalueateTime(time)+this.config.getUser()+this.config.getPassword());
-	}
-	
 
-	
-	
-	/**
-	 * evaluates the time and converts it to a 16 bit integer
-	 * 
-	 * @param time
-	 * @return
-	 */
-	private String evalueateTime(int time) {
-		//maybe string has to be changed to byte[] ---> and then we have to work with byte array all the time!!!
-		
-		ByteBuffer buf = intToUnsignedShort(time);
-		
-		Log.e(TAG, "BinaryString: " + Integer.toBinaryString(Integer.valueOf(time)));
-		Log.e(TAG, "ByteBuffer: " + buf.get(1) + " " + buf.get(0));
-		
-		//this will not work, its just to get it compile right now
-		return (buf.toString());
-
+		// "Sw_[on|off][id][user][password]"
+		return ("Sw_" + evaluateOnBoolean(on) + Integer.toString(id)
+				+ this.config.getUser() + this.config.getPassword());
 	}
 
-	private ByteBuffer intToUnsignedShort(int time) {
-		String timeString = Integer.toBinaryString(time);
-		StringBuffer timeBuf = new StringBuffer(timeString);
-		
-		while(timeBuf.length() < 16) {
-			timeBuf.append('0');
-	    }
-		
-	    ByteBuffer byteBuffer = ByteBuffer.allocate(2) ;
-	    byte eachByte;
+	public byte[] generateSwitchDelayedCommand(int id, boolean on, int time) {
 
-	    for (int i = 0; i < 2; i++) {
-	    	eachByte = 0x00;
-	        for (int bitNumber = 7; bitNumber >= 0; bitNumber--) {
-	        	if (timeBuf.charAt((i * 8) + (7 - bitNumber)) == '1') {
-	               // sets the bit at the position bitNumber to 1
-	               eachByte |= (0x01 << bitNumber);
-	        	}
-	        }
-	        byteBuffer.put((byte) eachByte);
-	    }
-	    
-	    return byteBuffer;
-	}
-	
-	
-	public String generateStatusUpdateCommand() {
-		
-		//"wer da?"
-		return GET_STATUS;
-	}
-	
-	
-	//testing
-	public byte[] generateTestDelayedCommand(int id, boolean on) {
-		//TODO this is very bad :D - change that
-		// TODO evaluate, if only switching off is supported by the anel-extensionLead and take out the boolean if necessary
-		
-		
-		
-		byte [] begin = "St_".getBytes();
-		byte [] byteStatus = evaluateOnBoolean(on).getBytes();
-		byte [] byteId = Integer.toString(id).getBytes();
-		byte [] time = {0,5};
-		byte [] user = this.config.getUser().getBytes();
-		byte [] password = this.config.getPassword().getBytes();
-		
-		
+		// TODO this is very bad :D - change that
+		// TODO evaluate, if only switching off is supported by the
+		// anel-extensionLead and take out the boolean if necessary
+
+		byte[] begin = "St_".getBytes();
+		byte[] byteStatus = evaluateOnBoolean(on).getBytes();
+		byte[] byteId = Integer.toString(id).getBytes();
+		byte[] byteTime = {0,3}; //TODO change to evaluate the string
+		byte[] user = this.config.getUser().getBytes();
+		byte[] password = this.config.getPassword().getBytes();
+
 		ByteBuffer buf = ByteBuffer.allocate(500);
-		
+
 		buf.put(begin);
 		buf.put(byteStatus);
 		buf.put(byteId);
-		buf.put(time);
+		buf.put(byteTime);
 		buf.put(user);
 		buf.put(password);
-		
+
 		buf.flip();
-		
+
 		return buf.array();
+
 	}
-	
+
+	private byte[] intToUnsignedShort(int time) {
+
+		String timeString = Integer.toBinaryString(time);
+		StringBuffer timeBuf = new StringBuffer(timeString);
+
+		while (timeBuf.length() < 16) {
+			timeBuf.append('0');
+		}
+
+		ByteBuffer byteBuffer = ByteBuffer.allocate(2);
+		byte eachByte;
+
+		for (int i = 0; i < 2; i++) {
+			eachByte = 0x00;
+			for (int bitNumber = 7; bitNumber >= 0; bitNumber--) {
+				if (timeBuf.charAt((i * 8) + (7 - bitNumber)) == '1') {
+					// sets the bit at the position bitNumber to 1
+					eachByte |= (0x01 << bitNumber);
+				}
+			}
+			byteBuffer.put((byte) eachByte);
+		}
+
+		return byteBuffer.array();
+	}
+
+	public String generateStatusUpdateCommand() {
+
+		// "wer da?"
+		return GET_STATUS;
+	}
+
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.SocketException;
 
 public class Sender {
 	/**
@@ -16,9 +17,9 @@ public class Sender {
 	 * @throws IOException
 	 */
 	public void send(String destHost, int destPort, byte[] data)
-			throws IOException {
+			throws IOException, SocketException {
 
-		//byte[] data = command.getBytes();
+		// byte[] data = command.getBytes();
 
 		InetAddress destAddress = InetAddress.getByName(destHost);
 

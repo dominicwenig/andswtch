@@ -16,7 +16,7 @@ public interface IExtensionLead {
 
 	public void updateDatastructure(String response);
 
-	public void errorAlert();
+	public void errorOccured(String errorMessage);
 
 	public void setPowerPointName(int id, String name);
 
@@ -41,7 +41,6 @@ public interface IExtensionLead {
 
 	public String getPassword();
 
-	// only for v0.0
-	public String getResponse();
+	public String getErrorMessage();
 
 }
