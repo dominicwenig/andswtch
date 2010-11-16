@@ -96,4 +96,27 @@ public class CommandGenerator {
 		return GET_STATUS;
 	}
 
+	public byte[] generateSwitchAllCommand(boolean on) {
+		
+		byte powerPointBinaryMask;
+		
+		if(on){
+			powerPointBinaryMask = 127;
+		}
+		else {
+			powerPointBinaryMask =0;
+		}
+		
+		ByteBuffer buf = ByteBuffer.allocate(100);
+		
+		buf.put("Sw".getBytes());
+		buf.put(powerPointBinaryMask);
+		buf.put(this.config.getUser().getBytes());
+		buf.put(this.config.getPassword().getBytes());
+		
+		buf.flip();
+		
+		return buf.array();
+	}
+
 }

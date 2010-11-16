@@ -98,7 +98,14 @@ public class AndSwtch extends Activity {
 				// just for testing the timer
 				this.extLead.sendState(2, false, 2);
 
-			} else {
+			}
+			else if(tag == 9){
+				this.extLead.sendStateAll(true);
+			}
+			else if(tag == 10){
+				this.extLead.sendStateAll(false);
+			}
+			else {
 				this.extLead.switchState(tag);
 			}
 		}

@@ -108,7 +108,9 @@ public class ExtensionLead implements IExtensionLead {
 	}
 
 	public void sendStateAll(boolean on) {
-		// TODO fill this method
+		byte[] command = this.commandGenerator.generateSwitchAllCommand(on);
+		
+		this.connectionManager.sendAndReceive(command);
 
 	}
 

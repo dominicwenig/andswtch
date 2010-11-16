@@ -7,5 +7,10 @@
   <TextView android:text="@+id/TextView03" android:id="@+id/TextView03" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
   <Button android:id="@+id/Button03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="on/off pP03" android:onClick="onOff" android:tag="3"></Button>
   <TextView android:text="@+id/TextView04" android:id="@+id/TextView04" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-  <Button android:id="@+id/Button04" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="on/off eL" android:onClick="onOff" android:tag="0"></Button>
+  <Button android:id="@+id/Button04" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="switch off 2 with delay" android:onClick="onOff" android:tag="0"></Button>
+  <TextView android:text="@+id/TextView05" android:id="@+id/TextView05" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+  <Button android:id="@+id/Button05" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="on all" android:onClick="onOff" android:tag="9"></Button>
+  <TextView android:text="@+id/TextView06" android:id="@+id/TextView06" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+  <Button android:id="@+id/Button06" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="off all" android:onClick="onOff" android:tag="10"></Button>
+
 </TableLayout>
