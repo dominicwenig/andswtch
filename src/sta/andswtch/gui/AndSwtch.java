@@ -13,12 +13,15 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AndSwtch extends Activity {
 
 	private ExtensionLead extLead;
 	private List<Button> buttons;
+	private int sec = 2;
+	private TextView delaySec;
 	private Handler handlerEvent = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -62,12 +65,15 @@ public class AndSwtch extends Activity {
 		this.buttons.add((Button) findViewById(R.id.Button01));
 		this.buttons.add((Button) findViewById(R.id.Button02));
 		this.buttons.add((Button) findViewById(R.id.Button03));
+		
+		this.delaySec = (TextView) findViewById(R.id.TextView04);
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		this.extLead.sendUpdateMessage();
+		this.delaySec.setText("Delay: " + this.sec + " sec");
 	}
 
 	public void onOff(View v) {
@@ -76,7 +82,7 @@ public class AndSwtch extends Activity {
 			int tag = Integer.parseInt(tagString);
 			if (tag == 0) {
 				//switch delayed
-				this.extLead.sendState(2, false, 3);
+				this.extLead.sendState(2, false, this.sec);
 
 			} else if (tag == 9) {
 				this.extLead.sendStateAll(true);
@@ -118,5 +124,19 @@ public class AndSwtch extends Activity {
 	private void setOff(Button btn) {
 		btn.setBackgroundColor(Color.RED);
 		btn.setText("OFF");
+	}
+	
+	public void decrease(View v) {
+		if(this.sec > 0) {
+			this.sec--;
+			this.delaySec.setText("Delay: " + this.sec + " sec");
+		}
+	}
+	
+	public void increase(View v) {
+		if(this.sec < 65535) {
+			this.sec++;
+			this.delaySec.setText("Delay: " + this.sec + " sec");
+		}
 	}
 }

@@ -17,16 +17,19 @@ public final class R {
         public static final int Button01=0x7f050002;
         public static final int Button02=0x7f050004;
         public static final int Button03=0x7f050006;
-        public static final int Button04=0x7f050008;
-        public static final int Button05=0x7f05000a;
-        public static final int Button06=0x7f05000c;
+        public static final int Button035=0x7f050009;
+        public static final int Button04=0x7f05000a;
+        public static final int Button045=0x7f05000b;
+        public static final int Button05=0x7f05000d;
+        public static final int Button06=0x7f05000f;
         public static final int TableLayout01=0x7f050000;
+        public static final int TableRow01=0x7f050008;
         public static final int TextView01=0x7f050001;
         public static final int TextView02=0x7f050003;
         public static final int TextView03=0x7f050005;
         public static final int TextView04=0x7f050007;
-        public static final int TextView05=0x7f050009;
-        public static final int TextView06=0x7f05000b;
+        public static final int TextView05=0x7f05000c;
+        public static final int TextView06=0x7f05000e;
     }
     public static final class layout {
         public static final int main=0x7f030000;

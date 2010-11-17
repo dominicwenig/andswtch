@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout android:id="@+id/TableLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fadeScrollbars="true" android:fadingEdge="vertical">
+
+<TableLayout android:id="@+id/TableLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:stretchColumns="1">
   <TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nr. 1"></TextView>
   <Button android:id="@+id/Button01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="on/off pP01" android:onClick="onOff" android:tag="1"></Button>
+  
   <TextView android:text="Nr. 3" android:id="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" ></TextView>
   <Button android:id="@+id/Button02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="on/off pP02" android:onClick="onOff" android:tag="2"></Button>
+  
   <TextView android:text="Nr. 3" android:id="@+id/TextView03" android:layout_width="wrap_content" android:layout_height="wrap_content" ></TextView>
   <Button android:id="@+id/Button03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="on/off pP03" android:onClick="onOff" android:tag="3"></Button>
-  <TextView android:text="switch Nr. 2 with 3sec delay" android:id="@+id/TextView04" android:layout_width="wrap_content" android:layout_height="wrap_content" ></TextView>
-  <Button android:id="@+id/Button04" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="switch off 2 with delay" android:onClick="onOff" android:tag="0"></Button>
+  
+  <TextView android:text="Delay: " android:id="@+id/TextView04" android:layout_width="wrap_content" android:layout_height="wrap_content" ></TextView>
+  
+  <TableRow android:id="@+id/TableRow01" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <Button android:id="@+id/Button035" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-" android:onClick="decrease"></Button>
+    <Button android:id="@+id/Button04" android:layout_height="wrap_content" android:text="switch off Nr. 2 with delay" android:onClick="onOff" android:tag="0" android:layout_width="fill_parent"></Button>
+    <Button android:id="@+id/Button045" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+" android:onClick="increase"></Button>
+  </TableRow>
+  
   <TextView android:text="Switch All on" android:id="@+id/TextView05" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
   <Button android:id="@+id/Button05" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="on all" android:onClick="onOff" android:tag="9"></Button>
+  
   <TextView android:text="Switch all off" android:id="@+id/TextView06" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
   <Button android:id="@+id/Button06" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="off all" android:onClick="onOff" android:tag="10"></Button>
 
 </TableLayout>
+
+</ScrollView>
