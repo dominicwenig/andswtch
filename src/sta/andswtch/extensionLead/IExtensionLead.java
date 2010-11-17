@@ -2,45 +2,41 @@ package sta.andswtch.extensionLead;
 
 public interface IExtensionLead {
 
-	public void init();
+	public abstract String getHost();
 
-	public void sendUpdateMessage();
+	public abstract String getPassword();
 
-	public void switchState(int id);
+	public abstract int getPortIn();
 
-	public void sendState(int id, boolean on, int time);
+	public abstract int getPortOut();
 
-	public void sendStateAll(boolean on);
+	public abstract String getPowerPointName(int id);
 
-	public void sendStateAll(boolean on, int time);
+	public abstract int getPowerPointsCount();
 
-	public void updateDatastructure(String response);
+	public abstract String getUser();
 
-	public void errorOccured(String errorMessage);
+	public abstract boolean isPowerPointEnable(int id);
 
-	public void setPowerPointName(int id, String name);
+	public abstract boolean isPowerPointOn(int id);
 
-	public int getPowerPointsCount();
+	public abstract void switchState(int id);
 
-	public String getPowerPointName(int id);
+	public abstract void sendState(int id, boolean on, int time);
 
-	public boolean isPowerPointOn(int id);
+	public abstract void sendStateAll(boolean on);
 
-	public boolean isPowerPointEnable(int id);
+	public abstract void sendStateAll(boolean on, int time);
 
-	public void setConfig(String host, int portIn, int portOut, String user,
-			String password);
+	public abstract void sendUpdateMessage();
 
-	public String getHost();
+	public abstract void setConfig(String host, int portIn, int portOut,
+			String user, String password);
 
-	public int getPortIn();
+	public abstract void setPowerPointName(int id, String name);
 
-	public int getPortOut();
+	public abstract void updateDatastructure(String response);
 
-	public String getUser();
-
-	public String getPassword();
-
-	public String getErrorMessage();
+	public abstract void errorOccured(String message);
 
 }

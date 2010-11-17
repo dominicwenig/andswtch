@@ -2,6 +2,8 @@ package sta.andswtch.extensionLead;
 
 import java.nio.ByteBuffer;
 
+import android.util.Log;
+
 public class CommandGenerator {
 
 	private Config config;
@@ -11,7 +13,6 @@ public class CommandGenerator {
 	private static final String GET_STATUS = "wer da?";
 
 	public CommandGenerator(Config config) {
-		super();
 		this.config = config;
 	}
 
@@ -45,7 +46,7 @@ public class CommandGenerator {
 		byte[] begin = "St_".getBytes();
 		byte[] byteStatus = evaluateOnBoolean(on).getBytes();
 		byte[] byteId = Integer.toString(id).getBytes();
-		byte[] byteTime = {0,3}; //TODO change to evaluate the string
+		byte[] byteTime = intTo16BitInteger(time); //TODO change to evaluate the string
 		byte[] user = this.config.getUser().getBytes();
 		byte[] password = this.config.getPassword().getBytes();
 
@@ -64,30 +65,18 @@ public class CommandGenerator {
 
 	}
 
-	private byte[] intToUnsignedShort(int time) {
-
-		String timeString = Integer.toBinaryString(time);
-		StringBuffer timeBuf = new StringBuffer(timeString);
-
-		while (timeBuf.length() < 16) {
-			timeBuf.append('0');
-		}
-
-		ByteBuffer byteBuffer = ByteBuffer.allocate(2);
-		byte eachByte;
-
-		for (int i = 0; i < 2; i++) {
-			eachByte = 0x00;
-			for (int bitNumber = 7; bitNumber >= 0; bitNumber--) {
-				if (timeBuf.charAt((i * 8) + (7 - bitNumber)) == '1') {
-					// sets the bit at the position bitNumber to 1
-					eachByte |= (0x01 << bitNumber);
-				}
-			}
-			byteBuffer.put((byte) eachByte);
-		}
-
-		return byteBuffer.array();
+	private byte[] intTo16BitInteger(int value) {
+		
+		
+		//mask the integer to have only the least 16 bits
+		value = value & 65535;
+		byte[] response = new byte[] {
+                (byte)(value >>> 8),
+                (byte)value};
+		
+		Log.d(TAG, "the evaluated time is: (binary reprazentation of a 16 bit integer)" + (Integer.toBinaryString((int)(response[0]))) + " " +(Integer.toBinaryString((int)(response[1])))) ;
+		
+		return response;
 	}
 
 	public String generateStatusUpdateCommand() {
@@ -104,7 +93,7 @@ public class CommandGenerator {
 			powerPointBinaryMask = 127;
 		}
 		else {
-			powerPointBinaryMask =0;
+			powerPointBinaryMask = 0;
 		}
 		
 		ByteBuffer buf = ByteBuffer.allocate(100);
@@ -118,5 +107,4 @@ public class CommandGenerator {
 		
 		return buf.array();
 	}
-
 }

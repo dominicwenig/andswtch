@@ -19,13 +19,13 @@ public class Receiver implements Runnable {
 	 * a status variable to determine if the server is currently running or not.
 	 */
 	private boolean inactive = true;
-	private ConnectionManager conManager;
+	private IConnectionManager connectionManager;
 	private DatagramSocket socket;
 	private Thread thread;
 	private DatagramPacket packet;
 
-	public Receiver(ConnectionManager conManager) {
-		this.conManager = conManager;
+	public Receiver(IConnectionManager conManager) {
+		this.connectionManager = conManager;
 	}
 
 	public void start(int port) throws IOException {
@@ -64,11 +64,11 @@ public class Receiver implements Runnable {
 					+ new String(this.packet.getData()) + "'");
 			Log.d(TAG, "Server: Done.");
 
-			this.conManager.updateDatastructure(new String(this.packet
+			this.connectionManager.updateDatastructure(new String(this.packet
 					.getData()));
 
 		} catch (SocketTimeoutException e) {
-			this.conManager.errorAlert("Connection timed out");
+			this.connectionManager.errorAlert("Connection timed out");
 			this.socket.close();
 		} catch (Exception e) {
 			Log.e(TAG, "S: Error", e);
@@ -102,7 +102,7 @@ public class Receiver implements Runnable {
 				}
 			}
 		} catch (SocketException ex) {
-			this.conManager.errorAlert("no network permission");
+			this.connectionManager.errorAlert("no network permission");
 			Log.e(TAG,
 					"error while attemting to find out the local IP: "
 							+ ex.toString());

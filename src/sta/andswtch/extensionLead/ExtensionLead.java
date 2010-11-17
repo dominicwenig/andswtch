@@ -16,9 +16,6 @@ public class ExtensionLead implements IExtensionLead {
 	private AndSwtch andSwtch;
 	private int powerPointsCount;
 
-	// is only for prototype v0.0 :), will be removed
-	private String errorMessage = "nothing";
-
 	// test static final variables
 	private static final int testPowerPointsCount = 3;
 	private static final String testHost = "192.168.178.21";
@@ -29,7 +26,7 @@ public class ExtensionLead implements IExtensionLead {
 
 	public ExtensionLead(AndSwtch andSwtch) {
 		this.andSwtch = andSwtch;
-		init();
+		this.init();
 	}
 
 	private void addPowerPoint(int id, String name, boolean enable, boolean on) {
@@ -64,7 +61,7 @@ public class ExtensionLead implements IExtensionLead {
 		return this.config.getUser();
 	}
 
-	public void init() {
+	private void init() {
 
 		this.powerPoints = new ArrayList<PowerPoint>();
 		this.powerPointsCount = testPowerPointsCount;
@@ -76,11 +73,10 @@ public class ExtensionLead implements IExtensionLead {
 		for (int id = 1; id <= this.powerPointsCount; id++) {
 			this.addPowerPoint(id - 1, "Nr. " + id, true, false);
 		}
-		this.responseProcessor = new ResponseProcessor(this.powerPoints);
+		this.responseProcessor = new ResponseProcessor(this.powerPoints, this);
 
 		this.commandGenerator = new CommandGenerator(this.config);
 
-		this.sendUpdateMessage();
 	}
 
 	public boolean isPowerPointEnable(int id) {
@@ -104,14 +100,13 @@ public class ExtensionLead implements IExtensionLead {
 		byte[] command = this.commandGenerator.generateSwitchDelayedCommand(id,
 				on, time);
 
-		this.connectionManager.sendAndReceive(command);
+		this.connectionManager.sendWithoutReceive(command);
 	}
 
 	public void sendStateAll(boolean on) {
 		byte[] command = this.commandGenerator.generateSwitchAllCommand(on);
 		
 		this.connectionManager.sendAndReceive(command);
-
 	}
 
 	public void sendStateAll(boolean on, int time) {
@@ -139,20 +134,15 @@ public class ExtensionLead implements IExtensionLead {
 
 	public void updateDatastructure(String response) {
 		if (this.responseProcessor == null) {
-			this.responseProcessor = new ResponseProcessor(this.powerPoints);
+			this.responseProcessor = new ResponseProcessor(this.powerPoints, this);
 		}
 		this.responseProcessor.processResponse(response);
 
 		this.andSwtch.updateActivity();
 	}
-
-	public String getErrorMessage() {
-		return errorMessage;
-	}
 	
 	public void errorOccured(String message){
-		this.errorMessage = message;
-		this.andSwtch.showErrorMessage();
+		this.andSwtch.showErrorMessage(message);
 	}
 	
 

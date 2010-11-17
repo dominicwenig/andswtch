@@ -1,7 +1,6 @@
 package sta.andswtch.network;
 
 import java.io.IOException;
-import java.net.SocketException;
 
 import sta.andswtch.extensionLead.Config;
 import sta.andswtch.extensionLead.ExtensionLead;
@@ -24,7 +23,7 @@ public class ConnectionManager implements IConnectionManager {
 	}
 
 	public void errorAlert(String errorMessage) {
-		extLead.errorOccured(errorMessage);
+		this.extLead.errorOccured(errorMessage);
 	}
 
 	private void send(byte[] command) throws IOException {
@@ -33,12 +32,22 @@ public class ConnectionManager implements IConnectionManager {
 				"try to send a packet with the command: " + new String(command)
 						+ "to " + config.getHost() + ":"
 						+ config.getExtensionLeadReceiverPort());
-			this.sender.send(this.config.getHost(),
-					this.config.getExtensionLeadReceiverPort(), command);
-		
+		this.sender.send(this.config.getHost(),
+				this.config.getExtensionLeadReceiverPort(), command);
+	}
 
-
-
+	public void sendWithoutReceive(byte[] command) {
+		try {
+			this.send(command);
+		} catch (IOException e) {
+			e.printStackTrace();
+			this.errorAlert("failed to send the command, are you connected to a network?");
+			Log.e(TAG,
+					"failed to send the packet with the following command : "
+							+ new String(command) + "to " + config.getHost()
+							+ ":" + config.getExtensionLeadReceiverPort()
+							+ " error message: " + e.getMessage());
+		}
 	}
 
 	private void startReceive() {
@@ -46,7 +55,7 @@ public class ConnectionManager implements IConnectionManager {
 		try {
 			this.receiver.start(this.config.getExtensionLeadSenderPort());
 		} catch (IOException e) {
-			errorAlert("failed to start server");
+			this.errorAlert("failed to start server");
 			Log.e(TAG,
 					"Error: could not start the server, exception: "
 							+ e.getMessage());
@@ -62,31 +71,32 @@ public class ConnectionManager implements IConnectionManager {
 	 */
 	public void sendAndReceive(String command) {
 		sendAndReceive(command.getBytes());
-		
+
 	}
 
 	/**
 	 * send a command as byte [] to the extension lead. this is necessary
-	 * because of the fucking bad protocol of the extension lead!
+	 * because of the bad protocol of the extension lead!
 	 * 
 	 */
 	public void sendAndReceive(byte[] command) {
 		try {
-			send(command);
-			startReceive();
-		}catch (IOException e) {
+			this.send(command);
+			this.startReceive();
+		} catch (IOException e) {
 			e.printStackTrace();
-			errorAlert("failed to send the command, are you connected to a network?");
+			this.errorAlert("failed to send the command, are you connected to a network?");
 			Log.e(TAG,
 					"failed to send the packet with the following command : "
-							+ new String(command) + "to " + config.getHost() + ":"
-							+ config.getExtensionLeadReceiverPort()+" error message: "+ e.getMessage());
+							+ new String(command) + "to " + config.getHost()
+							+ ":" + config.getExtensionLeadReceiverPort()
+							+ " error message: " + e.getMessage());
 		}
 	}
 
 	/**
 	 * send the response to the ExtensionLead object to update the
-	 * datastructure.
+	 * data structure.
 	 */
 	public void updateDatastructure(String response) {
 		this.extLead.updateDatastructure(response);

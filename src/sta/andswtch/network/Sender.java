@@ -19,8 +19,6 @@ public class Sender {
 	public void send(String destHost, int destPort, byte[] data)
 			throws IOException, SocketException {
 
-		// byte[] data = command.getBytes();
-
 		InetAddress destAddress = InetAddress.getByName(destHost);
 
 		DatagramSocket sendSocket = new DatagramSocket();

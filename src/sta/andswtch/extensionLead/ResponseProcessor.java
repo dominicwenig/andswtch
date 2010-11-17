@@ -8,9 +8,13 @@ public class ResponseProcessor {
 	private static final String TAG = ResponseProcessor.class.getName();
 
 	private List<PowerPoint> powerPoints;
+	private ExtensionLead extLead;
+	
+	private final int OFFSET = 5; //at position 6 starts the powerpoint information  
 
-	public ResponseProcessor(List<PowerPoint> powerPoints) {
+	public ResponseProcessor(List<PowerPoint> powerPoints, ExtensionLead extLead) {
 		this.powerPoints = powerPoints;
+		this.extLead = extLead;
 	}
 
 	public void processResponse(String response) {
@@ -36,10 +40,13 @@ public class ResponseProcessor {
 						+ " has the value " + reParts[i + 5]);
 				// 0 - off - false
 				// 1 - on - true
-				if (reParts[i + 5].endsWith("0")) {
-					setState(i, false);
+				if (reParts[i + OFFSET].endsWith("0")) {
+					this.setState(i, false);
+				} else if(reParts[i + OFFSET].endsWith("1")) {
+					this.setState(i, true);
 				} else {
-					setState(i, true);
+					Log.w(TAG, "error while parsing respose: powerpoint wrong");
+					this.extLead.errorOccured("error while parsing respose: powerpoint wrong");
 				}
 			}
 
@@ -53,16 +60,18 @@ public class ResponseProcessor {
 				// 0 - enabled - true
 				// 1 - disabled - false
 				if (binaryString.subSequence(8 - i, 9 - i).equals("0")) {
-					setEnabled(i, true);
+					this.setEnabled(i, true);
 				} else {
-					setEnabled(i, false);
+					this.setEnabled(i, false);
 				}
 			}
 
 		} else {
 			if (reParts[reParts.length - 1].trim().equalsIgnoreCase("Err")) {
+				this.extLead.errorOccured("Error occured: check username and password");
 				Log.e(TAG, "Error occured within the response");
 			} else {
+				this.extLead.errorOccured("Response didn't match pattern: please check name of powerpoints in webinterface");
 				Log.e(TAG,
 						"To many parts received, please check the names of the power points");
 			}
