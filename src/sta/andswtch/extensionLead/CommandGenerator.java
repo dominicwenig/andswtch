@@ -70,6 +70,7 @@ public class CommandGenerator {
 		
 		//mask the integer to have only the least 16 bits
 		value = value & 65535;
+		//store the least 2 bytes of the integer into a byte array
 		byte[] response = new byte[] {
                 (byte)(value >>> 8),
                 (byte)value};
