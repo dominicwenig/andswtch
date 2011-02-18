@@ -5,7 +5,6 @@ import java.util.List;
 
 import sta.andswtch.R;
 import sta.andswtch.extensionLead.ExtensionLead;
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,12 +15,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AndSwtch extends Activity {
+public class AndSwtch extends OptionsMenu {
 
 	private ExtensionLead extLead;
 	private List<Button> buttons;
 	private int sec = 2;
 	private TextView delaySec;
+	
 	private Handler handlerEvent = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -139,4 +139,5 @@ public class AndSwtch extends Activity {
 			this.delaySec.setText("Delay: " + this.sec + " sec");
 		}
 	}
+	
 }
