@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:key="main_preferencescreen">
+    
+    <EditTextPreference
+      android:key="SenderPort"
+      android:title="Sender Port"
+      android:defaultValue="1133" />
+      
+    <EditTextPreference
+      android:key="ReceiverPort"
+      android:title="Receiver Port" 
+      android:defaultValue="1132" />
+    
+    <PreferenceScreen
+            android:key="second_preferencescreen"
+            android:title="IP settings">
+        <Preference
+          android:title="Pref" 
+          android:defaultValue="Test" />
+        <CheckBoxPreference
+                android:key="check"
+                android:title="check" />
+    </PreferenceScreen>
+
+</PreferenceScreen>
