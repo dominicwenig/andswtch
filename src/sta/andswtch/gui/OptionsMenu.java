@@ -26,8 +26,7 @@ public class OptionsMenu extends Activity {
 				return true;
 			}
 			case R.id.exit: {
-				// works but recommended is to let android platform 
-				// worry about the memory management 
+				// works but recommended is to let Android worry about the memory management 
 				//android.os.Process.killProcess(android.os.Process.myPid());
 				moveTaskToBack(true);
 			}

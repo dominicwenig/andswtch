@@ -1,27 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:key="main_preferencescreen">
+  android:key="first_preferencescreen">
     
-    <EditTextPreference
-      android:key="SenderPort"
-      android:title="Sender Port"
-      android:defaultValue="1133" />
-      
-    <EditTextPreference
-      android:key="ReceiverPort"
-      android:title="Receiver Port" 
-      android:defaultValue="1132" />
+    <PreferenceCategory
+      android:title="@string/ps_cat_portsettings">
+		    <EditTextPreference
+		      style="@style/s.numbers"
+		      android:key="SenderPort"
+		      android:title="@string/ps_senderport"
+		      android:summary="@string/ps_senderport_sum"
+		      android:defaultValue="1133" />
+		    <EditTextPreference
+		      style="@style/s.numbers"
+		      android:key="ReceiverPort"
+		      android:title="@string/ps_receiverport"
+		      android:summary="@string/ps_receiverport_sum" 
+		      android:defaultValue="1132" />
+    </PreferenceCategory>
     
-    <PreferenceScreen
-            android:key="second_preferencescreen"
-            android:title="IP settings">
-        <Preference
-          android:title="Pref" 
-          android:defaultValue="Test" />
+    <PreferenceCategory
+      android:title="@string/ps_cat_ipsettings">
+	      <EditTextPreference
+	        style="@style/s.phone"
+	        android:key="IP"
+	        android:title="@string/ps_ipaddress"
+	        android:summary="@string/ps_ipaddress_sum"
+	        android:dialogMessage="@string/ps_ipaddress_dm" 
+	        android:defaultValue="192.168.178.21" />
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+      android:title="@string/ps_cat_autorefresh">
         <CheckBoxPreference
-                android:key="check"
-                android:title="check" />
-    </PreferenceScreen>
-
+          android:key="RefreshOnOff"
+          android:title="@string/ps_autorefresh"
+          android:summary="@string/ps_autorefresh_sum" >
+        </CheckBoxPreference>
+        <EditTextPreference
+          style="@style/s.numbers"
+          android:key="RefreshInterval"
+          android:dependency="RefreshOnOff"
+          android:title="@string/ps_autorefreshinterval"
+          android:defaultValue="10" >
+        </EditTextPreference>
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+      android:title="@string/ps_cat_other">
+        <PreferenceScreen
+	        android:key="second_preferencescreen"
+	        android:title="@string/ps_help" >
+            <Preference android:selectable="false" />
+	      </PreferenceScreen>
+    </PreferenceCategory>
+    
 </PreferenceScreen>

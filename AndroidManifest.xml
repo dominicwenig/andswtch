@@ -20,7 +20,10 @@
         
         <activity android:name=".gui.Preference"/>
         
+        <activity android:name=".gui.PowerPointView"/>
+        
     </application>
 
     <uses-sdk android:minSdkVersion="7"></uses-sdk>
 </manifest> 
+

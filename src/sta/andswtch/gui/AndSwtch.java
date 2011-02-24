@@ -6,21 +6,20 @@ import java.util.List;
 import sta.andswtch.R;
 import sta.andswtch.extensionLead.ExtensionLead;
 import android.content.Context;
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class AndSwtch extends OptionsMenu {
 
 	private ExtensionLead extLead;
-	private List<Button> buttons;
-	private int sec = 2;
-	private TextView delaySec;
+	private List<ToggleButton> buttons;
 	
 	private Handler handlerEvent = new Handler() {
 		@Override
@@ -57,34 +56,53 @@ public class AndSwtch extends OptionsMenu {
 		// create the extension lead
 		this.extLead = new ExtensionLead(this);
 		this.init();
-
 	}
 
 	private void init() {
-		this.buttons = new ArrayList<Button>();
-		this.buttons.add((Button) findViewById(R.id.Button01));
-		this.buttons.add((Button) findViewById(R.id.Button02));
-		this.buttons.add((Button) findViewById(R.id.Button03));
+		this.buttons = new ArrayList<ToggleButton>();
+		this.buttons.add((ToggleButton) findViewById(R.id.Button01));
+		this.buttons.add((ToggleButton) findViewById(R.id.Button02));
+		this.buttons.add((ToggleButton) findViewById(R.id.Button03));
 		
-		this.delaySec = (TextView) findViewById(R.id.TextView04);
+		for(int i = 0; i < this.extLead.getPowerPointsCount(); i++) {
+			this.buttons.get(i).setVisibility(View.VISIBLE);
+		}
+		
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		this.extLead.sendUpdateMessage();
-		this.delaySec.setText("Delay: " + this.sec + " sec");
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		menu.add(0, 1, 0, R.string.om_refresh);
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case 1: {
+				this.extLead.sendUpdateMessage();
+				return true;
+			}
+			default: {
+				return super.onOptionsItemSelected(item);
+			}
+		}
 	}
 
 	public void onOff(View v) {
 		String tagString = (String) v.getTag();
 		if (tagString != null) {
 			int tag = Integer.parseInt(tagString);
-			if (tag == 0) {
-				//switch delayed
-				this.extLead.sendState(2, false, this.sec);
-
-			} else if (tag == 9) {
+			// tag 1 - 8 for each power point
+			// tag 9 for all on and tag 10 for all off
+			if (tag == 9) {
 				this.extLead.sendStateAll(true);
 			} else if (tag == 10) {
 				this.extLead.sendStateAll(false);
@@ -107,37 +125,30 @@ public class AndSwtch extends OptionsMenu {
 		this.handlerEvent.sendMessage(msg);
 	}
 
-	private void checkState(Button btn) {
-		if (this.extLead
-				.isPowerPointOn(Integer.parseInt((String) btn.getTag()))) {
+	private void checkState(ToggleButton btn) {
+		if (this.extLead.isPowerPointOn(Integer.parseInt((String) btn.getTag()))) {
 			this.setOn(btn);
 		} else {
 			this.setOff(btn);
 		}
 	}
 
-	private void setOn(Button btn) {
-		btn.setBackgroundColor(Color.GREEN);
-		btn.setText("ON");
+	private void setOn(ToggleButton btn) {
+		btn.setChecked(true);
+		//btn.setBackgroundColor(Color.GREEN);
+		//btn.setText("ON");
 	}
 
-	private void setOff(Button btn) {
-		btn.setBackgroundColor(Color.RED);
-		btn.setText("OFF");
+	private void setOff(ToggleButton btn) {
+		btn.setChecked(false);
+		//btn.setBackgroundColor(Color.RED);
+		//btn.setText("OFF");
 	}
 	
-	public void decrease(View v) {
-		if(this.sec > 0) {
-			this.sec--;
-			this.delaySec.setText("Delay: " + this.sec + " sec");
-		}
-	}
-	
-	public void increase(View v) {
-		if(this.sec < 65535) {
-			this.sec++;
-			this.delaySec.setText("Delay: " + this.sec + " sec");
-		}
+	public void switchToPowerPoint(View v) {
+		Intent toLaunch = new Intent(v.getContext(), PowerPointView.class);
+		//toLaunch.putExtra("Test", "x");
+		startActivity(toLaunch);
 	}
 	
 }

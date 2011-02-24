@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="s">
+    <item name="android:textSize">14sp</item>
+  </style>
+  <style name="s.phone">
+    <item name="android:inputType">phone</item>
+  </style>
+  <style name="s.numbers">
+    <item name="android:inputType">number</item>
+  </style>
+</resources>
