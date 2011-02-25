@@ -37,7 +37,7 @@ public class ExtensionLead implements IExtensionLead {
 		this.connectionManager = new ConnectionManager(this.config, this);
 
 		for (int id = 1; id <= powerPointsCount; id++) {
-			this.addPowerPoint(id - 1, "Nr. " + id, true, false);
+			this.addPowerPoint(id - 1, "Nr. " + id, false, false);
 		}
 		this.responseProcessor = new ResponseProcessor(this.powerPoints, this);
 

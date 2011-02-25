@@ -22,7 +22,6 @@ public class AndSwtch extends OptionsMenu {
 	private ExtensionLead extLead;
 	private List<ToggleButton> buttons;
 	private List<LinearLayout> LL;
-	
 	private Handler handlerEvent = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -46,6 +45,8 @@ public class AndSwtch extends OptionsMenu {
 					break;
 				}
 			}
+			// has to be done HERE (from outa space) cos of different threads
+			availabilityChecker();
 		}
 	};
 
@@ -82,21 +83,7 @@ public class AndSwtch extends OptionsMenu {
 		this.LL.add((LinearLayout) findViewById(R.id.LL07));
 		this.LL.add((LinearLayout) findViewById(R.id.LL08));
 		
-		// ----------
-		// Checks if the powerpoints are enabled
-		// Makes the powerpoints visible if enabled
-		for(int i = 1; i <= this.extLead.getPowerPointsCount(); i++) {
-			if(this.extLead.isPowerPointEnable(i)) {
-				this.LL.get(i).setVisibility(View.VISIBLE);
-				// Makes the progressbar invisible
-				if(this.LL.get(0).getVisibility() == View.VISIBLE) {
-					this.LL.get(0).setVisibility(View.GONE);
-					findViewById(R.id.Button09).setVisibility(View.VISIBLE);
-					findViewById(R.id.Button10).setVisibility(View.VISIBLE);
-				}
-			}
-		}
-		// ----------
+		this.availabilityChecker();
 	}
 
 	@Override
@@ -124,6 +111,46 @@ public class AndSwtch extends OptionsMenu {
 			}
 		}
 	}
+	
+	public void updateActivity() {
+		Message msg = new Message();
+		msg.what = 1;
+		this.handlerEvent.sendMessage(msg);
+	}
+
+	public void showErrorMessage(String message) {
+		Message msg = new Message();
+		msg.what = 2;
+		msg.obj = message;
+		this.handlerEvent.sendMessage(msg);
+	}
+
+	private void availabilityChecker() {
+		int cntUnavailables = 0;
+		// Checks if the powerpoints are enabled
+		// Makes the powerpoints visible if enabled
+		for(int i = 1; i <= this.extLead.getPowerPointsCount(); i++) {
+			if(this.extLead.isPowerPointEnable(i)) {
+				this.LL.get(i).setVisibility(View.VISIBLE);
+			}
+			else {
+				this.LL.get(i).setVisibility(View.GONE);
+				cntUnavailables++;
+			}
+		}
+		// Makes the progressbar invisible and switcherbuttons visible
+		if(cntUnavailables == 8 ) {
+			this.LL.get(0).setVisibility(View.VISIBLE);
+			findViewById(R.id.Button09).setVisibility(View.INVISIBLE);
+			findViewById(R.id.Button10).setVisibility(View.INVISIBLE);
+		}
+		else
+		{
+			this.LL.get(0).setVisibility(View.GONE);
+			findViewById(R.id.Button09).setVisibility(View.VISIBLE);
+			findViewById(R.id.Button10).setVisibility(View.VISIBLE);
+		}
+	}
 
 	public void onOff(View v) {
 		String tagString = (String) v.getTag();
@@ -141,17 +168,10 @@ public class AndSwtch extends OptionsMenu {
 		}
 	}
 
-	public void updateActivity() {
-		Message msg = new Message();
-		msg.what = 1;
-		this.handlerEvent.sendMessage(msg);
-	}
-
-	public void showErrorMessage(String message) {
-		Message msg = new Message();
-		msg.what = 2;
-		msg.obj = message;
-		this.handlerEvent.sendMessage(msg);
+	public void switchToPowerPoint(View v) {
+		Intent toLaunch = new Intent(v.getContext(), PowerPointView.class);
+		//toLaunch.putExtra("Test", "x");
+		startActivity(toLaunch);
 	}
 
 	private void checkState(ToggleButton btn) {
@@ -172,12 +192,6 @@ public class AndSwtch extends OptionsMenu {
 		btn.setChecked(false);
 		//btn.setBackgroundColor(Color.RED);
 		//btn.setText("OFF");
-	}
-	
-	public void switchToPowerPoint(View v) {
-		Intent toLaunch = new Intent(v.getContext(), PowerPointView.class);
-		//toLaunch.putExtra("Test", "x");
-		startActivity(toLaunch);
 	}
 	
 }
