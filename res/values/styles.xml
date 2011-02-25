@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+<!-- PREFERENCE SCREEN STYLES -->
   <style name="s">
     <item name="android:textSize">14sp</item>
   </style>
@@ -8,5 +10,8 @@
   </style>
   <style name="s.numbers">
     <item name="android:inputType">number</item>
+  </style>
+  <style name="s.password">
+    <item name="android:inputType">textPassword</item>
   </style>
 </resources>

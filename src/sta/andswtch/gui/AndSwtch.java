@@ -13,6 +13,7 @@ import android.os.Message;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -20,6 +21,7 @@ public class AndSwtch extends OptionsMenu {
 
 	private ExtensionLead extLead;
 	private List<ToggleButton> buttons;
+	private List<LinearLayout> LL;
 	
 	private Handler handlerEvent = new Handler() {
 		@Override
@@ -63,11 +65,38 @@ public class AndSwtch extends OptionsMenu {
 		this.buttons.add((ToggleButton) findViewById(R.id.Button01));
 		this.buttons.add((ToggleButton) findViewById(R.id.Button02));
 		this.buttons.add((ToggleButton) findViewById(R.id.Button03));
+		this.buttons.add((ToggleButton) findViewById(R.id.Button04));
+		this.buttons.add((ToggleButton) findViewById(R.id.Button05));
+		this.buttons.add((ToggleButton) findViewById(R.id.Button06));
+		this.buttons.add((ToggleButton) findViewById(R.id.Button07));
+		this.buttons.add((ToggleButton) findViewById(R.id.Button08));
 		
-		for(int i = 0; i < this.extLead.getPowerPointsCount(); i++) {
-			this.buttons.get(i).setVisibility(View.VISIBLE);
+		this.LL = new ArrayList<LinearLayout>();
+		this.LL.add((LinearLayout) findViewById(R.id.LL00));
+		this.LL.add((LinearLayout) findViewById(R.id.LL01));
+		this.LL.add((LinearLayout) findViewById(R.id.LL02));
+		this.LL.add((LinearLayout) findViewById(R.id.LL03));
+		this.LL.add((LinearLayout) findViewById(R.id.LL04));
+		this.LL.add((LinearLayout) findViewById(R.id.LL05));
+		this.LL.add((LinearLayout) findViewById(R.id.LL06));
+		this.LL.add((LinearLayout) findViewById(R.id.LL07));
+		this.LL.add((LinearLayout) findViewById(R.id.LL08));
+		
+		// ----------
+		// Checks if the powerpoints are enabled
+		// Makes the powerpoints visible if enabled
+		for(int i = 1; i <= this.extLead.getPowerPointsCount(); i++) {
+			if(this.extLead.isPowerPointEnable(i)) {
+				this.LL.get(i).setVisibility(View.VISIBLE);
+				// Makes the progressbar invisible
+				if(this.LL.get(0).getVisibility() == View.VISIBLE) {
+					this.LL.get(0).setVisibility(View.GONE);
+					findViewById(R.id.Button09).setVisibility(View.VISIBLE);
+					findViewById(R.id.Button10).setVisibility(View.VISIBLE);
+				}
+			}
 		}
-		
+		// ----------
 	}
 
 	@Override

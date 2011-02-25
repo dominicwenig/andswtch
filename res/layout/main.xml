@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!--
-<TableLayout android:id="@+id/TableLayout01" 
-               android:layout_width="fill_parent" 
-               android:layout_height="fill_parent" 
-               xmlns:android="http://schemas.android.com/apk/res/android" 
-               android:stretchColumns="1"></TableLayout>
--->
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent" 
 	android:layout_height="fill_parent" 
@@ -19,13 +10,17 @@
       android:layout_width="fill_parent" 
       android:layout_height="fill_parent" 
       android:orientation="vertical" >
-        
+<!-- START OF GLOBAL LINEARLAYOUT -->
+
+<!-- TEXTVIEW for last update -->        
         <TextView 
           android:layout_width="fill_parent" 
-          android:layout_height="wrap_content" 
-          android:text="Last refresh: " >
+          android:layout_height="wrap_content"
+          android:layout_marginTop="10dip" 
+          android:text="Last refresh: 00:00:00" >
         </TextView>
         
+<!-- VIEW for a line -->
         <View
           android:layout_width="fill_parent"
           android:layout_height="1dip"
@@ -35,85 +30,348 @@
           android:layout_marginTop="6dip"
           android:layout_marginBottom="12dip" >
         </View>
-        
+
+<!-- LINEARLAYOUT LOADER -->
         <LinearLayout 
+          android:id="@+id/LL00"
+          android:layout_width="fill_parent" 
+          android:layout_height="wrap_content" 
+          android:gravity="center"
+          android:visibility="visible" >
+            <ProgressBar android:id="@+id/ProgressBar01" 
+              android:layout_width="wrap_content" 
+              android:layout_height="wrap_content">
+            </ProgressBar>
+        </LinearLayout>
+
+<!-- LINEARLAYOUT for power point 1 -->        
+        <LinearLayout 
+          android:id="@+id/LL01"
           android:layout_width="fill_parent" 
           android:layout_height="wrap_content" 
           android:gravity="center_vertical|fill_horizontal"
-          android:visibility="visible" >
-            <TextView android:id="@+id/TextView01" 
-	            android:layout_width="wrap_content" 
-	            android:layout_height="wrap_content"
-	            android:layout_weight="0.3" 
-	            android:text="Nr. 1" >
-	          </TextView>
-					  <ToggleButton android:id="@+id/Button01" 
-		          android:layout_width="wrap_content" 
-		          android:layout_height="wrap_content" 
-		          android:onClick="onOff" 
-		          android:tag="1" >
-					  </ToggleButton>
-					  
-					  <Button android:layout_width="wrap_content" 
+          android:visibility="gone" >
+            <LinearLayout
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content"
+              android:layout_weight="0.6"
+              android:padding="10dip" >
+		            <TextView android:id="@+id/TextView01" 
+			            android:layout_width="wrap_content" 
+			            android:layout_height="wrap_content"
+			            android:layout_weight="0.2" 
+			            android:text="Nr. 1" >
+			          </TextView>
+			      </LinearLayout>
+            <LinearLayout
+              android:layout_width="fill_parent" 
               android:layout_height="wrap_content" 
-              android:text=">"
-              android:onClick="switchToPowerPoint">
-					  </Button>
-					  
+              android:layout_weight="0.4" 
+              android:gravity="right|center_vertical" >
+							  <ToggleButton android:id="@+id/Button01" 
+				          android:layout_width="wrap_content" 
+				          android:layout_height="wrap_content" 
+		              android:layout_margin="3dip"
+				          android:onClick="onOff" 
+				          android:tag="1" >
+							  </ToggleButton>
+							  <Button 
+							    android:layout_width="wrap_content" 
+		              android:layout_height="fill_parent"
+		              android:layout_margin="3dip"
+		              android:text=">"
+		              android:onClick="switchToPowerPoint">
+							  </Button>
+					  </LinearLayout>
 		    </LinearLayout>
 
+<!-- LINEARLAYOUT for power point 2 -->
         <LinearLayout 
+          android:id="@+id/LL02"
           android:layout_width="fill_parent" 
           android:layout_height="wrap_content" 
           android:gravity="center_vertical|fill_horizontal"
-          android:visibility="visible" >
-		        <TextView android:id="@+id/TextView02" 
-	            android:layout_width="wrap_content" 
-	            android:layout_height="wrap_content" 
-	            android:layout_weight="0.3"
-	            android:text="Nr. 2" >
-	          </TextView>
-	          <ToggleButton android:id="@+id/Button02" 
-		          android:layout_width="wrap_content" 
-		          android:layout_height="wrap_content" 
-		          android:onClick="onOff" 
-		          android:tag="2" >
-	          </ToggleButton>
-	          
-            <Button android:layout_width="wrap_content" 
+          android:visibility="gone" >
+            <LinearLayout
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content"
+              android:layout_weight="0.6"
+              android:padding="10dip" >
+				        <TextView android:id="@+id/TextView02" 
+			            android:layout_width="wrap_content" 
+			            android:layout_height="wrap_content" 
+			            android:layout_weight="0.2"
+			            android:text="Nr. 2" >
+			          </TextView>
+	          </LinearLayout>
+            <LinearLayout
+              android:layout_width="fill_parent" 
               android:layout_height="wrap_content" 
-              android:text=">"
-              android:onClick="switchToPowerPoint" >
-            </Button>
-            
+              android:layout_weight="0.4" 
+              android:gravity="right|center_vertical" >
+			          <ToggleButton android:id="@+id/Button02" 
+				          android:layout_width="wrap_content" 
+				          android:layout_height="wrap_content" 
+                  android:layout_margin="3dip"
+				          android:onClick="onOff" 
+				          android:tag="2" >
+			          </ToggleButton>
+		            <Button 
+		              android:layout_width="wrap_content" 
+		              android:layout_height="fill_parent"
+                  android:layout_margin="3dip" 
+		              android:text=">"
+		              android:onClick="switchToPowerPoint" >
+		            </Button>
+            </LinearLayout>
+        </LinearLayout>
+
+<!-- LINEARLAYOUT for power point 3 -->        
+        <LinearLayout 
+          android:id="@+id/LL03"
+          android:layout_width="fill_parent" 
+          android:layout_height="wrap_content" 
+          android:gravity="center_vertical|fill_horizontal"
+          android:visibility="gone" >
+					  <LinearLayout
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content"
+              android:layout_weight="0.6"
+              android:padding="10dip" >
+							  <TextView android:id="@+id/TextView03" 
+							    android:layout_width="wrap_content" 
+							    android:layout_height="wrap_content" 
+							    android:text="Nr. 3" >
+							  </TextView>
+					  </LinearLayout>
+					  <LinearLayout
+					    android:layout_width="fill_parent" 
+              android:layout_height="wrap_content" 
+              android:layout_weight="0.4" 
+              android:gravity="right|center_vertical" >
+						    <ToggleButton android:id="@+id/Button03" 
+							    android:layout_width="wrap_content" 
+							    android:layout_height="wrap_content"
+							    android:layout_margin="3dip"
+							    android:onClick="onOff" 
+							    android:tag="3" >
+							  </ToggleButton>
+		            <Button 
+		              android:layout_width="wrap_content" 
+		              android:layout_height="fill_parent"
+		              android:layout_margin="3dip"
+		              android:text=">"
+		              android:onClick="switchToPowerPoint" >
+	              </Button>
+            </LinearLayout>
+	      </LinearLayout>
+
+<!-- LINEARLAYOUT for power point 4 -->        
+        <LinearLayout 
+          android:id="@+id/LL04"
+          android:layout_width="fill_parent" 
+          android:layout_height="wrap_content" 
+          android:gravity="center_vertical|fill_horizontal"
+          android:visibility="gone" >
+            <LinearLayout
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content"
+              android:layout_weight="0.6"
+              android:padding="10dip" >
+                <TextView android:id="@+id/TextView04" 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="wrap_content"
+                  android:layout_weight="0.2" 
+                  android:text="Nr. 4" >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content" 
+              android:layout_weight="0.4" 
+              android:gravity="right|center_vertical" >
+                <ToggleButton android:id="@+id/Button04" 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="wrap_content" 
+                  android:layout_margin="3dip"
+                  android:onClick="onOff" 
+                  android:tag="4" >
+                </ToggleButton>
+                <Button 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="fill_parent"
+                  android:layout_margin="3dip"
+                  android:text=">"
+                  android:onClick="switchToPowerPoint">
+                </Button>
+            </LinearLayout>
+        </LinearLayout>
+
+<!-- LINEARLAYOUT for power point 5 -->        
+        <LinearLayout 
+          android:id="@+id/LL05"
+          android:layout_width="fill_parent" 
+          android:layout_height="wrap_content" 
+          android:gravity="center_vertical|fill_horizontal"
+          android:visibility="gone" >
+            <LinearLayout
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content"
+              android:layout_weight="0.6"
+              android:padding="10dip" >
+                <TextView android:id="@+id/TextView05" 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="wrap_content"
+                  android:layout_weight="0.2" 
+                  android:text="Nr. 5" >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content" 
+              android:layout_weight="0.4" 
+              android:gravity="right|center_vertical" >
+                <ToggleButton android:id="@+id/Button05" 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="wrap_content" 
+                  android:layout_margin="3dip"
+                  android:onClick="onOff" 
+                  android:tag="5" >
+                </ToggleButton>
+                <Button 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="fill_parent"
+                  android:layout_margin="3dip"
+                  android:text=">"
+                  android:onClick="switchToPowerPoint">
+                </Button>
+            </LinearLayout>
+        </LinearLayout>
+
+<!-- LINEARLAYOUT for power point 6 -->        
+        <LinearLayout 
+          android:id="@+id/LL06"
+          android:layout_width="fill_parent" 
+          android:layout_height="wrap_content" 
+          android:gravity="center_vertical|fill_horizontal"
+          android:visibility="gone" >
+            <LinearLayout
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content"
+              android:layout_weight="0.6"
+              android:padding="10dip" >
+                <TextView android:id="@+id/TextView06" 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="wrap_content"
+                  android:layout_weight="0.2" 
+                  android:text="Nr. 6" >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content" 
+              android:layout_weight="0.4" 
+              android:gravity="right|center_vertical" >
+                <ToggleButton android:id="@+id/Button06" 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="wrap_content" 
+                  android:layout_margin="3dip"
+                  android:onClick="onOff" 
+                  android:tag="6" >
+                </ToggleButton>
+                <Button 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="fill_parent"
+                  android:layout_margin="3dip"
+                  android:text=">"
+                  android:onClick="switchToPowerPoint">
+                </Button>
+            </LinearLayout>
+        </LinearLayout>
+
+<!-- LINEARLAYOUT for power point 7 -->        
+        <LinearLayout 
+          android:id="@+id/LL07"
+          android:layout_width="fill_parent" 
+          android:layout_height="wrap_content" 
+          android:gravity="center_vertical|fill_horizontal"
+          android:visibility="gone" >
+            <LinearLayout
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content"
+              android:layout_weight="0.6"
+              android:padding="10dip" >
+                <TextView android:id="@+id/TextView07" 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="wrap_content"
+                  android:layout_weight="0.2" 
+                  android:text="Nr. 7" >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content" 
+              android:layout_weight="0.4" 
+              android:gravity="right|center_vertical" >
+                <ToggleButton android:id="@+id/Button07" 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="wrap_content" 
+                  android:layout_margin="3dip"
+                  android:onClick="onOff" 
+                  android:tag="7" >
+                </ToggleButton>
+                <Button 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="fill_parent"
+                  android:layout_margin="3dip"
+                  android:text=">"
+                  android:onClick="switchToPowerPoint">
+                </Button>
+            </LinearLayout>
         </LinearLayout>
         
+<!-- LINEARLAYOUT for power point 8 -->        
         <LinearLayout 
+          android:id="@+id/LL08"
           android:layout_width="fill_parent" 
           android:layout_height="wrap_content" 
           android:gravity="center_vertical|fill_horizontal"
-          android:visibility="visible" >
-					  <TextView android:id="@+id/TextView03" 
-					    android:layout_width="wrap_content" 
-					    android:layout_height="wrap_content" 
-					    android:layout_weight="0.3"
-					    android:text="Nr. 3" >
-					  </TextView>
-					  <ToggleButton android:id="@+id/Button03" 
-					    android:layout_width="wrap_content" 
-					    android:layout_height="wrap_content" 
-					    android:onClick="onOff" 
-					    android:tag="3" >
-					  </ToggleButton>
-					  
-            <Button android:layout_width="wrap_content" 
+          android:visibility="gone" >
+            <LinearLayout
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content"
+              android:layout_weight="0.6"
+              android:padding="10dip" >
+                <TextView android:id="@+id/TextView08" 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="wrap_content"
+                  android:layout_weight="0.2" 
+                  android:text="Nr. 8" >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+              android:layout_width="fill_parent" 
               android:layout_height="wrap_content" 
-              android:text=">"
-              android:onClick="switchToPowerPoint" >
-            </Button>
-            
-	      </LinearLayout>
-        
+              android:layout_weight="0.4" 
+              android:gravity="right|center_vertical" >
+                <ToggleButton android:id="@+id/Button08" 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="wrap_content" 
+                  android:layout_margin="3dip"
+                  android:onClick="onOff" 
+                  android:tag="8" >
+                </ToggleButton>
+                <Button 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="fill_parent"
+                  android:layout_margin="3dip"
+                  android:text=">"
+                  android:onClick="switchToPowerPoint">
+                </Button>
+            </LinearLayout>
+        </LinearLayout>
+
+<!-- VIEW for a line -->        
         <View
           android:layout_width="fill_parent"
           android:layout_height="1dip"
@@ -123,7 +381,8 @@
           android:layout_marginTop="6dip"
           android:layout_marginBottom="12dip" >
         </View>
-        
+
+<!-- LINEARLAYOUT for switch all on and switch all off -->        
         <LinearLayout 
           android:layout_width="fill_parent" 
           android:layout_height="wrap_content"
@@ -136,14 +395,16 @@
               android:layout_weight="0.5"
               android:orientation="vertical" 
               android:gravity="center" >
-		            <TextView android:id="@+id/TextView05"
+		            <TextView android:id="@+id/TextView09"
 			            android:layout_width="wrap_content" 
 			            android:layout_height="wrap_content"
+			            android:layout_marginTop="6dip"
 			            android:text="Switch All on" >
 			          </TextView>
-			          <Button android:id="@+id/Button05" 
+			          <Button android:id="@+id/Button09" 
 		              android:layout_width="wrap_content" 
-		              android:layout_height="wrap_content" 
+		              android:layout_height="wrap_content"
+		              android:visibility="invisible" 
 		              android:text="on all" 
 		              android:onClick="onOff" 
 		              android:tag="9" >
@@ -155,21 +416,24 @@
               android:layout_weight="0.5"
               android:orientation="vertical" 
               android:gravity="center" >
-							  <TextView android:id="@+id/TextView06" 
+							  <TextView android:id="@+id/TextView10" 
 		              android:layout_width="wrap_content" 
-		              android:layout_height="wrap_content" 
+		              android:layout_height="wrap_content"
+		              android:layout_marginTop="6dip" 
 		              android:text="Switch All off" >
 		            </TextView>
-		            <Button android:id="@+id/Button06" 
+		            <Button android:id="@+id/Button10" 
 				          android:layout_width="wrap_content" 
-				          android:layout_height="wrap_content" 
+				          android:layout_height="wrap_content"
+				          android:visibility="invisible" 
 				          android:text="off all" 
 				          android:onClick="onOff" 
-				          android:tag="10">
+				          android:tag="10" >
 			          </Button>
 	          </LinearLayout>
 	      </LinearLayout>
-	  
+
+<!-- END OF GLOBAL LINEARLAYOUT -->	  
 	  </LinearLayout>
 
 </ScrollView>

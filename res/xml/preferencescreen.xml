@@ -2,7 +2,8 @@
 <PreferenceScreen
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:key="first_preferencescreen">
-    
+
+<!-- PORT-SETTINGS -->    
     <PreferenceCategory
       android:title="@string/ps_cat_portsettings">
 		    <EditTextPreference
@@ -10,15 +11,18 @@
 		      android:key="SenderPort"
 		      android:title="@string/ps_senderport"
 		      android:summary="@string/ps_senderport_sum"
-		      android:defaultValue="1133" />
+		      android:defaultValue="@string/ps_senderport_def"
+		      android:dialogMessage="@string/ps_senderport_dm" />
 		    <EditTextPreference
 		      style="@style/s.numbers"
 		      android:key="ReceiverPort"
 		      android:title="@string/ps_receiverport"
 		      android:summary="@string/ps_receiverport_sum" 
-		      android:defaultValue="1132" />
+		      android:defaultValue="@string/ps_receiverport_def"
+		      android:dialogMessage="@string/ps_receiverport_dm" />
     </PreferenceCategory>
-    
+
+<!-- IP-SETTINGS -->    
     <PreferenceCategory
       android:title="@string/ps_cat_ipsettings">
 	      <EditTextPreference
@@ -26,10 +30,11 @@
 	        android:key="IP"
 	        android:title="@string/ps_ipaddress"
 	        android:summary="@string/ps_ipaddress_sum"
-	        android:dialogMessage="@string/ps_ipaddress_dm" 
-	        android:defaultValue="192.168.178.21" />
+	        android:defaultValue="@string/ps_ipaddress_def"
+	        android:dialogMessage="@string/ps_ipaddress_dm" />
     </PreferenceCategory>
-    
+
+<!-- REFRESH-SETTINGS -->    
     <PreferenceCategory
       android:title="@string/ps_cat_autorefresh">
         <CheckBoxPreference
@@ -42,10 +47,32 @@
           android:key="RefreshInterval"
           android:dependency="RefreshOnOff"
           android:title="@string/ps_autorefreshinterval"
-          android:defaultValue="10" >
+          android:summary="@string/ps_autorefreshinterval_sum"
+          android:defaultValue="ps_autorefreshinterval_def" 
+          android:dialogMessage="@string/ps_autorefreshinterval_dm" >
         </EditTextPreference>
     </PreferenceCategory>
+
+<!-- SECURITY-SETTINGS -->
+    <PreferenceCategory
+      android:title="@string/ps_cat_securitysettings">
+        <EditTextPreference
+          style="@style/s"
+          android:key="Username"
+          android:title="@string/ps_username"
+          android:summary="@string/ps_username_sum"
+          android:defaultValue="@string/ps_username_def"
+          android:dialogMessage="@string/ps_username_dm" />
+        <EditTextPreference
+          style="@style/s.password"
+          android:key="Password"
+          android:title="@string/ps_password"
+          android:summary="@string/ps_password_sum" 
+          android:defaultValue="@string/ps_password_def"
+          android:dialogMessage="@string/ps_password_dm" />
+    </PreferenceCategory>
     
+<!-- OTHER-SETTINGS -->
     <PreferenceCategory
       android:title="@string/ps_cat_other">
         <PreferenceScreen

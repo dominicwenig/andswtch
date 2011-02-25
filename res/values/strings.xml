@@ -1,27 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">AndSwtch</string>
-	
+
+<!-- OM - OptionsMenu -->	
 	<string name="om_refresh">Refresh</string>
 	<string name="om_settings">Settings</string>
 	<string name="om_exit">Exit</string>
-	
+
+<!-- PS - PreferenceScreen -->
+<!-- CAT - Category --><!-- SUM - Summary --><!-- DEF - Default -->
+<!-- PORT-SETTINGS -->
   <string name="ps_cat_portsettings">Port Settings</string>
   <string name="ps_senderport">Sender Port</string>
 	<string name="ps_senderport_sum">Change the sender port number</string>
+	<string name="ps_senderport_def">1133</string>
+  <string name="ps_senderport_dm">Valid Receiver Port [Default:1133]</string>
 	<string name="ps_receiverport">Receiver Port</string>
 	<string name="ps_receiverport_sum">Change the receiver port number</string>
-	
+	<string name="ps_receiverport_def">1132</string>
+  <string name="ps_receiverport_dm">Valid Receiver Port [Default:1132]</string>
+
+<!-- IP-SETTINGS -->	
 	<string name="ps_cat_ipsettings">IP Settings</string>
 	<string name="ps_ipaddress">IP Address</string>
 	<string name="ps_ipaddress_sum">Change the ip address</string>
-	<string name="ps_ipaddress_dm">Enter a valide ip address</string>
-	
-	<string name="ps_cat_autorefresh">Refresh</string>
+	<string name="ps_ipaddress_def">192.168.178.21</string>
+	<string name="ps_ipaddress_dm">Valid IP Address [Default:192.168.178.21]</string>
+
+<!-- REFRESH-SETTINGS -->	
+	<string name="ps_cat_autorefresh">Auto Refresh Settings</string>
 	<string name="ps_autorefresh">Auto Refresh</string>
 	<string name="ps_autorefresh_sum">Enable/Disable auto refresh</string>
-	<string name="ps_autorefreshinterval">Auto Refresh Interval</string>
-	
+	<string name="ps_autorefreshinterval">Interval</string>
+	<string name="ps_autorefreshinterval_sum">Change the refresh interval</string>
+	<string name="ps_autorefreshinterval_def">10</string>
+	<string name="ps_autorefreshinterval_dm">Interval in seconds [Default:10sec]</string>
+
+<!-- SECURITY-SETTINGS -->
+  <string name="ps_cat_securitysettings">Security Settings</string>
+  <string name="ps_username">Username</string>
+  <string name="ps_username_sum">Change the username</string>
+  <string name="ps_username_def">admin</string>
+  <string name="ps_username_dm">[Default:admin]</string>
+  <string name="ps_password">Password</string>
+  <string name="ps_password_sum">Change the password</string>
+  <string name="ps_password_def">anel</string>
+  <string name="ps_password_dm">[Default:anel]</string>
+  
+<!-- OTHER-SETTINGS -->
 	<string name="ps_cat_other">Others</string>
 	<string name="ps_help">Help</string>
 </resources>
