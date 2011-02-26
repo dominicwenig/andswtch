@@ -9,7 +9,6 @@ public class ResponseProcessor {
 
 	private List<PowerPoint> powerPoints;
 	private ExtensionLead extLead;
-	
 	private final int OFFSET = 5; //at position 6 starts the powerpoint information  
 
 	public ResponseProcessor(List<PowerPoint> powerPoints, ExtensionLead extLead) {
@@ -37,7 +36,7 @@ public class ResponseProcessor {
 			// -> reParts[6] - reParts[13]
 			for (int i = 1; i <= this.powerPoints.size(); i++) {
 				Log.d(TAG, "PowerPoint " + String.valueOf(i)
-						+ " has the value " + reParts[i + 5]);
+						+ " has the value " + reParts[i + OFFSET]);
 				// 0 - off - false
 				// 1 - on - true
 				if (reParts[i + OFFSET].endsWith("0")) {
@@ -48,6 +47,7 @@ public class ResponseProcessor {
 					Log.w(TAG, "error while parsing respose: powerpoint wrong");
 					this.extLead.errorOccured("error while parsing respose: powerpoint wrong");
 				}
+				this.powerPoints.get(i - 1).setName(reParts[i + OFFSET].substring(0, reParts[i + OFFSET].length() - 2));
 			}
 
 			int seg_dis = Integer.parseInt(reParts[14]);

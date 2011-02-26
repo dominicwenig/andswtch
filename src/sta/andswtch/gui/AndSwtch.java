@@ -22,8 +22,9 @@ import android.widget.ToggleButton;
 public class AndSwtch extends OptionsMenu {
 
 	private ExtensionLead extLead;
-	private List<ToggleButton> buttons;
 	private List<LinearLayout> LL;
+	private List<TextView> names;
+	private List<ToggleButton> buttons;
 	private Time time;
 	private Handler handlerEvent = new Handler() {
 		@Override
@@ -70,15 +71,15 @@ public class AndSwtch extends OptionsMenu {
 	}
 
 	private void init() {
-		this.buttons = new ArrayList<ToggleButton>();
-		this.buttons.add((ToggleButton) findViewById(R.id.Button01));
-		this.buttons.add((ToggleButton) findViewById(R.id.Button02));
-		this.buttons.add((ToggleButton) findViewById(R.id.Button03));
-		this.buttons.add((ToggleButton) findViewById(R.id.Button04));
-		this.buttons.add((ToggleButton) findViewById(R.id.Button05));
-		this.buttons.add((ToggleButton) findViewById(R.id.Button06));
-		this.buttons.add((ToggleButton) findViewById(R.id.Button07));
-		this.buttons.add((ToggleButton) findViewById(R.id.Button08));
+		this.names = new ArrayList<TextView>();
+		this.names.add((TextView) findViewById(R.id.TextView01));
+		this.names.add((TextView) findViewById(R.id.TextView02));
+		this.names.add((TextView) findViewById(R.id.TextView03));
+		this.names.add((TextView) findViewById(R.id.TextView04));
+		this.names.add((TextView) findViewById(R.id.TextView05));
+		this.names.add((TextView) findViewById(R.id.TextView06));
+		this.names.add((TextView) findViewById(R.id.TextView07));
+		this.names.add((TextView) findViewById(R.id.TextView08));
 		
 		this.LL = new ArrayList<LinearLayout>();
 		this.LL.add((LinearLayout) findViewById(R.id.LL00));
@@ -90,6 +91,16 @@ public class AndSwtch extends OptionsMenu {
 		this.LL.add((LinearLayout) findViewById(R.id.LL06));
 		this.LL.add((LinearLayout) findViewById(R.id.LL07));
 		this.LL.add((LinearLayout) findViewById(R.id.LL08));
+		
+		this.buttons = new ArrayList<ToggleButton>();
+		this.buttons.add((ToggleButton) findViewById(R.id.Button01));
+		this.buttons.add((ToggleButton) findViewById(R.id.Button02));
+		this.buttons.add((ToggleButton) findViewById(R.id.Button03));
+		this.buttons.add((ToggleButton) findViewById(R.id.Button04));
+		this.buttons.add((ToggleButton) findViewById(R.id.Button05));
+		this.buttons.add((ToggleButton) findViewById(R.id.Button06));
+		this.buttons.add((ToggleButton) findViewById(R.id.Button07));
+		this.buttons.add((ToggleButton) findViewById(R.id.Button08));
 		
 		this.availabilityChecker();
 	}
@@ -140,6 +151,7 @@ public class AndSwtch extends OptionsMenu {
 		for(int i = 1; i <= ExtensionLead.POWERPOINTCNT; i++) {
 			if(this.extLead.isPowerPointEnable(i)) {
 				this.LL.get(i).setVisibility(View.VISIBLE);
+				this.names.get(i - 1).setText(this.extLead.getPowerPointName(i));
 			}
 			else {
 				this.LL.get(i).setVisibility(View.GONE);
