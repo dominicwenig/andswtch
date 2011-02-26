@@ -14,6 +14,7 @@ public final class R {
         public static final int icon=0x7f020000;
     }
     public static final class id {
+        public static final int Button=0x7f080022;
         public static final int Button01=0x7f080005;
         public static final int Button02=0x7f080008;
         public static final int Button03=0x7f08000b;
@@ -24,10 +25,7 @@ public final class R {
         public static final int Button08=0x7f08001a;
         public static final int Button09=0x7f08001d;
         public static final int Button10=0x7f080020;
-        public static final int ButtonDelay=0x7f080023;
-        public static final int ButtonMinus=0x7f080022;
-        public static final int ButtonPlus=0x7f080024;
-        public static final int DelayTime=0x7f080021;
+        public static final int DelayTime=0x7f080023;
         public static final int LL00=0x7f080001;
         public static final int LL01=0x7f080003;
         public static final int LL02=0x7f080006;
@@ -50,9 +48,10 @@ public final class R {
         public static final int TextView10=0x7f08001f;
         public static final int allOff=0x7f08001e;
         public static final int allOn=0x7f08001b;
-        public static final int exit=0x7f080026;
+        public static final int exit=0x7f080025;
+        public static final int ppName=0x7f080021;
         public static final int refreshtime=0x7f080000;
-        public static final int settings=0x7f080025;
+        public static final int settings=0x7f080024;
     }
     public static final class layout {
         public static final int main=0x7f030000;

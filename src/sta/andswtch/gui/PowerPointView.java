@@ -20,6 +20,9 @@ public class PowerPointView extends OptionsMenu {
 	
 	private void init() {
 		this.delayTime = (TextView) findViewById(R.id.DelayTime);
+		// TODO
+			// set Tag
+			// set TextView
 	}
 	
 	@Override
@@ -35,6 +38,9 @@ public class PowerPointView extends OptionsMenu {
 			if (tag == 0) {
 				//switch delayed
 				//AndSwtch.extLead.sendState(2, false, this.sec);
+			}
+			else {
+				//AndSwtch.extLead.switchState(tag);
 			}
 		}
 	}
