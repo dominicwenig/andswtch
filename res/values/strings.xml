@@ -2,6 +2,13 @@
 <resources>
 	<string name="app_name">AndSwtch</string>
 
+<!-- MAIN -->
+  <string name="refresh">Last Refresh:</string>
+  <string name="switchAllOn">Switch All On</string>
+  <string name="allOn">on all</string>
+  <string name="switchAllOff">Switch All Off</string>
+  <string name="allOff">off all</string>
+
 <!-- OM - OptionsMenu -->	
 	<string name="om_refresh">Refresh</string>
 	<string name="om_settings">Settings</string>

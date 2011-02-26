@@ -10,10 +10,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.format.Time;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -22,6 +24,7 @@ public class AndSwtch extends OptionsMenu {
 	private ExtensionLead extLead;
 	private List<ToggleButton> buttons;
 	private List<LinearLayout> LL;
+	private Time time;
 	private Handler handlerEvent = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -47,6 +50,10 @@ public class AndSwtch extends OptionsMenu {
 			}
 			// has to be done HERE (from outa space) cos of different threads
 			availabilityChecker();
+			// change the refresh time
+			time.setToNow();
+			TextView refreshtime = (TextView) findViewById(R.id.refreshtime);
+			refreshtime.setText(time.format("%H:%M:%S"));
 		}
 	};
 
@@ -58,6 +65,7 @@ public class AndSwtch extends OptionsMenu {
 
 		// create the extension lead
 		this.extLead = new ExtensionLead(this);
+		this.time = new Time();
 		this.init();
 	}
 
@@ -141,14 +149,14 @@ public class AndSwtch extends OptionsMenu {
 		// Makes the progressbar invisible and switcherbuttons visible
 		if(cntUnavailables == 8 ) {
 			this.LL.get(0).setVisibility(View.VISIBLE);
-			findViewById(R.id.Button09).setVisibility(View.INVISIBLE);
-			findViewById(R.id.Button10).setVisibility(View.INVISIBLE);
+			findViewById(R.id.allOn).setVisibility(View.INVISIBLE);
+			findViewById(R.id.allOff).setVisibility(View.INVISIBLE);
 		}
 		else
 		{
 			this.LL.get(0).setVisibility(View.GONE);
-			findViewById(R.id.Button09).setVisibility(View.VISIBLE);
-			findViewById(R.id.Button10).setVisibility(View.VISIBLE);
+			findViewById(R.id.allOn).setVisibility(View.VISIBLE);
+			findViewById(R.id.allOff).setVisibility(View.VISIBLE);
 		}
 	}
 

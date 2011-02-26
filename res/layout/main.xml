@@ -12,13 +12,24 @@
       android:orientation="vertical" >
 <!-- START OF GLOBAL LINEARLAYOUT -->
 
-<!-- TEXTVIEW for last update -->        
-        <TextView 
+<!-- LINEARLAYOUT for last update -->        
+        <LinearLayout
           android:layout_width="fill_parent" 
           android:layout_height="wrap_content"
           android:layout_marginTop="10dip" 
-          android:text="Last refresh: 00:00:00" >
-        </TextView>
+          android:orientation="horizontal" >
+		        <TextView 
+		          android:layout_width="wrap_content" 
+		          android:layout_height="wrap_content"
+		          android:text="@string/refresh" >
+		        </TextView>
+		        <TextView android:id="@+id/refreshtime"
+		          android:layout_width="fill_parent" 
+		          android:layout_height="wrap_content"
+		          android:layout_marginLeft="10dip"
+		          android:text="00:00:00" >
+		        </TextView>
+        </LinearLayout>
         
 <!-- VIEW for a line -->
         <View
@@ -60,7 +71,7 @@
 			            android:layout_width="wrap_content" 
 			            android:layout_height="wrap_content"
 			            android:layout_weight="0.2" 
-			            android:text="Nr. 1" >
+			            android:text="1" >
 			          </TextView>
 			      </LinearLayout>
             <LinearLayout
@@ -101,7 +112,7 @@
 			            android:layout_width="wrap_content" 
 			            android:layout_height="wrap_content" 
 			            android:layout_weight="0.2"
-			            android:text="Nr. 2" >
+			            android:text="2" >
 			          </TextView>
 	          </LinearLayout>
             <LinearLayout
@@ -141,7 +152,7 @@
 							  <TextView android:id="@+id/TextView03" 
 							    android:layout_width="wrap_content" 
 							    android:layout_height="wrap_content" 
-							    android:text="Nr. 3" >
+							    android:text="3" >
 							  </TextView>
 					  </LinearLayout>
 					  <LinearLayout
@@ -182,7 +193,7 @@
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
                   android:layout_weight="0.2" 
-                  android:text="Nr. 4" >
+                  android:text="4" >
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -223,7 +234,7 @@
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
                   android:layout_weight="0.2" 
-                  android:text="Nr. 5" >
+                  android:text="5" >
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -264,7 +275,7 @@
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
                   android:layout_weight="0.2" 
-                  android:text="Nr. 6" >
+                  android:text="6" >
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -305,7 +316,7 @@
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
                   android:layout_weight="0.2" 
-                  android:text="Nr. 7" >
+                  android:text="7" >
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -346,7 +357,7 @@
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
                   android:layout_weight="0.2" 
-                  android:text="Nr. 8" >
+                  android:text="8" >
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -389,44 +400,44 @@
           android:background="#aaaaaaaa"
           android:orientation="horizontal" 
           android:gravity="center" >
-            <LinearLayout
+            <LinearLayout android:id="@+id/allOn"
               android:layout_width="wrap_content" 
               android:layout_height="wrap_content"
               android:layout_weight="0.5"
               android:orientation="vertical" 
-              android:gravity="center" >
+              android:gravity="center"
+              android:visibility="invisible" >
 		            <TextView android:id="@+id/TextView09"
 			            android:layout_width="wrap_content" 
 			            android:layout_height="wrap_content"
 			            android:layout_marginTop="6dip"
-			            android:text="Switch All on" >
+			            android:text="@string/switchAllOn" >
 			          </TextView>
 			          <Button android:id="@+id/Button09" 
 		              android:layout_width="wrap_content" 
 		              android:layout_height="wrap_content"
-		              android:visibility="invisible" 
-		              android:text="on all" 
+		              android:text="@string/allOn" 
 		              android:onClick="onOff" 
 		              android:tag="9" >
 		            </Button>
             </LinearLayout>
-       		  <LinearLayout
+       		  <LinearLayout android:id="@+id/allOff"
               android:layout_width="wrap_content" 
               android:layout_height="wrap_content"
               android:layout_weight="0.5"
               android:orientation="vertical" 
-              android:gravity="center" >
+              android:gravity="center"
+              android:visibility="invisible" >
 							  <TextView android:id="@+id/TextView10" 
 		              android:layout_width="wrap_content" 
 		              android:layout_height="wrap_content"
 		              android:layout_marginTop="6dip" 
-		              android:text="Switch All off" >
+		              android:text="@string/switchAllOff" >
 		            </TextView>
 		            <Button android:id="@+id/Button10" 
 				          android:layout_width="wrap_content" 
 				          android:layout_height="wrap_content"
-				          android:visibility="invisible" 
-				          android:text="off all" 
+				          android:text="@string/allOff" 
 				          android:onClick="onOff" 
 				          android:tag="10" >
 			          </Button>
