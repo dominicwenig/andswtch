@@ -27,8 +27,6 @@ public interface IExtensionLead {
 
 	public abstract String getPowerPointName(int id);
 
-	public abstract int getPowerPointsCount();
-
 	public abstract String getHost();
 
 	public abstract int getPortIn();

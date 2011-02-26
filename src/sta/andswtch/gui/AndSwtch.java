@@ -137,7 +137,7 @@ public class AndSwtch extends OptionsMenu {
 		int cntUnavailables = 0;
 		// Checks if the powerpoints are enabled
 		// Makes the powerpoints visible if enabled
-		for(int i = 1; i <= this.extLead.getPowerPointsCount(); i++) {
+		for(int i = 1; i <= ExtensionLead.POWERPOINTCNT; i++) {
 			if(this.extLead.isPowerPointEnable(i)) {
 				this.LL.get(i).setVisibility(View.VISIBLE);
 			}

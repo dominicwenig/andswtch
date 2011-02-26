@@ -14,7 +14,7 @@ public class ExtensionLead implements IExtensionLead {
 	private ResponseProcessor responseProcessor;
 	private CommandGenerator commandGenerator;
 	private AndSwtch andSwtch;
-	private static final int powerPointsCount = 8;
+	public static final int POWERPOINTCNT = 8;
 
 	// test static final variables
 	private static final String testHost = "192.168.178.21";
@@ -29,24 +29,18 @@ public class ExtensionLead implements IExtensionLead {
 	}
 	
 	private void init() {
-
 		this.powerPoints = new ArrayList<PowerPoint>();
-		
 		this.config = new Config(testHost, testExtensionLeadSenderPort,
 				testExtensionLeadReceiverPort, testUser, testPassword);
 		this.connectionManager = new ConnectionManager(this.config, this);
-
-		for (int id = 1; id <= powerPointsCount; id++) {
-			this.addPowerPoint(id - 1, "Nr. " + id, false, false);
+		for (int id = 1; id <= POWERPOINTCNT; id++) {
+			this.addPowerPoint(id - 1, "No. " + id, false, false);
 		}
 		this.responseProcessor = new ResponseProcessor(this.powerPoints, this);
-
 		this.commandGenerator = new CommandGenerator(this.config);
-
 	}
 	
-	public void setConfig(String host, int portIn, int portOut, String user,
-			String password) {
+	public void setConfig(String host, int portIn, int portOut, String user, String password) {
 		if (this.config == null) {
 			this.config = new Config(host, portIn, portOut, user, password);
 		} else {
@@ -56,23 +50,17 @@ public class ExtensionLead implements IExtensionLead {
 
 	public void switchState(int id) {
 		boolean on = this.powerPoints.get(id - 1).isOn();
-	
 		String command = this.commandGenerator.generateSwitchCommand(id, !on);
-	
 		this.connectionManager.sendAndReceive(command);
 	}
 
 	public void sendState(int id, boolean on, int time) {
-	
-		byte[] command = this.commandGenerator.generateSwitchDelayedCommand(id,
-				on, time);
-	
+		byte[] command = this.commandGenerator.generateSwitchDelayedCommand(id, on, time);
 		this.connectionManager.sendWithoutReceive(command);
 	}
 
 	public void sendStateAll(boolean on) {
 		byte[] command = this.commandGenerator.generateSwitchAllCommand(on);
-		
 		this.connectionManager.sendAndReceive(command);
 	}
 
@@ -82,7 +70,6 @@ public class ExtensionLead implements IExtensionLead {
 
 	public void sendUpdateMessage() {
 		String command = this.commandGenerator.generateStatusUpdateCommand();
-	
 		this.connectionManager.sendAndReceive(command);
 	}
 
@@ -91,7 +78,6 @@ public class ExtensionLead implements IExtensionLead {
 			this.responseProcessor = new ResponseProcessor(this.powerPoints, this);
 		}
 		this.responseProcessor.processResponse(response);
-	
 		this.andSwtch.updateActivity();
 	}
 
@@ -117,10 +103,6 @@ public class ExtensionLead implements IExtensionLead {
 
 	public String getPowerPointName(int id) {
 		return this.powerPoints.get(id - 1).getName();
-	}
-
-	public int getPowerPointsCount() {
-		return powerPointsCount;
 	}
 
 	public String getHost() {

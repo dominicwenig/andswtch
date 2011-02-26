@@ -7,9 +7,7 @@ import android.util.Log;
 public class CommandGenerator {
 
 	private Config config;
-
 	private static final String TAG = CommandGenerator.class.getName();
-
 	private static final String GET_STATUS = "wer da?";
 
 	public CommandGenerator(Config config) {
@@ -66,22 +64,22 @@ public class CommandGenerator {
 	}
 
 	private byte[] intTo16BitInteger(int value) {
-		
-		
 		//mask the integer to have only the least 16 bits
 		value = value & 65535;
+		
 		//store the least 2 bytes of the integer into a byte array
 		byte[] response = new byte[] {
                 (byte)(value >>> 8),
                 (byte)value};
 		
-		Log.d(TAG, "the evaluated time is: (binary reprazentation of a 16 bit integer)" + (Integer.toBinaryString((int)(response[0]))) + " " +(Integer.toBinaryString((int)(response[1])))) ;
+		Log.d(TAG, "the evaluated time is: (binary reprazentation of a 16 bit integer)" +
+				(Integer.toBinaryString((int)(response[0]))) + " " +
+				(Integer.toBinaryString((int)(response[1]))));
 		
 		return response;
 	}
 
 	public String generateStatusUpdateCommand() {
-
 		// "wer da?"
 		return GET_STATUS;
 	}
@@ -90,7 +88,7 @@ public class CommandGenerator {
 		
 		byte powerPointBinaryMask;
 		
-		if(on){
+		if(on) {
 			powerPointBinaryMask = 127;
 		}
 		else {

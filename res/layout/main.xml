@@ -51,7 +51,7 @@
           android:visibility="visible" >
             <ProgressBar android:id="@+id/ProgressBar01" 
               android:layout_width="wrap_content" 
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content" >
             </ProgressBar>
         </LinearLayout>
 
@@ -71,7 +71,9 @@
 			            android:layout_width="wrap_content" 
 			            android:layout_height="wrap_content"
 			            android:layout_weight="0.2" 
-			            android:text="1" >
+			            android:clickable="true"
+			            android:text="1" 
+			            android:onClick="switchToPowerPoint" >
 			          </TextView>
 			      </LinearLayout>
             <LinearLayout
@@ -91,7 +93,7 @@
 		              android:layout_height="fill_parent"
 		              android:layout_margin="3dip"
 		              android:text=">"
-		              android:onClick="switchToPowerPoint">
+		              android:onClick="switchToPowerPoint" >
 							  </Button>
 					  </LinearLayout>
 		    </LinearLayout>
@@ -112,7 +114,9 @@
 			            android:layout_width="wrap_content" 
 			            android:layout_height="wrap_content" 
 			            android:layout_weight="0.2"
-			            android:text="2" >
+			            android:clickable="true"
+                  android:text="2" 
+                  android:onClick="switchToPowerPoint" >
 			          </TextView>
 	          </LinearLayout>
             <LinearLayout
@@ -152,7 +156,9 @@
 							  <TextView android:id="@+id/TextView03" 
 							    android:layout_width="wrap_content" 
 							    android:layout_height="wrap_content" 
-							    android:text="3" >
+							    android:clickable="true"
+                  android:text="3" 
+                  android:onClick="switchToPowerPoint" >
 							  </TextView>
 					  </LinearLayout>
 					  <LinearLayout
@@ -193,7 +199,9 @@
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
                   android:layout_weight="0.2" 
-                  android:text="4" >
+                  android:clickable="true"
+                  android:text="4" 
+                  android:onClick="switchToPowerPoint" >
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -213,7 +221,7 @@
                   android:layout_height="fill_parent"
                   android:layout_margin="3dip"
                   android:text=">"
-                  android:onClick="switchToPowerPoint">
+                  android:onClick="switchToPowerPoint" >
                 </Button>
             </LinearLayout>
         </LinearLayout>
@@ -234,7 +242,9 @@
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
                   android:layout_weight="0.2" 
-                  android:text="5" >
+                  android:clickable="true"
+                  android:text="5" 
+                  android:onClick="switchToPowerPoint" >
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -254,7 +264,7 @@
                   android:layout_height="fill_parent"
                   android:layout_margin="3dip"
                   android:text=">"
-                  android:onClick="switchToPowerPoint">
+                  android:onClick="switchToPowerPoint" >
                 </Button>
             </LinearLayout>
         </LinearLayout>
@@ -275,7 +285,9 @@
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
                   android:layout_weight="0.2" 
-                  android:text="6" >
+                  android:clickable="true"
+                  android:text="6" 
+                  android:onClick="switchToPowerPoint" >
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -295,7 +307,7 @@
                   android:layout_height="fill_parent"
                   android:layout_margin="3dip"
                   android:text=">"
-                  android:onClick="switchToPowerPoint">
+                  android:onClick="switchToPowerPoint" >
                 </Button>
             </LinearLayout>
         </LinearLayout>
@@ -316,7 +328,9 @@
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
                   android:layout_weight="0.2" 
-                  android:text="7" >
+                  android:clickable="true"
+                  android:text="7" 
+                  android:onClick="switchToPowerPoint" >
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -336,7 +350,7 @@
                   android:layout_height="fill_parent"
                   android:layout_margin="3dip"
                   android:text=">"
-                  android:onClick="switchToPowerPoint">
+                  android:onClick="switchToPowerPoint" >
                 </Button>
             </LinearLayout>
         </LinearLayout>
@@ -357,7 +371,9 @@
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
                   android:layout_weight="0.2" 
-                  android:text="8" >
+                  android:clickable="true"
+                  android:text="8" 
+                  android:onClick="switchToPowerPoint" >
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -377,7 +393,7 @@
                   android:layout_height="fill_parent"
                   android:layout_margin="3dip"
                   android:text=">"
-                  android:onClick="switchToPowerPoint">
+                  android:onClick="switchToPowerPoint" >
                 </Button>
             </LinearLayout>
         </LinearLayout>
