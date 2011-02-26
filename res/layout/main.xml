@@ -416,6 +416,7 @@
 			          <Button android:id="@+id/Button09" 
 		              android:layout_width="wrap_content" 
 		              android:layout_height="wrap_content"
+		              android:layout_marginBottom="6dip"
 		              android:text="@string/allOn" 
 		              android:onClick="onOff" 
 		              android:tag="9" >
@@ -437,6 +438,7 @@
 		            <Button android:id="@+id/Button10" 
 				          android:layout_width="wrap_content" 
 				          android:layout_height="wrap_content"
+				          android:layout_marginBottom="6dip"
 				          android:text="@string/allOff" 
 				          android:onClick="onOff" 
 				          android:tag="10" >

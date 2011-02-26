@@ -27,7 +27,6 @@ public final class R {
         public static final int ButtonDelay=0x7f080023;
         public static final int ButtonMinus=0x7f080022;
         public static final int ButtonPlus=0x7f080024;
-        public static final int DatePicker01=0x7f080025;
         public static final int DelayTime=0x7f080021;
         public static final int LL00=0x7f080001;
         public static final int LL01=0x7f080003;
@@ -51,9 +50,9 @@ public final class R {
         public static final int TextView10=0x7f08001f;
         public static final int allOff=0x7f08001e;
         public static final int allOn=0x7f08001b;
-        public static final int exit=0x7f080027;
+        public static final int exit=0x7f080026;
         public static final int refreshtime=0x7f080000;
-        public static final int settings=0x7f080026;
+        public static final int settings=0x7f080025;
     }
     public static final class layout {
         public static final int main=0x7f030000;
