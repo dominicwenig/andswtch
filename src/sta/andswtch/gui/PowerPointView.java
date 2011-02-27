@@ -27,6 +27,10 @@ public class PowerPointView extends OptionsMenu {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.powerpoint);
 		
+		//.testing
+		this.extLead = new ExtensionLead();
+		//........
+		
 		this.init();
 	}
 	
@@ -42,9 +46,12 @@ public class PowerPointView extends OptionsMenu {
 		String tagString = extra.getString("powerPoint");
 		if (tagString != null) {
 			this.onOff.setTag(tagString);
-			//int tag = Integer.parseInt(tagString);
-			//this.name.setText(this.extLead.getPowerPointName(tag));
-			this.name.setText(tagString);
+			
+			// testing
+			int tag = Integer.parseInt(tagString);
+			this.name.setText(this.extLead.getPowerPointName(tag));
+			//this.name.setText(tagString);
+			//........
 		}
 	}
 	
@@ -60,10 +67,10 @@ public class PowerPointView extends OptionsMenu {
 			int tag = Integer.parseInt(tagString);
 			if (tag == 0) {
 				//switch delayed
-				//this.extLead.sendState(this.onOff.getTag(), false, this.sec);
+				this.extLead.sendState(Integer.parseInt((String) this.onOff.getTag()), false, this.sec);
 			}
 			else {
-				//this.extLead.switchState(tag);
+				this.extLead.switchState(tag);
 			}
 		}
 	}

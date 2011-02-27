@@ -22,7 +22,12 @@ public class ExtensionLead implements IExtensionLead {
 	private static final int testExtensionLeadReceiverPort = 1132;
 	private static final String testUser = "admin";
 	private static final String testPassword = "anel";
-
+	
+	// testing powerpointview
+	public ExtensionLead() {
+		this.init();
+	}
+	
 	public ExtensionLead(AndSwtch andSwtch) {
 		this.andSwtch = andSwtch;
 		this.init();
