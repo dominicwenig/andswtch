@@ -70,7 +70,8 @@
 			            android:layout_height="wrap_content"
 			            android:clickable="true"
 			            android:text="1" 
-			            android:onClick="switchToPowerPoint" >
+			            android:onClick="switchToPowerPoint"
+			            android:tag="1" >
 			          </TextView>
 			      </LinearLayout>
             <LinearLayout
@@ -90,7 +91,8 @@
 		              android:layout_height="fill_parent"
 		              android:layout_margin="3dip"
 		              android:text=">"
-		              android:onClick="switchToPowerPoint" >
+		              android:onClick="switchToPowerPoint"
+		              android:tag="1" >
 							  </Button>
 					  </LinearLayout>
 		    </LinearLayout>
@@ -111,7 +113,8 @@
 			            android:layout_height="wrap_content" 
 			            android:clickable="true"
                   android:text="2" 
-                  android:onClick="switchToPowerPoint" >
+                  android:onClick="switchToPowerPoint"
+                  android:tag="2" >
 			          </TextView>
 	          </LinearLayout>
             <LinearLayout
@@ -131,7 +134,8 @@
 		              android:layout_height="fill_parent"
                   android:layout_margin="3dip" 
 		              android:text=">"
-		              android:onClick="switchToPowerPoint" >
+		              android:onClick="switchToPowerPoint"
+		              android:tag="2" >
 		            </Button>
             </LinearLayout>
         </LinearLayout>
@@ -152,7 +156,8 @@
 							    android:layout_height="wrap_content" 
 							    android:clickable="true"
                   android:text="3" 
-                  android:onClick="switchToPowerPoint" >
+                  android:onClick="switchToPowerPoint"
+                  android:tag="3" >
 							  </TextView>
 					  </LinearLayout>
 					  <LinearLayout
@@ -172,7 +177,8 @@
 		              android:layout_height="fill_parent"
 		              android:layout_margin="3dip"
 		              android:text=">"
-		              android:onClick="switchToPowerPoint" >
+		              android:onClick="switchToPowerPoint"
+		              android:tag="3" >
 	              </Button>
             </LinearLayout>
 	      </LinearLayout>

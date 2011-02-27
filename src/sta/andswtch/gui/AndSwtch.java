@@ -190,7 +190,7 @@ public class AndSwtch extends OptionsMenu {
 
 	public void switchToPowerPoint(View v) {
 		Intent toLaunch = new Intent(v.getContext(), PowerPointView.class);
-		//toLaunch.putExtra("Test", "x");
+		toLaunch.putExtra("powerPoint", (String) v.getTag());
 		startActivity(toLaunch);
 	}
 

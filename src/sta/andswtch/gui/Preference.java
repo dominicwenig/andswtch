@@ -10,7 +10,6 @@ public class Preference extends PreferenceActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.preferencescreen);
-		
 	}
 	
 }

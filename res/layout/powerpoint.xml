@@ -14,7 +14,7 @@
 		    <TextView android:id="@+id/ppName"
 		      android:layout_width="wrap_content" 
 		      android:layout_height="wrap_content"
-		      android:text="name" >
+		      android:text="Name" >
 		    </TextView>
     </LinearLayout>
     
@@ -34,7 +34,7 @@
       android:layout_width="fill_parent" 
       android:layout_height="wrap_content" 
       android:gravity="right|center_vertical" >
-        <ToggleButton android:id="@+id/Button" 
+        <ToggleButton android:id="@+id/onOff" 
           android:layout_width="wrap_content" 
           android:layout_height="wrap_content" 
           android:layout_margin="3dip"
@@ -53,73 +53,112 @@
 	    <TableRow>
 		    <Button
 		      android:layout_weight="1.0"
-		      android:text="+">
+		      android:text="+"
+		      android:onClick="increase"
+		      android:tag="h_i">
 		    </Button>
 		    <Button
   		    android:layout_weight="1.0"
-		      android:text="+">
+		      android:text="+"
+		      android:onClick="increase"
+		      android:tag="m_i">
 		    </Button>
 		    <Button
 		      android:layout_weight="1.0"
-		      android:text="+">
+		      android:text="+"
+		      android:onClick="increase"
+		      android:tag="s_i">
 		    </Button>
 	    </TableRow>
 	    
 	    <TableRow>
-	      <EditText
+	      <EditText android:id="@+id/hoursEt"
 	        android:layout_weight="1.0"
-	        android:text="1">
+	        android:gravity="center"
+	        android:saveEnabled="true"
+	        android:lines="1"
+	        android:text="0">
 	      </EditText>
-	      <EditText
+	      <EditText android:id="@+id/minutesEt"
 	        android:layout_weight="1.0"
-	        android:text="1">
+	        android:gravity="center"
+	        android:saveEnabled="true"
+          android:lines="1"
+	        android:text="0">
 	      </EditText>
-	      <EditText
+	      <EditText android:id="@+id/secondsEt"
 	        android:layout_weight="1.0"
-	        android:text="1">
+	        android:gravity="center"
+	        android:saveEnabled="true"
+          android:lines="1"
+	        android:text="0">
 	      </EditText>
       </TableRow>
 	    
 	    <TableRow>
 	      <Button
 	        android:layout_weight="1.0"
-          android:text="-">
+          android:text="-"
+          android:onClick="decrease"
+          android:tag="h_d">
         </Button>
         <Button
           android:layout_weight="1.0"
-          android:text="-">
+          android:text="-"
+          android:onClick="decrease"
+          android:tag="m_d">
         </Button>
         <Button
           android:layout_weight="1.0"
-          android:text="-">
+          android:text="-"
+          android:onClick="decrease"
+          android:tag="s_d">
         </Button>
 	    </TableRow>
 	    
 	    <TableRow>
 	      <TextView
 	        android:layout_weight="1.0"
-	        android:text="hours">
+	        android:gravity="center"
+	        android:text="@string/hours" >
 	      </TextView>
 	      <TextView
 	        android:layout_weight="1.0"
-	        android:text="minutes">
+	        android:gravity="center"
+	        android:text="@string/minutes" >
 	      </TextView>
 	      <TextView
 	        android:layout_weight="1.0"
-	        android:text="seconds">
+	        android:gravity="center"
+	        android:text="@string/seconds" >
 	      </TextView>
 	    </TableRow>
       
     </TableLayout>
   
-<!-- TEXTVIEW for Delay in seconds -->    
-	  <TextView android:id="@+id/DelayTime" 
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content" 
-	    android:layout_marginTop="20dip" 
-	    android:text="Delay: " >
-	  </TextView>
-  
+<!-- TEXTVIEW for Delay in seconds -->  
+    <LinearLayout
+      android:layout_width="fill_parent" 
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dip" 
+      android:orientation="horizontal"
+      android:gravity="center" >  
+			  <TextView android:id="@+id/DelayTime" 
+			    android:layout_width="fill_parent" 
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1.0" 
+			    android:text="Delay: " >
+			  </TextView>
+			  <Button android:id="@+id/onOffDelay" 
+			    android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:layout_weight="1.0"
+		      android:text="@string/onOffDelay"
+		      android:onClick="onOff"
+		      android:tag="0" >
+		    </Button>
+	  </LinearLayout>
+    
 <!--       
   <LinearLayout 
     android:layout_width="fill_parent" 

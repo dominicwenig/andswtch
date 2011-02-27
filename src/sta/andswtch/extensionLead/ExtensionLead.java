@@ -1,13 +1,19 @@
 package sta.andswtch.extensionLead;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import sta.andswtch.gui.AndSwtch;
 import sta.andswtch.network.ConnectionManager;
 
-public class ExtensionLead implements IExtensionLead {
+public class ExtensionLead implements IExtensionLead, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private List<PowerPoint> powerPoints;
 	private Config config;
 	private ConnectionManager connectionManager;

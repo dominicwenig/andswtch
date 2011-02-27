@@ -8,7 +8,13 @@
   <string name="allOn">on all</string>
   <string name="switchAllOff">Switch All Off</string>
   <string name="allOff">off all</string>
-
+  
+<!-- POWERPOINTVIEW -->
+  <string name="hours">Hours</string>
+  <string name="minutes">Minutes</string>
+  <string name="seconds">Seconds</string>
+  <string name="onOffDelay">Delayed Off</string>
+  
 <!-- OM - OptionsMenu -->	
 	<string name="om_refresh">Refresh</string>
 	<string name="om_settings">Settings</string>
