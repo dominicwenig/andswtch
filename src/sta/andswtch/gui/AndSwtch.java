@@ -21,6 +21,9 @@ import android.widget.ToggleButton;
 
 public class AndSwtch extends OptionsMenu {
 
+	private final int TAG_ALL_ON = 9;
+	private final int TAG_ALL_OFF = 10;
+	
 	private ExtensionLead extLead;
 	private List<LinearLayout> LL;
 	private List<TextView> names;
@@ -62,7 +65,7 @@ public class AndSwtch extends OptionsMenu {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.main);
+		this.setContentView(R.layout.andswtch);
 
 		// create the extension lead
 		this.extLead = new ExtensionLead(this);
@@ -178,9 +181,9 @@ public class AndSwtch extends OptionsMenu {
 			int tag = Integer.parseInt(tagString);
 			// tag 1 - 8 for each power point
 			// tag 9 for all on and tag 10 for all off
-			if (tag == 9) {
+			if (tag == TAG_ALL_ON) {
 				this.extLead.sendStateAll(true);
-			} else if (tag == 10) {
+			} else if (tag == TAG_ALL_OFF) {
 				this.extLead.sendStateAll(false);
 			} else {
 				this.extLead.switchState(tag);
