@@ -35,8 +35,7 @@ public class ExtensionLead implements IExtensionLead {
 	
 	private void init() {
 		this.powerPoints = new ArrayList<PowerPoint>();
-		this.config = new Config(testHost, testExtensionLeadSenderPort,
-				testExtensionLeadReceiverPort, testUser, testPassword);
+		this.config = new Config(andSwtch.getApplicationContext());
 		this.connectionManager = new ConnectionManager(this.config, this);
 		for (int id = 1; id <= POWERPOINTCNT; id++) {
 			this.addPowerPoint(id - 1, "No. " + id, false, false);
@@ -45,13 +44,13 @@ public class ExtensionLead implements IExtensionLead {
 		this.commandGenerator = new CommandGenerator(this.config);
 	}
 	
-	public void setConfig(String host, int portIn, int portOut, String user, String password) {
+	/*public void setConfig(String host, int portIn, int portOut, String user, String password) {
 		if (this.config == null) {
 			this.config = new Config(host, portIn, portOut, user, password);
 		} else {
 			this.config.setConfig(host, portIn, portOut, user, password);
 		}
-	}
+	}*/
 
 	public void switchState(int id) {
 		boolean on = this.powerPoints.get(id - 1).isOn();

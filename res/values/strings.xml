@@ -23,18 +23,22 @@
 <!-- PS - PreferenceScreen -->
 <!-- CAT - Category --><!-- SUM - Summary --><!-- DEF - Default -->
 <!-- PORT-SETTINGS -->
-  <string name="ps_cat_portsettings">Port Settings</string>
-  <string name="ps_senderport">Sender Port</string>
-	<string name="ps_senderport_sum">Change the sender port number</string>
+  	<string name="ps_cat_portsettings">Port Settings</string>
+  	<string name="ps_senderport_key">SenderPort</string>
+  	<string name="ps_senderport">Sender Port</string>
+  	<string name="ps_senderport_sum">Change the sender port number</string>
 	<string name="ps_senderport_def">1133</string>
-  <string name="ps_senderport_dm">Valid Receiver Port [Default:1133]</string>
+  	<string name="ps_senderport_dm">Valid Receiver Port [Default:1133]</string>
+  	
+    <string name="ps_receiverport_key">ReceiverPort</string>
 	<string name="ps_receiverport">Receiver Port</string>
 	<string name="ps_receiverport_sum">Change the receiver port number</string>
 	<string name="ps_receiverport_def">1132</string>
-  <string name="ps_receiverport_dm">Valid Receiver Port [Default:1132]</string>
+	<string name="ps_receiverport_dm">Valid Receiver Port [Default:1132]</string>
 
 <!-- IP-SETTINGS -->	
 	<string name="ps_cat_ipsettings">IP Settings</string>
+    <string name="ps_ipaddress_key">IP</string>
 	<string name="ps_ipaddress">IP Address</string>
 	<string name="ps_ipaddress_sum">Change the ip address</string>
 	<string name="ps_ipaddress_def">192.168.178.21</string>
@@ -51,10 +55,12 @@
 
 <!-- SECURITY-SETTINGS -->
   <string name="ps_cat_securitysettings">Security Settings</string>
+  <string name="ps_username_key">Username</string>
   <string name="ps_username">Username</string>
   <string name="ps_username_sum">Change the username</string>
   <string name="ps_username_def">admin</string>
   <string name="ps_username_dm">[Default:admin]</string>
+  <string name="ps_password_key">Password</string>
   <string name="ps_password">Password</string>
   <string name="ps_password_sum">Change the password</string>
   <string name="ps_password_def">anel</string>

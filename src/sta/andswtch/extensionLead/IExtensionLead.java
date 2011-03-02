@@ -2,8 +2,6 @@ package sta.andswtch.extensionLead;
 
 public interface IExtensionLead {
 
-	public abstract void setConfig(String host, int portIn, int portOut,
-	String user, String password);
 
 	public abstract void switchState(int id);
 

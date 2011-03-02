@@ -78,21 +78,21 @@ public final class R {
         public static final int om_refresh=0x7f05000a;
         public static final int om_settings=0x7f05000b;
         public static final int onOffDelay=0x7f050009;
-        public static final int ps_autorefresh=0x7f05001c;
-        public static final int ps_autorefresh_sum=0x7f05001d;
-        public static final int ps_autorefreshinterval=0x7f05001e;
-        public static final int ps_autorefreshinterval_def=0x7f050020;
-        public static final int ps_autorefreshinterval_dm=0x7f050021;
-        public static final int ps_autorefreshinterval_sum=0x7f05001f;
+        public static final int ps_autorefresh=0x7f05001f;
+        public static final int ps_autorefresh_sum=0x7f050020;
+        public static final int ps_autorefreshinterval=0x7f050021;
+        public static final int ps_autorefreshinterval_def=0x7f050023;
+        public static final int ps_autorefreshinterval_dm=0x7f050024;
+        public static final int ps_autorefreshinterval_sum=0x7f050022;
         /**  REFRESH-SETTINGS 
          */
-        public static final int ps_cat_autorefresh=0x7f05001b;
+        public static final int ps_cat_autorefresh=0x7f05001e;
         /**  IP-SETTINGS 
          */
-        public static final int ps_cat_ipsettings=0x7f050016;
+        public static final int ps_cat_ipsettings=0x7f050018;
         /**  OTHER-SETTINGS 
          */
-        public static final int ps_cat_other=0x7f05002b;
+        public static final int ps_cat_other=0x7f050030;
         /**  PS - PreferenceScreen 
  CAT - Category 
  SUM - Summary 
@@ -102,28 +102,33 @@ public final class R {
         public static final int ps_cat_portsettings=0x7f05000d;
         /**  SECURITY-SETTINGS 
          */
-        public static final int ps_cat_securitysettings=0x7f050022;
-        public static final int ps_help=0x7f05002c;
-        public static final int ps_ipaddress=0x7f050017;
-        public static final int ps_ipaddress_def=0x7f050019;
-        public static final int ps_ipaddress_dm=0x7f05001a;
-        public static final int ps_ipaddress_sum=0x7f050018;
-        public static final int ps_password=0x7f050027;
-        public static final int ps_password_def=0x7f050029;
-        public static final int ps_password_dm=0x7f05002a;
-        public static final int ps_password_sum=0x7f050028;
-        public static final int ps_receiverport=0x7f050012;
-        public static final int ps_receiverport_def=0x7f050014;
-        public static final int ps_receiverport_dm=0x7f050015;
-        public static final int ps_receiverport_sum=0x7f050013;
-        public static final int ps_senderport=0x7f05000e;
-        public static final int ps_senderport_def=0x7f050010;
-        public static final int ps_senderport_dm=0x7f050011;
-        public static final int ps_senderport_sum=0x7f05000f;
-        public static final int ps_username=0x7f050023;
-        public static final int ps_username_def=0x7f050025;
-        public static final int ps_username_dm=0x7f050026;
-        public static final int ps_username_sum=0x7f050024;
+        public static final int ps_cat_securitysettings=0x7f050025;
+        public static final int ps_help=0x7f050031;
+        public static final int ps_ipaddress=0x7f05001a;
+        public static final int ps_ipaddress_def=0x7f05001c;
+        public static final int ps_ipaddress_dm=0x7f05001d;
+        public static final int ps_ipaddress_key=0x7f050019;
+        public static final int ps_ipaddress_sum=0x7f05001b;
+        public static final int ps_password=0x7f05002c;
+        public static final int ps_password_def=0x7f05002e;
+        public static final int ps_password_dm=0x7f05002f;
+        public static final int ps_password_key=0x7f05002b;
+        public static final int ps_password_sum=0x7f05002d;
+        public static final int ps_receiverport=0x7f050014;
+        public static final int ps_receiverport_def=0x7f050016;
+        public static final int ps_receiverport_dm=0x7f050017;
+        public static final int ps_receiverport_key=0x7f050013;
+        public static final int ps_receiverport_sum=0x7f050015;
+        public static final int ps_senderport=0x7f05000f;
+        public static final int ps_senderport_def=0x7f050011;
+        public static final int ps_senderport_dm=0x7f050012;
+        public static final int ps_senderport_key=0x7f05000e;
+        public static final int ps_senderport_sum=0x7f050010;
+        public static final int ps_username=0x7f050027;
+        public static final int ps_username_def=0x7f050029;
+        public static final int ps_username_dm=0x7f05002a;
+        public static final int ps_username_key=0x7f050026;
+        public static final int ps_username_sum=0x7f050028;
         /**  MAIN 
          */
         public static final int refresh=0x7f050001;
