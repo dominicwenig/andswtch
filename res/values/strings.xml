@@ -25,16 +25,16 @@
 <!-- PORT-SETTINGS -->
   	<string name="ps_cat_portsettings">Port Settings</string>
   	<string name="ps_senderport_key">SenderPort</string>
-  	<string name="ps_senderport">Sender Port</string>
-  	<string name="ps_senderport_sum">Change the sender port number</string>
-	<string name="ps_senderport_def">1133</string>
-  	<string name="ps_senderport_dm">Valid Receiver Port [Default:1133]</string>
+  	<string name="ps_senderport">App Sender Port</string>
+  	<string name="ps_senderport_sum">Change the applications sender port number</string>
+	<string name="ps_senderport_def">1132</string>
+  	<string name="ps_senderport_dm">Valid applications Sender Port [Default:1132]</string>
   	
     <string name="ps_receiverport_key">ReceiverPort</string>
-	<string name="ps_receiverport">Receiver Port</string>
-	<string name="ps_receiverport_sum">Change the receiver port number</string>
-	<string name="ps_receiverport_def">1132</string>
-	<string name="ps_receiverport_dm">Valid Receiver Port [Default:1132]</string>
+	<string name="ps_receiverport">App Receiver Port</string>
+	<string name="ps_receiverport_sum">Change the applications receiver port number</string>
+	<string name="ps_receiverport_def">1133</string>
+	<string name="ps_receiverport_dm">Valid application receiver port [Default:1133]</string>
 
 <!-- IP-SETTINGS -->	
 	<string name="ps_cat_ipsettings">IP Settings</string>

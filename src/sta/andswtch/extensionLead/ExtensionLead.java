@@ -17,11 +17,11 @@ public class ExtensionLead implements IExtensionLead {
 	public static final int POWERPOINTCNT = 8;
 
 	// test static final variables
-	private static final String testHost = "192.168.178.21";
+	/*private static final String testHost = "192.168.178.21";
 	private static final int testExtensionLeadSenderPort = 1133;
 	private static final int testExtensionLeadReceiverPort = 1132;
 	private static final String testUser = "admin";
-	private static final String testPassword = "anel";
+	private static final String testPassword = "anel";*/
 	
 	// testing powerpointview
 	public ExtensionLead() {
@@ -114,11 +114,11 @@ public class ExtensionLead implements IExtensionLead {
 	}
 
 	public int getPortIn() {
-		return this.config.getExtensionLeadSenderPort();
+		return this.config.getApplicationSenderPort();
 	}
 
 	public int getPortOut() {
-		return this.config.getExtensionLeadReceiverPort();
+		return this.config.getApplicationReceiverPort();
 	}
 
 	public String getUser() {

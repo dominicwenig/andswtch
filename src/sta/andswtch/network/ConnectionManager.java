@@ -31,9 +31,9 @@ public class ConnectionManager implements IConnectionManager {
 		Log.v(TAG,
 				"try to send a packet with the command: " + new String(command)
 						+ "to " + config.getHost() + ":"
-						+ config.getExtensionLeadReceiverPort());
+						+ config.getApplicationSenderPort());
 		this.sender.send(this.config.getHost(),
-				this.config.getExtensionLeadReceiverPort(), command);
+				this.config.getApplicationSenderPort(), command);
 	}
 
 	public void sendWithoutReceive(byte[] command) {
@@ -45,7 +45,7 @@ public class ConnectionManager implements IConnectionManager {
 			Log.e(TAG,
 					"failed to send the packet with the following command : "
 							+ new String(command) + "to " + config.getHost()
-							+ ":" + config.getExtensionLeadReceiverPort()
+							+ ":" + config.getApplicationSenderPort()
 							+ " error message: " + e.getMessage());
 		}
 	}
@@ -53,7 +53,7 @@ public class ConnectionManager implements IConnectionManager {
 	private void startReceive() {
 		Log.d(TAG, "start a server to receive the response");
 		try {
-			this.receiver.start(this.config.getExtensionLeadSenderPort());
+			this.receiver.start(this.config.getApplicationReceiverPort());
 		} catch (IOException e) {
 			this.errorAlert("failed to start server");
 			Log.e(TAG,
@@ -89,7 +89,7 @@ public class ConnectionManager implements IConnectionManager {
 			Log.e(TAG,
 					"failed to send the packet with the following command : "
 							+ new String(command) + "to " + config.getHost()
-							+ ":" + config.getExtensionLeadReceiverPort()
+							+ ":" + config.getApplicationSenderPort()
 							+ " error message: " + e.getMessage());
 		}
 	}

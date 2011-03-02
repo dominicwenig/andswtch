@@ -40,13 +40,13 @@ public class Config {
 		return response;
 	}
 
-	public int getExtensionLeadSenderPort() {
+	public int getApplicationSenderPort() {
 		String senderPort= preferrences.getString("SenderPort", getResourceString(R.string.ps_senderport_def));
 		Log.d(TAG, "Sender Port is:" +senderPort);
 		return intValueOfString(senderPort);
 	}
 
-	public int getExtensionLeadReceiverPort() {
+	public int getApplicationReceiverPort() {
 		String receiverPort = preferrences.getString("ReceiverPort", getResourceString(R.string.ps_receiverport_def));
 		Log.d(TAG, "Receiver Port is:" +receiverPort);
 		return intValueOfString(receiverPort);
