@@ -40,6 +40,8 @@ public class CommandGenerator {
 		// TODO this is very bad :D - change that
 		// TODO evaluate, if only switching off is supported by the
 		// anel-extensionLead and take out the boolean if necessary
+		
+		// "SW_[on|off][id][delay as 16bit integer][user][password]
 
 		byte[] begin = "St_".getBytes();
 		byte[] byteStatus = evaluateOnBoolean(on).getBytes();
@@ -86,13 +88,17 @@ public class CommandGenerator {
 
 	public byte[] generateSwitchAllCommand(boolean on) {
 		
+		// "Sw[binary mask e.g. 11111111 (dec 127) for "all on"][user][password]
+		
 		byte powerPointBinaryMask;
 		
 		if(on) {
 			powerPointBinaryMask = 127;
+			// 11111111 --> all on
 		}
 		else {
 			powerPointBinaryMask = 0;
+			// 00000000 --> all off
 		}
 		
 		ByteBuffer buf = ByteBuffer.allocate(100);
