@@ -114,6 +114,7 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		this.extLead = this.extLeadManager.getExtLeadFromView(this);
 		this.extLead.sendUpdateMessage();
 	}
 	
