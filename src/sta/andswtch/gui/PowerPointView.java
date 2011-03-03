@@ -35,7 +35,6 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 			switch (msg.what) {
 				case 1: {
 					checkState();
-					onOff.setChecked(true);
 					break;
 				}
 				case 2: {

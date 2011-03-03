@@ -7,19 +7,15 @@ public class ResponseProcessor {
 
 	private static final String TAG = ResponseProcessor.class.getName();
 	
-	private ExtensionLeadManager extLeadManager;
+
 	private ExtensionLead extLead;
 	private List<PowerPoint> powerPoints;
 	private final int OFFSET = 5; //at position 6 starts the powerpoint information  
 
-	public ResponseProcessor(List<PowerPoint> powerPoints) {
+	public ResponseProcessor(List<PowerPoint> powerPoints, ExtensionLead extLead) {
 		this.powerPoints = powerPoints;
-		try {
-			this.extLeadManager = ExtensionLeadManager.getInstance();
-			this.extLead = this.extLeadManager.getExtLead();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		this.extLead = extLead;
+
 	}
 
 	public void processResponse(String response) {

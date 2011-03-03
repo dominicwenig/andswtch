@@ -11,20 +11,15 @@ public class ConnectionManager implements IConnectionManager {
 
 	private static final String TAG = ConnectionManager.class.getName();
 	
-	private ExtensionLeadManager extLeadManager;
 	private ExtensionLead extLead;
 	private Config config;
 	private Sender sender;
 	private Receiver receiver;
 
-	public ConnectionManager(Config config) {
+	public ConnectionManager(Config config, ExtensionLead extLead) {
 		this.config = config;
-		try {
-			this.extLeadManager = ExtensionLeadManager.getInstance();
-			this.extLead = this.extLeadManager.getExtLead();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+				this.extLead = extLead;
+
 		this.sender = new Sender();
 		this.receiver = new Receiver(this);
 	}

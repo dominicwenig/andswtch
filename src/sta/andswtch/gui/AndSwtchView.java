@@ -64,13 +64,15 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.andswtch);
-
 		// create the extension lead
 		this.extLeadManager = ExtensionLeadManager.getInstance(this);
 		this.extLead = this.extLeadManager.getExtLeadFromView(this);
 		this.time = new Time();
+		
+		super.onCreate(savedInstanceState);
+		this.setContentView(R.layout.andswtch);
+
+
 		this.init();
 	}
 

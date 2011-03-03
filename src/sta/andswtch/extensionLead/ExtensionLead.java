@@ -25,11 +25,11 @@ public class ExtensionLead implements IExtensionLead {
 	private void init() {
 		this.powerPoints = new ArrayList<PowerPoint>();
 		this.config = new Config(this.currentView.getAppContext());
-		this.connectionManager = new ConnectionManager(this.config);
+		this.connectionManager = new ConnectionManager(this.config, this);
 		for (int id = 1; id <= POWERPOINTCNT; id++) {
 			this.addPowerPoint(id - 1, "No. " + id, false, false);
 		}
-		this.responseProcessor = new ResponseProcessor(this.powerPoints);
+		this.responseProcessor = new ResponseProcessor(this.powerPoints, this);
 		this.commandGenerator = new CommandGenerator(this.config);
 	}
 	
@@ -64,7 +64,7 @@ public class ExtensionLead implements IExtensionLead {
 
 	public void updateDatastructure(String response) {
 		if (this.responseProcessor == null) {
-			this.responseProcessor = new ResponseProcessor(this.powerPoints);
+			this.responseProcessor = new ResponseProcessor(this.powerPoints, this);
 		}
 		this.responseProcessor.processResponse(response);
 		this.currentView.updateActivity();
