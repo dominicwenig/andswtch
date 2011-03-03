@@ -60,6 +60,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		this.extLeadManager = ExtensionLeadManager.getInstance(this);
 		this.extLead = this.extLeadManager.getExtLeadFromView(this);
 		this.init();
+		this.checkState();
 	}
 	
 	private void init() {
