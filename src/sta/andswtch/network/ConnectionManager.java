@@ -4,20 +4,27 @@ import java.io.IOException;
 
 import sta.andswtch.extensionLead.Config;
 import sta.andswtch.extensionLead.ExtensionLead;
+import sta.andswtch.extensionLead.ExtensionLeadManager;
 import android.util.Log;
 
 public class ConnectionManager implements IConnectionManager {
 
 	private static final String TAG = ConnectionManager.class.getName();
-
+	
+	private ExtensionLeadManager extLeadManager;
+	private ExtensionLead extLead;
 	private Config config;
 	private Sender sender;
 	private Receiver receiver;
-	private ExtensionLead extLead;
 
-	public ConnectionManager(Config config, ExtensionLead extLead) {
+	public ConnectionManager(Config config) {
 		this.config = config;
-		this.extLead = extLead;
+		try {
+			this.extLeadManager = ExtensionLeadManager.getInstance();
+			this.extLead = this.extLeadManager.getExtLead();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		this.sender = new Sender();
 		this.receiver = new Receiver(this);
 	}

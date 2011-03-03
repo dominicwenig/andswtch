@@ -5,11 +5,12 @@ import java.nio.ByteBuffer;
 import android.util.Log;
 
 public class CommandGenerator {
-
-	private Config config;
+	
 	private static final String TAG = CommandGenerator.class.getName();
 	private static final String GET_STATUS = "wer da?";
-
+    
+	private Config config;
+	
 	public CommandGenerator(Config config) {
 		this.config = config;
 	}

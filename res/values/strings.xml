@@ -23,14 +23,14 @@
 <!-- PS - PreferenceScreen -->
 <!-- CAT - Category --><!-- SUM - Summary --><!-- DEF - Default -->
 <!-- PORT-SETTINGS -->
-  	<string name="ps_cat_portsettings">Port Settings</string>
-  	<string name="ps_senderport_key">SenderPort</string>
-  	<string name="ps_senderport">App Sender Port</string>
-  	<string name="ps_senderport_sum">Change the applications sender port number</string>
+  <string name="ps_cat_portsettings">Port Settings</string>
+  <string name="ps_senderport_key">SenderPort</string>
+  <string name="ps_senderport">App Sender Port</string>
+  <string name="ps_senderport_sum">Change the applications sender port number</string>
 	<string name="ps_senderport_def">1132</string>
-  	<string name="ps_senderport_dm">Valid applications Sender Port [Default:1132]</string>
+  <string name="ps_senderport_dm">Valid applications Sender Port [Default:1132]</string>
   	
-    <string name="ps_receiverport_key">ReceiverPort</string>
+  <string name="ps_receiverport_key">ReceiverPort</string>
 	<string name="ps_receiverport">App Receiver Port</string>
 	<string name="ps_receiverport_sum">Change the applications receiver port number</string>
 	<string name="ps_receiverport_def">1133</string>
@@ -38,7 +38,7 @@
 
 <!-- IP-SETTINGS -->	
 	<string name="ps_cat_ipsettings">IP Settings</string>
-    <string name="ps_ipaddress_key">IP</string>
+  <string name="ps_ipaddress_key">IP</string>
 	<string name="ps_ipaddress">IP Address</string>
 	<string name="ps_ipaddress_sum">Change the ip address</string>
 	<string name="ps_ipaddress_def">192.168.178.21</string>

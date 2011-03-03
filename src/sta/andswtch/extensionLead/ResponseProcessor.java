@@ -6,14 +6,20 @@ import android.util.Log;
 public class ResponseProcessor {
 
 	private static final String TAG = ResponseProcessor.class.getName();
-
-	private List<PowerPoint> powerPoints;
+	
+	private ExtensionLeadManager extLeadManager;
 	private ExtensionLead extLead;
+	private List<PowerPoint> powerPoints;
 	private final int OFFSET = 5; //at position 6 starts the powerpoint information  
 
-	public ResponseProcessor(List<PowerPoint> powerPoints, ExtensionLead extLead) {
+	public ResponseProcessor(List<PowerPoint> powerPoints) {
 		this.powerPoints = powerPoints;
-		this.extLead = extLead;
+		try {
+			this.extLeadManager = ExtensionLeadManager.getInstance();
+			this.extLead = this.extLeadManager.getExtLead();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void processResponse(String response) {
@@ -31,7 +37,7 @@ public class ResponseProcessor {
 		Log.d(TAG, "this response consist of " + reParts.length + " parts.");
 
 		if (reParts.length == 16) {
-			// the power points are at the positions 7 - 14
+			// the powerpoints are at the positions 7 - 14
 			// -> array starts with 0
 			// -> reParts[6] - reParts[13]
 			for (int i = 1; i <= this.powerPoints.size(); i++) {
@@ -39,15 +45,18 @@ public class ResponseProcessor {
 						+ " has the value " + reParts[i + OFFSET]);
 				// 0 - off - false
 				// 1 - on - true
-				if (reParts[i + OFFSET].endsWith("0")) {
+				String wholeName = new String(reParts[i + OFFSET]);
+				if (wholeName.endsWith("0")) {
 					this.setState(i, false);
-				} else if(reParts[i + OFFSET].endsWith("1")) {
+				} else if(wholeName.endsWith("1")) {
 					this.setState(i, true);
 				} else {
 					Log.w(TAG, "error while parsing respose: powerpoint wrong");
 					this.extLead.errorOccured("error while parsing respose: powerpoint wrong");
 				}
-				this.powerPoints.get(i - 1).setName(reParts[i + OFFSET].substring(0, reParts[i + OFFSET].length() - 2));
+				// set powerpoint name
+				String ppName = wholeName.substring(0, wholeName.length() - 2);
+				this.setName(i, ppName);
 			}
 
 			int seg_dis = Integer.parseInt(reParts[14]);
@@ -71,9 +80,8 @@ public class ResponseProcessor {
 				this.extLead.errorOccured("Error occured: check username and password");
 				Log.e(TAG, "Error occured within the response");
 			} else {
-				this.extLead.errorOccured("Response didn't match pattern: please check name of powerpoints in webinterface");
-				Log.e(TAG,
-						"To many parts received, please check the names of the power points");
+				this.extLead.errorOccured("Response didn't match pattern: please check powerpoint names with the aid of the webinterface");
+				Log.e(TAG, "To many parts received, please check the names of the power points");
 			}
 		}
 
@@ -82,7 +90,11 @@ public class ResponseProcessor {
 	private void setState(int id, boolean on) {
 		this.powerPoints.get(id - 1).setState(on);
 	}
-
+	
+	private void setName(int id, String name) {
+		this.powerPoints.get(id - 1).setName(name);
+	}
+	
 	private void setEnabled(int id, boolean enabled) {
 		this.powerPoints.get(id - 1).setEnable(enabled);
 	}

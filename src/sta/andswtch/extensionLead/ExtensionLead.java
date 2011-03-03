@@ -3,54 +3,39 @@ package sta.andswtch.extensionLead;
 import java.util.ArrayList;
 import java.util.List;
 
-import sta.andswtch.gui.AndSwtch;
+import sta.andswtch.gui.IAndSwtchViews;
 import sta.andswtch.network.ConnectionManager;
 
 public class ExtensionLead implements IExtensionLead {
+	
+	public static final int POWERPOINTCNT = 8;
 	
 	private List<PowerPoint> powerPoints;
 	private Config config;
 	private ConnectionManager connectionManager;
 	private ResponseProcessor responseProcessor;
 	private CommandGenerator commandGenerator;
-	private AndSwtch andSwtch;
-	public static final int POWERPOINTCNT = 8;
-
-	// test static final variables
-	/*private static final String testHost = "192.168.178.21";
-	private static final int testExtensionLeadSenderPort = 1133;
-	private static final int testExtensionLeadReceiverPort = 1132;
-	private static final String testUser = "admin";
-	private static final String testPassword = "anel";*/
+	private IAndSwtchViews currentView;
 	
-	// testing powerpointview
-	public ExtensionLead() {
-		this.init();
-	}
-	
-	public ExtensionLead(AndSwtch andSwtch) {
-		this.andSwtch = andSwtch;
+	public ExtensionLead(IAndSwtchViews currentView) {
+		this.currentView = currentView;
 		this.init();
 	}
 	
 	private void init() {
 		this.powerPoints = new ArrayList<PowerPoint>();
-		this.config = new Config(andSwtch.getApplicationContext());
-		this.connectionManager = new ConnectionManager(this.config, this);
+		this.config = new Config(this.currentView.getAppContext());
+		this.connectionManager = new ConnectionManager(this.config);
 		for (int id = 1; id <= POWERPOINTCNT; id++) {
 			this.addPowerPoint(id - 1, "No. " + id, false, false);
 		}
-		this.responseProcessor = new ResponseProcessor(this.powerPoints, this);
+		this.responseProcessor = new ResponseProcessor(this.powerPoints);
 		this.commandGenerator = new CommandGenerator(this.config);
 	}
 	
-	/*public void setConfig(String host, int portIn, int portOut, String user, String password) {
-		if (this.config == null) {
-			this.config = new Config(host, portIn, portOut, user, password);
-		} else {
-			this.config.setConfig(host, portIn, portOut, user, password);
-		}
-	}*/
+	public void setCurrentView(IAndSwtchViews v) {
+		this.currentView = v;
+	}
 
 	public void switchState(int id) {
 		boolean on = this.powerPoints.get(id - 1).isOn();
@@ -79,14 +64,14 @@ public class ExtensionLead implements IExtensionLead {
 
 	public void updateDatastructure(String response) {
 		if (this.responseProcessor == null) {
-			this.responseProcessor = new ResponseProcessor(this.powerPoints, this);
+			this.responseProcessor = new ResponseProcessor(this.powerPoints);
 		}
 		this.responseProcessor.processResponse(response);
-		this.andSwtch.updateActivity();
+		this.currentView.updateActivity();
 	}
 
 	public void errorOccured(String message){
-		this.andSwtch.showErrorMessage(message);
+		this.currentView.showErrorMessage(message);
 	}
 
 	private void addPowerPoint(int id, String name, boolean enable, boolean on) {
