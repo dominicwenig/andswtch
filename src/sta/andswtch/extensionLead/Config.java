@@ -58,5 +58,14 @@ public class Config extends Application {
 		Log.d(TAG, "Password is:" + response);
 		return response;
 	}
+	
+	public int getUpdateInterval() {
+		int response = 0;
+		if(this.preferences.getBoolean("RefreshOnOff", false)) {
+			response = Integer.parseInt(this.preferences.getString("RefreshInterval", "0"));
+		}
+		return response;
+	}
+	
 
 }

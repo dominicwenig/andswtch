@@ -37,7 +37,7 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 				case 1: {
-					for (int i = 1; i <= buttons.size(); i++) {
+					for (int i = 1; i <= ExtensionLead.POWERPOINTCNT; i++) {
 						checkState(buttons.get(i - 1));
 					}
 					break;

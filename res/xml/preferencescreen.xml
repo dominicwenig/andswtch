@@ -26,7 +26,7 @@
     <PreferenceCategory
       android:title="@string/ps_cat_ipsettings">
 	      <EditTextPreference
-	        style="@style/s.phone"
+	        style="@style/s"
 	        android:key="IP"
 	        android:title="@string/ps_ipaddress"
 	        android:summary="@string/ps_ipaddress_sum"
@@ -48,7 +48,7 @@
           android:dependency="RefreshOnOff"
           android:title="@string/ps_autorefreshinterval"
           android:summary="@string/ps_autorefreshinterval_sum"
-          android:defaultValue="ps_autorefreshinterval_def" 
+          android:defaultValue="@string/ps_autorefreshinterval_def" 
           android:dialogMessage="@string/ps_autorefreshinterval_dm" >
         </EditTextPreference>
     </PreferenceCategory>
