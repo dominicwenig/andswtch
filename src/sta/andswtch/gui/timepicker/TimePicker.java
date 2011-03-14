@@ -110,7 +110,7 @@ public class TimePicker extends FrameLayout {
 
         // digits of hour
         mHourPicker = (NumberPicker) findViewById(R.id.hour);
-        mHourPicker.setRange(0, 99);
+        mHourPicker.setRange(0, 17);
         mHourPicker.setSpeed(100);
         mHourPicker.setFormatter(NumberPicker.TWO_DIGIT_FORMATTER);
         mHourPicker.setOnChangeListener(new NumberPicker.OnChangedListener() {

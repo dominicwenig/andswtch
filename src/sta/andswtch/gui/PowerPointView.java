@@ -27,10 +27,10 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 	private TextView delayTime;
 	private ToggleButton onOff;
 	private int onOffTag;
-	private int sumSeconds = 1;
+	private int sumSeconds = 0;
 	private int hours = 0;
 	private int minutes = 0;
-	private int seconds = 1;
+	private int seconds = 0;
 	
 	private Handler handlerEvent = new Handler() {
 		@Override
@@ -102,7 +102,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 	@Override
 	public void onResume() {
 		super.onResume();
-		this.delayTime.setText("Delay: " + this.sumSeconds + " sec");
+		setDelayTime(this.sumSeconds);
 	}
 	
 	public Context getAppContext() {
@@ -146,79 +146,21 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 
 		     public void onTick(long millisUntilFinished) {
 		    	 setDelayTime((int)(millisUntilFinished/1000));
-		         delayTime.setText("Delay: " + millisUntilFinished / 1000 + " sec");
 		     }
 
 		     public void onFinish() {
-		         delayTime.setText("done!");
+		         setDelayTime(sumSeconds);
 		         extLead.sendUpdateMessage();
 		     }
 		  }.start();
 	}
 	
 	public void setDelayTime(int seconds) {
-		this.delayTime.setText("Delay: " + seconds + " sec");
-	}
-	
-	
-	
-	
-	public void increase(View v) {
-		int tmpSec = this.sumSeconds;
-		if(v.getTag().equals("h_i")) {
-			tmpSec += 60*60;
-		}
-		else if(v.getTag().equals("m_i")) {
-			tmpSec += 60;
-		}
-		else if(v.getTag().equals("s_i")) {
-			tmpSec++;
-		}
-		if(tmpSec < 65535) {
-			if(v.getTag().equals("h_i")) {
-				this.hours++;
-				this.hoursEt.setText(""+this.hours);
-			}
-			else if(v.getTag().equals("m_i")) {
-				this.minutes++;
-				this.minutesEt.setText(""+this.minutes);
-			}
-			else if(v.getTag().equals("s_i")) {
-				this.seconds++;
-				this.secondsEt.setText(""+this.seconds);
-			}
-			this.sumSeconds = tmpSec;
-			this.delayTime.setText("Delay: " + this.sumSeconds + " sec");
-		}
-	}
-	
-	public void decrease(View v) {
-		int tmpSec = this.sumSeconds;
-		if(v.getTag().equals("h_d")) {
-			tmpSec -= 60*60;
-		}
-		else if(v.getTag().equals("m_d")) {
-			tmpSec -= 60;
-		}
-		else if(v.getTag().equals("s_d")) {
-			tmpSec--;
-		}
-		if(tmpSec > 0) {
-			if(v.getTag().equals("h_d")) {
-				this.hours--;
-				this.hoursEt.setText(""+this.hours);
-			}
-			else if(v.getTag().equals("m_d")) {
-				this.minutes--;
-				this.minutesEt.setText(""+this.minutes);
-			}
-			else if(v.getTag().equals("s_d")) {
-				this.seconds--;
-				this.secondsEt.setText(""+this.seconds);
-			}
-			this.sumSeconds = tmpSec;
-			this.delayTime.setText("Delay: " + this.sumSeconds + " sec");
-		}
+		int hour = seconds/(60*60);
+		int min = (seconds%(60*60)/60);
+		int sec = (seconds%(60));
+		
+		this.delayTime.setText("Delay: " + hour+ ":"+ min +":"+ sec);
 	}
 	
 	private void checkState() {
