@@ -42,99 +42,13 @@
         </ToggleButton>
     </LinearLayout>
 
-<!-- DELAY -->
-    <TableLayout
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="10dip" 
-      android:layout_marginRight="3dip" 
-      android:layout_marginLeft="3dip" >
-      
-	    <TableRow>
-		    <Button
-		      android:layout_weight="1.0"
-		      android:text="+"
-		      android:onClick="increase"
-		      android:tag="h_i">
-		    </Button>
-		    <Button
-  		    android:layout_weight="1.0"
-		      android:text="+"
-		      android:onClick="increase"
-		      android:tag="m_i">
-		    </Button>
-		    <Button
-		      android:layout_weight="1.0"
-		      android:text="+"
-		      android:onClick="increase"
-		      android:tag="s_i">
-		    </Button>
-	    </TableRow>
-	    
-	    <TableRow>
-	      <EditText android:id="@+id/hoursEt"
-	        android:layout_weight="1.0"
-	        android:gravity="center"
-	        android:saveEnabled="true"
-	        android:lines="1"
-	        android:text="0">
-	      </EditText>
-	      <EditText android:id="@+id/minutesEt"
-	        android:layout_weight="1.0"
-	        android:gravity="center"
-	        android:saveEnabled="true"
-          android:lines="1"
-	        android:text="0">
-	      </EditText>
-	      <EditText android:id="@+id/secondsEt"
-	        android:layout_weight="1.0"
-	        android:gravity="center"
-	        android:saveEnabled="true"
-          android:lines="1"
-	        android:text="1">
-	      </EditText>
-      </TableRow>
-	    
-	    <TableRow>
-	      <Button
-	        android:layout_weight="1.0"
-          android:text="-"
-          android:onClick="decrease"
-          android:tag="h_d">
-        </Button>
-        <Button
-          android:layout_weight="1.0"
-          android:text="-"
-          android:onClick="decrease"
-          android:tag="m_d">
-        </Button>
-        <Button
-          android:layout_weight="1.0"
-          android:text="-"
-          android:onClick="decrease"
-          android:tag="s_d">
-        </Button>
-	    </TableRow>
-	    
-	    <TableRow>
-	      <TextView
-	        android:layout_weight="1.0"
-	        android:gravity="center"
-	        android:text="@string/hours" >
-	      </TextView>
-	      <TextView
-	        android:layout_weight="1.0"
-	        android:gravity="center"
-	        android:text="@string/minutes" >
-	      </TextView>
-	      <TextView
-	        android:layout_weight="1.0"
-	        android:gravity="center"
-	        android:text="@string/seconds" >
-	      </TextView>
-	    </TableRow>
-      
-    </TableLayout>
+    
+
+    <sta.andswtch.gui.timepicker.TimePicker xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/timePicker" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:padding="5dip"/>
+    
+
+    
+    
   
 <!-- TEXTVIEW for Delay in seconds -->  
     <LinearLayout

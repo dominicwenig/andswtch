@@ -12,6 +12,23 @@ public final class R {
     }
     public static final class drawable {
         public static final int icon=0x7f020000;
+        public static final int timepicker_down_btn=0x7f020001;
+        public static final int timepicker_down_disabled=0x7f020002;
+        public static final int timepicker_down_disabled_focused=0x7f020003;
+        public static final int timepicker_down_normal=0x7f020004;
+        public static final int timepicker_down_pressed=0x7f020005;
+        public static final int timepicker_down_selected=0x7f020006;
+        public static final int timepicker_input=0x7f020007;
+        public static final int timepicker_input_disabled=0x7f020008;
+        public static final int timepicker_input_normal=0x7f020009;
+        public static final int timepicker_input_pressed=0x7f02000a;
+        public static final int timepicker_input_selected=0x7f02000b;
+        public static final int timepicker_up_btn=0x7f02000c;
+        public static final int timepicker_up_disabled=0x7f02000d;
+        public static final int timepicker_up_disabled_focused=0x7f02000e;
+        public static final int timepicker_up_normal=0x7f02000f;
+        public static final int timepicker_up_pressed=0x7f020010;
+        public static final int timepicker_up_selected=0x7f020011;
     }
     public static final class id {
         public static final int Button01=0x7f080005;
@@ -24,7 +41,7 @@ public final class R {
         public static final int Button08=0x7f08001a;
         public static final int Button09=0x7f08001d;
         public static final int Button10=0x7f080020;
-        public static final int DelayTime=0x7f080026;
+        public static final int DelayTime=0x7f080027;
         public static final int LL00=0x7f080001;
         public static final int LL01=0x7f080003;
         public static final int LL02=0x7f080006;
@@ -47,19 +64,25 @@ public final class R {
         public static final int TextView10=0x7f08001f;
         public static final int allOff=0x7f08001e;
         public static final int allOn=0x7f08001b;
-        public static final int exit=0x7f080029;
-        public static final int hoursEt=0x7f080023;
-        public static final int minutesEt=0x7f080024;
-        public static final int onOff=0x7f080022;
-        public static final int onOffDelay=0x7f080027;
-        public static final int ppName=0x7f080021;
+        public static final int decrement=0x7f080023;
+        public static final int exit=0x7f08002d;
+        public static final int hour=0x7f080029;
+        public static final int increment=0x7f080021;
+        public static final int minute=0x7f08002a;
+        public static final int onOff=0x7f080025;
+        public static final int onOffDelay=0x7f080028;
+        public static final int ppName=0x7f080024;
         public static final int refreshtime=0x7f080000;
-        public static final int secondsEt=0x7f080025;
-        public static final int settings=0x7f080028;
+        public static final int second=0x7f08002b;
+        public static final int settings=0x7f08002c;
+        public static final int timePicker=0x7f080026;
+        public static final int timepicker_input=0x7f080022;
     }
     public static final class layout {
         public static final int andswtch=0x7f030000;
-        public static final int powerpoint=0x7f030001;
+        public static final int number_picker=0x7f030001;
+        public static final int powerpoint=0x7f030002;
+        public static final int time_picker=0x7f030003;
     }
     public static final class menu {
         public static final int optionsmenu=0x7f070000;

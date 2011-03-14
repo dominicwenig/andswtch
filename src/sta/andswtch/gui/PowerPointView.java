@@ -3,8 +3,11 @@ package sta.andswtch.gui;
 import sta.andswtch.R;
 import sta.andswtch.extensionLead.ExtensionLead;
 import sta.andswtch.extensionLead.ExtensionLeadManager;
+import sta.andswtch.gui.timepicker.TimePicker;
+import sta.andswtch.gui.timepicker.TimePicker.OnTimeChangedListener;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
@@ -52,6 +55,10 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		}
 	};
 	
+
+	
+	
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -67,9 +74,6 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		this.name = (TextView) findViewById(R.id.ppName);
 		this.delayTime = (TextView) findViewById(R.id.DelayTime);
 		this.onOff = (ToggleButton) findViewById(R.id.onOff);
-		this.hoursEt = (EditText) findViewById(R.id.hoursEt);
-		this.minutesEt = (EditText) findViewById(R.id.minutesEt);
-		this.secondsEt = (EditText) findViewById(R.id.secondsEt);
 
 		Bundle extra = getIntent().getExtras();
 		String tagString = extra.getString("powerPoint");
@@ -78,6 +82,21 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 			this.onOffTag = Integer.parseInt(tagString);
 			this.name.setText(this.extLead.getPowerPointName(this.onOffTag));
 		}
+		
+		TimePicker timePicker= (TimePicker) findViewById(R.id.timePicker);
+		timePicker.setOnTimeChangedListener(new OnTimeChangedListener() {
+			
+			public void onTimeChanged(TimePicker view, int hour, int minute, int second) {
+				hours = hour;
+				minutes = minute;
+				seconds = second;
+				sumSeconds = seconds + minutes*60 + hours * 60*60;
+				setDelayTime(sumSeconds);
+				
+			}
+		});
+		
+		
 	}
 	
 	@Override
@@ -110,12 +129,39 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 			if (tag == 0) {
 				//switch delayed
 				this.extLead.sendState(this.onOffTag, false, this.sumSeconds);
+				startTimer();
 			}
 			else {
 				this.extLead.switchState(tag);
 			}
 		}
+
+		
+		
+		
 	}
+	
+	public void startTimer(){
+		new CountDownTimer(sumSeconds*1000, 1000) {
+
+		     public void onTick(long millisUntilFinished) {
+		    	 setDelayTime((int)(millisUntilFinished/1000));
+		         delayTime.setText("Delay: " + millisUntilFinished / 1000 + " sec");
+		     }
+
+		     public void onFinish() {
+		         delayTime.setText("done!");
+		         extLead.sendUpdateMessage();
+		     }
+		  }.start();
+	}
+	
+	public void setDelayTime(int seconds) {
+		this.delayTime.setText("Delay: " + seconds + " sec");
+	}
+	
+	
+	
 	
 	public void increase(View v) {
 		int tmpSec = this.sumSeconds;
