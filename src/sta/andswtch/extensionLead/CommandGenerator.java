@@ -1,6 +1,7 @@
 package sta.andswtch.extensionLead;
 
 import java.nio.ByteBuffer;
+import java.util.List;
 
 import android.util.Log;
 
@@ -42,7 +43,7 @@ public class CommandGenerator {
 		// TODO evaluate, if only switching off is supported by the
 		// anel-extensionLead and take out the boolean if necessary
 		
-		// "SW_[on|off][id][delay as 16bit integer][user][password]
+		// "St_[on|off][id][delay as 16bit integer][user][password]
 
 		byte[] begin = "St_".getBytes();
 		byte[] byteStatus = evaluateOnBoolean(on).getBytes();
@@ -87,20 +88,37 @@ public class CommandGenerator {
 		return GET_STATUS;
 	}
 
-	public byte[] generateSwitchAllCommand(boolean on) {
+	public byte[] generateSwitchAllCommand(boolean on, List<PowerPoint> powerPoints) {
 		
 		// "Sw[binary mask e.g. 11111111 (dec 127) for "all on"][user][password]
 		
-		byte powerPointBinaryMask;
 		
-		if(on) {
-			powerPointBinaryMask = 127;
-			// 11111111 --> all on
+		int intPowerPointBinaryMask = 0;
+		
+		for(int i = powerPoints.size()-1 ; i>=0; i--){
+			PowerPoint p = powerPoints.get(i);
+			//shift all the bits 1 to the left to add a value
+			intPowerPointBinaryMask = intPowerPointBinaryMask<<1;
+			//lsb is now 0
+			
+			if(p.isEnabled()){
+				//change lsb to 1 if pp is enabled and we want to switch on
+				if(on){
+					intPowerPointBinaryMask+=1;
+				}
+			}
+			else {
+				//change lsb to 1 if pp is disabled and the current state is enabled
+				if(p.isOn()){
+					intPowerPointBinaryMask+=1;
+				}
+			}
 		}
-		else {
-			powerPointBinaryMask = 0;
-			// 00000000 --> all off
-		}
+		
+
+		Log.d(TAG, "The powerpointBinarymask is " + Integer.toBinaryString(intPowerPointBinaryMask));
+		
+		byte powerPointBinaryMask = (byte)intPowerPointBinaryMask;
 		
 		ByteBuffer buf = ByteBuffer.allocate(100);
 		

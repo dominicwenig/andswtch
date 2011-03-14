@@ -17,6 +17,7 @@ public class ExtensionLead implements IExtensionLead {
 	private CommandGenerator commandGenerator;
 	private IAndSwtchViews currentView;
 	
+	
 	public ExtensionLead(IAndSwtchViews currentView) {
 		this.currentView = currentView;
 		this.init();
@@ -49,12 +50,8 @@ public class ExtensionLead implements IExtensionLead {
 	}
 
 	public void sendStateAll(boolean on) {
-		byte[] command = this.commandGenerator.generateSwitchAllCommand(on);
+		byte[] command = this.commandGenerator.generateSwitchAllCommand(on, powerPoints);
 		this.connectionManager.sendAndReceive(command);
-	}
-
-	public void sendStateAll(boolean on, int time) {
-		// TODO implement this method
 	}
 
 	public void sendUpdateMessage() {
@@ -113,5 +110,5 @@ public class ExtensionLead implements IExtensionLead {
 	public String getPassword() {
 		return this.config.getPassword();
 	}
-
+	
 }

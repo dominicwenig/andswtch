@@ -9,8 +9,6 @@ public interface IExtensionLead {
 
 	public abstract void sendStateAll(boolean on);
 
-	public abstract void sendStateAll(boolean on, int time);
-
 	public abstract void sendUpdateMessage();
 
 	public abstract void updateDatastructure(String response);

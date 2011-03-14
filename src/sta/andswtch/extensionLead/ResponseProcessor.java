@@ -55,9 +55,8 @@ public class ResponseProcessor {
 				this.setName(i, ppName);
 			}
 
-			Integer seg_dis = Integer.parseInt(reParts[14]);
-			byte seg_dis_byte = seg_dis.byteValue();
-			//TODO extlead setbyte
+			Integer seg_dis = Integer.parseInt(reParts[14]);		
+			
 			String binaryString = Integer.toBinaryString(seg_dis);
 
 			Log.d(TAG, "Segment Disabled Value is " + seg_dis + " represents "
