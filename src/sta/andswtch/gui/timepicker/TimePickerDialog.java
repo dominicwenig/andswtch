@@ -137,7 +137,7 @@ public class TimePickerDialog extends AlertDialog implements OnClickListener,
             getButton(BUTTON_NEGATIVE).setEnabled(true);
         } else {
             getButton(BUTTON_POSITIVE).setEnabled(false);
-            getButton(BUTTON_NEGATIVE).setEnabled(false);
+            getButton(BUTTON_NEGATIVE).setEnabled(true);
         }
         updateTitle(hour, minute, second);
     }

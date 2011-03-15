@@ -31,7 +31,13 @@ public class Receiver implements Runnable {
 	public void start(int port) throws IOException {
 
 		InetAddress localIP = getLocalIpAddress();
-		String localIPString = localIP.getHostAddress();
+		String localIPString;
+		if(localIP==null){
+			throw new IOException("Cannot get a local IP Address, are you connected to a network?");
+		}else{
+			 localIPString = localIP.getHostAddress();
+		}
+		
 
 		Log.d(TAG, "try to create a DatagramSocket" + localIPString + ":"
 				+ port);
