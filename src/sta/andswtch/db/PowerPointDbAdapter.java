@@ -49,7 +49,7 @@ import android.util.Log;
                     + "endTime String not null, hours integer not null," 
                     + "minutes integer not null,seconds integer not null);";
 
-    private static final String DATABASE_NAME = "extensiLead";
+    private static final String DATABASE_NAME = "andswtch";
     private static final String DATABASE_TABLE = "powerPoints";
     private static final int DATABASE_VERSION = 1;
 
@@ -66,7 +66,7 @@ import android.util.Log;
             db.execSQL(DATABASE_CREATE);
             for(int i=0; i<ExtensionLead.POWERPOINTCNT; i++){
             	Log.d(TAG, "creating database entry");
-                addRow(db, 1, 1, 1);	
+                addRow(db, 0, 0, 0);	
             }
 
         }
