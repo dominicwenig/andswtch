@@ -42,11 +42,16 @@
         </ToggleButton>
     </LinearLayout>
 
-    
-
-    <sta.andswtch.gui.timepicker.TimePicker xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/timePicker" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:padding="5dip"/>
-    
-
+       
+    <TextView android:id="@+id/counter" 
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content" 
+        android:gravity="center"
+        android:textSize="70sp"
+        android:clickable="true"
+        android:onClick="selectTime"
+        android:text="00:00:00"
+    />
     
     
   
@@ -57,18 +62,20 @@
       android:layout_marginTop="10dip" 
       android:orientation="horizontal"
       android:gravity="center" >  
-			  <TextView android:id="@+id/DelayTime" 
-			    android:layout_width="fill_parent" 
-			    android:layout_height="wrap_content"
-			    android:layout_weight="1.0" 
-			    android:text="Delay: " >
-			  </TextView>
 			  <Button android:id="@+id/onOffDelay" 
-			    android:layout_width="fill_parent"
+			  android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
 		      android:layout_weight="1.0"
 		      android:text="@string/onOffDelay"
 		      android:onClick="onOff"
+		      android:tag="0" >
+		    </Button>
+		    <Button android:id="@+id/setTime" 
+			  android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:layout_weight="1.0"
+		      android:text="@string/setTime"
+		      android:onClick="selectTime"
 		      android:tag="0" >
 		    </Button>
 	  </LinearLayout>

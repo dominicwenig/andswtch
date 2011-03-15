@@ -83,8 +83,8 @@ public class ConnectionManager implements IConnectionManager {
 	 */
 	public void sendAndReceive(byte[] command) {
 		try {
-			this.send(command);
 			this.startReceive();
+			this.send(command);
 		} catch (IOException e) {
 			e.printStackTrace();
 			this.errorAlert("failed to send the command, are you connected to a network?");

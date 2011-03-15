@@ -13,7 +13,9 @@
   <string name="hours">Hours</string>
   <string name="minutes">Minutes</string>
   <string name="seconds">Seconds</string>
-  <string name="onOffDelay">Delayed Off</string>
+  <string name="onOffDelay">Start Delay</string>
+  <string name="restartDelay">Restart Delay</string>
+  <string name="setTime">Choose Time</string>
   
 <!-- OM - OptionsMenu -->	
 	<string name="om_refresh">Refresh</string>
@@ -69,4 +71,10 @@
 <!-- OTHER-SETTINGS -->
 	<string name="ps_cat_other">Others</string>
 	<string name="ps_help">Help</string>
+	
+<!-- Time Picker -->
+
+<string name="tp_title_text">Delay</string>
+<string name="tp_countdown_start">Start</string>
+<string name="tp_cancel_txt">Cancel</string>
 </resources>

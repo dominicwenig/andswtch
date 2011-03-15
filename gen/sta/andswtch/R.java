@@ -11,24 +11,25 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int icon=0x7f020000;
-        public static final int timepicker_down_btn=0x7f020001;
-        public static final int timepicker_down_disabled=0x7f020002;
-        public static final int timepicker_down_disabled_focused=0x7f020003;
-        public static final int timepicker_down_normal=0x7f020004;
-        public static final int timepicker_down_pressed=0x7f020005;
-        public static final int timepicker_down_selected=0x7f020006;
-        public static final int timepicker_input=0x7f020007;
-        public static final int timepicker_input_disabled=0x7f020008;
-        public static final int timepicker_input_normal=0x7f020009;
-        public static final int timepicker_input_pressed=0x7f02000a;
-        public static final int timepicker_input_selected=0x7f02000b;
-        public static final int timepicker_up_btn=0x7f02000c;
-        public static final int timepicker_up_disabled=0x7f02000d;
-        public static final int timepicker_up_disabled_focused=0x7f02000e;
-        public static final int timepicker_up_normal=0x7f02000f;
-        public static final int timepicker_up_pressed=0x7f020010;
-        public static final int timepicker_up_selected=0x7f020011;
+        public static final int ic_dialog_time=0x7f020000;
+        public static final int icon=0x7f020001;
+        public static final int timepicker_down_btn=0x7f020002;
+        public static final int timepicker_down_disabled=0x7f020003;
+        public static final int timepicker_down_disabled_focused=0x7f020004;
+        public static final int timepicker_down_normal=0x7f020005;
+        public static final int timepicker_down_pressed=0x7f020006;
+        public static final int timepicker_down_selected=0x7f020007;
+        public static final int timepicker_input=0x7f020008;
+        public static final int timepicker_input_disabled=0x7f020009;
+        public static final int timepicker_input_normal=0x7f02000a;
+        public static final int timepicker_input_pressed=0x7f02000b;
+        public static final int timepicker_input_selected=0x7f02000c;
+        public static final int timepicker_up_btn=0x7f02000d;
+        public static final int timepicker_up_disabled=0x7f02000e;
+        public static final int timepicker_up_disabled_focused=0x7f02000f;
+        public static final int timepicker_up_normal=0x7f020010;
+        public static final int timepicker_up_pressed=0x7f020011;
+        public static final int timepicker_up_selected=0x7f020012;
     }
     public static final class id {
         public static final int Button01=0x7f080005;
@@ -41,7 +42,6 @@ public final class R {
         public static final int Button08=0x7f08001a;
         public static final int Button09=0x7f08001d;
         public static final int Button10=0x7f080020;
-        public static final int DelayTime=0x7f080027;
         public static final int LL00=0x7f080001;
         public static final int LL01=0x7f080003;
         public static final int LL02=0x7f080006;
@@ -64,18 +64,20 @@ public final class R {
         public static final int TextView10=0x7f08001f;
         public static final int allOff=0x7f08001e;
         public static final int allOn=0x7f08001b;
+        public static final int counter=0x7f080026;
         public static final int decrement=0x7f080023;
-        public static final int exit=0x7f08002d;
+        public static final int exit=0x7f08002e;
         public static final int hour=0x7f080029;
         public static final int increment=0x7f080021;
         public static final int minute=0x7f08002a;
         public static final int onOff=0x7f080025;
-        public static final int onOffDelay=0x7f080028;
+        public static final int onOffDelay=0x7f080027;
         public static final int ppName=0x7f080024;
         public static final int refreshtime=0x7f080000;
         public static final int second=0x7f08002b;
-        public static final int settings=0x7f08002c;
-        public static final int timePicker=0x7f080026;
+        public static final int setTime=0x7f080028;
+        public static final int settings=0x7f08002d;
+        public static final int timePicker=0x7f08002c;
         public static final int timepicker_input=0x7f080022;
     }
     public static final class layout {
@@ -83,6 +85,7 @@ public final class R {
         public static final int number_picker=0x7f030001;
         public static final int powerpoint=0x7f030002;
         public static final int time_picker=0x7f030003;
+        public static final int time_picker_dialog=0x7f030004;
     }
     public static final class menu {
         public static final int optionsmenu=0x7f070000;
@@ -95,69 +98,76 @@ public final class R {
          */
         public static final int hours=0x7f050006;
         public static final int minutes=0x7f050007;
-        public static final int om_exit=0x7f05000c;
+        public static final int om_exit=0x7f05000e;
         /**  OM - OptionsMenu 
          */
-        public static final int om_refresh=0x7f05000a;
-        public static final int om_settings=0x7f05000b;
+        public static final int om_refresh=0x7f05000c;
+        public static final int om_settings=0x7f05000d;
         public static final int onOffDelay=0x7f050009;
-        public static final int ps_autorefresh=0x7f05001f;
-        public static final int ps_autorefresh_sum=0x7f050020;
-        public static final int ps_autorefreshinterval=0x7f050021;
-        public static final int ps_autorefreshinterval_def=0x7f050023;
-        public static final int ps_autorefreshinterval_dm=0x7f050024;
-        public static final int ps_autorefreshinterval_sum=0x7f050022;
+        public static final int ps_autorefresh=0x7f050021;
+        public static final int ps_autorefresh_sum=0x7f050022;
+        public static final int ps_autorefreshinterval=0x7f050023;
+        public static final int ps_autorefreshinterval_def=0x7f050025;
+        public static final int ps_autorefreshinterval_dm=0x7f050026;
+        public static final int ps_autorefreshinterval_sum=0x7f050024;
         /**  REFRESH-SETTINGS 
          */
-        public static final int ps_cat_autorefresh=0x7f05001e;
+        public static final int ps_cat_autorefresh=0x7f050020;
         /**  IP-SETTINGS 
          */
-        public static final int ps_cat_ipsettings=0x7f050018;
+        public static final int ps_cat_ipsettings=0x7f05001a;
         /**  OTHER-SETTINGS 
          */
-        public static final int ps_cat_other=0x7f050030;
+        public static final int ps_cat_other=0x7f050032;
         /**  PS - PreferenceScreen 
  CAT - Category 
  SUM - Summary 
  DEF - Default 
  PORT-SETTINGS 
          */
-        public static final int ps_cat_portsettings=0x7f05000d;
+        public static final int ps_cat_portsettings=0x7f05000f;
         /**  SECURITY-SETTINGS 
          */
-        public static final int ps_cat_securitysettings=0x7f050025;
-        public static final int ps_help=0x7f050031;
-        public static final int ps_ipaddress=0x7f05001a;
-        public static final int ps_ipaddress_def=0x7f05001c;
-        public static final int ps_ipaddress_dm=0x7f05001d;
-        public static final int ps_ipaddress_key=0x7f050019;
-        public static final int ps_ipaddress_sum=0x7f05001b;
-        public static final int ps_password=0x7f05002c;
-        public static final int ps_password_def=0x7f05002e;
-        public static final int ps_password_dm=0x7f05002f;
-        public static final int ps_password_key=0x7f05002b;
-        public static final int ps_password_sum=0x7f05002d;
-        public static final int ps_receiverport=0x7f050014;
-        public static final int ps_receiverport_def=0x7f050016;
-        public static final int ps_receiverport_dm=0x7f050017;
-        public static final int ps_receiverport_key=0x7f050013;
-        public static final int ps_receiverport_sum=0x7f050015;
-        public static final int ps_senderport=0x7f05000f;
-        public static final int ps_senderport_def=0x7f050011;
-        public static final int ps_senderport_dm=0x7f050012;
-        public static final int ps_senderport_key=0x7f05000e;
-        public static final int ps_senderport_sum=0x7f050010;
-        public static final int ps_username=0x7f050027;
-        public static final int ps_username_def=0x7f050029;
-        public static final int ps_username_dm=0x7f05002a;
-        public static final int ps_username_key=0x7f050026;
-        public static final int ps_username_sum=0x7f050028;
+        public static final int ps_cat_securitysettings=0x7f050027;
+        public static final int ps_help=0x7f050033;
+        public static final int ps_ipaddress=0x7f05001c;
+        public static final int ps_ipaddress_def=0x7f05001e;
+        public static final int ps_ipaddress_dm=0x7f05001f;
+        public static final int ps_ipaddress_key=0x7f05001b;
+        public static final int ps_ipaddress_sum=0x7f05001d;
+        public static final int ps_password=0x7f05002e;
+        public static final int ps_password_def=0x7f050030;
+        public static final int ps_password_dm=0x7f050031;
+        public static final int ps_password_key=0x7f05002d;
+        public static final int ps_password_sum=0x7f05002f;
+        public static final int ps_receiverport=0x7f050016;
+        public static final int ps_receiverport_def=0x7f050018;
+        public static final int ps_receiverport_dm=0x7f050019;
+        public static final int ps_receiverport_key=0x7f050015;
+        public static final int ps_receiverport_sum=0x7f050017;
+        public static final int ps_senderport=0x7f050011;
+        public static final int ps_senderport_def=0x7f050013;
+        public static final int ps_senderport_dm=0x7f050014;
+        public static final int ps_senderport_key=0x7f050010;
+        public static final int ps_senderport_sum=0x7f050012;
+        public static final int ps_username=0x7f050029;
+        public static final int ps_username_def=0x7f05002b;
+        public static final int ps_username_dm=0x7f05002c;
+        public static final int ps_username_key=0x7f050028;
+        public static final int ps_username_sum=0x7f05002a;
         /**  MAIN 
          */
         public static final int refresh=0x7f050001;
+        public static final int restartDelay=0x7f05000a;
         public static final int seconds=0x7f050008;
+        public static final int setTime=0x7f05000b;
         public static final int switchAllOff=0x7f050004;
         public static final int switchAllOn=0x7f050002;
+        public static final int tp_cancel_txt=0x7f050036;
+        public static final int tp_countdown_start=0x7f050035;
+        /**  Time Picker 
+         */
+        public static final int tp_title_text=0x7f050034;
     }
     public static final class style {
         /**  PREFERENCE SCREEN STYLES 
