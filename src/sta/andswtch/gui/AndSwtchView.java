@@ -58,6 +58,7 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 			availabilityChecker();
 			// change the refresh time
 			setRefreshTime();
+			setName();
 		}
 	};
 
@@ -71,8 +72,7 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 		
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.andswtch);
-
-
+		
 		this.init();
 	}
 
@@ -188,6 +188,11 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 		refreshtime.setText(time.format("%H:%M:%S"));
 	}
 	
+	private void setName() {
+		if(this.extLead.getName() != "") 
+			this.setTitle("AndSwtch - " + this.extLead.getName());
+	}
+	
 	public void onOff(View v) {
 		// tag 1 - 8 for each power point
 		// tag 9 for all on and tag 10 for all off
@@ -207,6 +212,8 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 	public void switchToPowerPoint(View v) {
 		Intent toLaunch = new Intent(v.getContext(), PowerPointView.class);
 		toLaunch.putExtra("powerPoint", (String) v.getTag());
+		if(this.extLead.getName() != "")
+			toLaunch.putExtra("name", this.extLead.getName());
 		startActivity(toLaunch);
 	}
 	

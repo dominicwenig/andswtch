@@ -6,7 +6,6 @@ import sta.andswtch.db.PowerPointRow;
 import sta.andswtch.extensionLead.ExtensionLead;
 import sta.andswtch.extensionLead.ExtensionLeadManager;
 import sta.andswtch.gui.timepicker.TimePicker;
-import sta.andswtch.gui.timepicker.TimePicker.OnTimeChangedListener;
 import sta.andswtch.gui.timepicker.TimePickerDialog;
 import sta.andswtch.gui.timepicker.Util;
 import android.app.Dialog;
@@ -19,7 +18,6 @@ import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -67,18 +65,16 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 					break;
 				}
 			}
+			setName();
 		}
 	};
 	
 	public void selectTime(View v){
-		
 		showDialog(TIME_DIALOG_ID);
 		if(timePickerDialog!=null){
 			timePickerDialog.updateTime(this.hours, this.minutes, this.seconds);
 		}
 	}
-	
-	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -105,6 +101,8 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 			Log.d(TAG, "Tag of this view is " + onOffTag);
 			this.name.setText(this.extLead.getPowerPointName(this.onOffTag));
 		}
+		String name = extra.getString("name");
+		this.setTitle("AndSwtch - " + name);
 		
 		//open the database
 		ppDbHelper = new PowerPointDbAdapter(this);
@@ -128,11 +126,13 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 			Log.d(TAG, "the time difference for the delay from the database is" + secDif + "seconds");
 			sumSeconds = (int)secDif;
 			setDelayTime(sumSeconds);
+			setEndTime(sumSeconds);
 			this.startTimer();
 		}
 		else{
 			sumSeconds = hours*60*60+minutes*60+seconds;
 			setDelayTime(sumSeconds);
+			setEndTime(sumSeconds);
 		}
 		
 		Log.d(TAG, "End time is: "+ endTime);
@@ -160,6 +160,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
                     seconds = second;
                     sumSeconds = seconds + minutes*60 + hours * 60*60;
                     setDelayTime(sumSeconds);
+                    setEndTime(sumSeconds);
                     offDelayed();
                 }
             }
@@ -169,6 +170,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 	public void onResume() {
 		super.onResume();
 		setDelayTime(this.sumSeconds);
+		setEndTime(this.sumSeconds);
 	}
 	
 	public Context getAppContext() {
@@ -203,23 +205,20 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 			}
 		}
 	}
-
-
-
+	
 	private void offDelayed() {
 		this.extLead.sendState(this.onOffTag, false, this.sumSeconds);
 		ppDbHelper.updatePowerPointRow(onOffTag, sumSeconds, hours, minutes, seconds);
+		
 		startTimer();
 	}
-	
-	
-	
 	
 	public void startTimer(){		
 		if(countDownTimer!= null){
 			countDownTimer.cancel();
 		}
 		onOffDelay.setText(R.string.restartDelay);
+		setEndTime(this.sumSeconds);
 		countDownTimer = new CountDownTimer(sumSeconds*1000, 1000) {
 
 		     public void onTick(long millisUntilFinished) {
@@ -228,9 +227,11 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 
 		     public void onFinish() {
 		         setDelayTime(sumSeconds);
+		         setEndTime(sumSeconds);
 		         extLead.sendUpdateMessage();
 		         onOffDelay.setText(R.string.onOffDelay);
 		     }
+		     
 		  }.start();
 	}
 	
@@ -248,8 +249,6 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		super.onDestroy();
 	}
 
-
-
 	private void checkState() {
 		if (this.extLead.isPowerPointOn(this.onOffTag)) {
 			this.setOn();
@@ -257,12 +256,26 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 			this.setOff();
 		}
 	}
-
+	
 	private void setOn() {
 		this.onOff.setChecked(true);
 	}
 
 	private void setOff() {
 		this.onOff.setChecked(false);
+	}
+	
+	private void setName() {
+		if(this.extLead.getName() != "") 
+			this.setTitle("AndSwtch - " + this.extLead.getName());
+	}
+	
+	private void setEndTime(int sumSeconds) {
+		Time now = new Time();
+        now.setToNow();
+		Time endTime = new Time();
+		endTime.set(now.toMillis(true)+sumSeconds*1000);
+		TextView endTimeTV = (TextView) findViewById(R.id.endTime);
+		endTimeTV.setText(endTime.format("%H:%M:%S"));
 	}
 }

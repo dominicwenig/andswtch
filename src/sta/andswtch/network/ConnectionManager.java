@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import sta.andswtch.extensionLead.Config;
 import sta.andswtch.extensionLead.ExtensionLead;
-import sta.andswtch.extensionLead.ExtensionLeadManager;
 import android.util.Log;
 
 public class ConnectionManager implements IConnectionManager {

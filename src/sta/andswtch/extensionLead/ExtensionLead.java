@@ -16,7 +16,7 @@ public class ExtensionLead implements IExtensionLead {
 	private ResponseProcessor responseProcessor;
 	private CommandGenerator commandGenerator;
 	private IAndSwtchViews currentView;
-	
+	private String name = "";
 	
 	public ExtensionLead(IAndSwtchViews currentView) {
 		this.currentView = currentView;
@@ -109,6 +109,14 @@ public class ExtensionLead implements IExtensionLead {
 
 	public String getPassword() {
 		return this.config.getPassword();
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

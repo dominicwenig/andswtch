@@ -15,16 +15,13 @@ package sta.andswtch.db;
 	 * the License.
 	 */
 
-	import java.sql.Date;
-
 import sta.andswtch.extensionLead.ExtensionLead;
-
 import android.content.ContentValues;
-	import android.content.Context;
-	import android.database.Cursor;
-	import android.database.SQLException;
-	import android.database.sqlite.SQLiteDatabase;
-	import android.database.sqlite.SQLiteOpenHelper;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.text.format.Time;
 import android.util.Log;
 	

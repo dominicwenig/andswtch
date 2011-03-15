@@ -20,21 +20,13 @@ package sta.andswtch.gui.timepicker;
 
 
 // import android.annotation.Widget;
+import sta.andswtch.R;
 import android.content.Context;
-import android.preference.Preference.BaseSavedState;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
-
-import android.widget.Button;
 import android.widget.FrameLayout;
-
-import java.text.DateFormatSymbols;
-import java.util.Calendar;
-
-import sta.andswtch.R;
 
 /**
  * A view for selecting the time of day, in either 24 hour or AM/PM mode.

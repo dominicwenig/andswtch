@@ -69,7 +69,7 @@
 			            android:layout_width="wrap_content" 
 			            android:layout_height="wrap_content"
 			            android:clickable="true"
-			            android:text="1" 
+			            android:text="1" android:textStyle="bold"
 			            android:onClick="switchToPowerPoint"
 			            android:tag="1" >
 			          </TextView>
@@ -112,7 +112,7 @@
 			            android:layout_width="wrap_content" 
 			            android:layout_height="wrap_content" 
 			            android:clickable="true"
-                  android:text="2" 
+                  android:text="2" android:textStyle="bold"
                   android:onClick="switchToPowerPoint"
                   android:tag="2" >
 			          </TextView>
@@ -155,7 +155,7 @@
 							    android:layout_width="wrap_content" 
 							    android:layout_height="wrap_content" 
 							    android:clickable="true"
-                  android:text="3" 
+                  android:text="3" android:textStyle="bold"
                   android:onClick="switchToPowerPoint"
                   android:tag="3" >
 							  </TextView>
@@ -198,7 +198,7 @@
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
                   android:clickable="true"
-                  android:text="4" 
+                  android:text="4" android:textStyle="bold"
                   android:onClick="switchToPowerPoint" >
                 </TextView>
             </LinearLayout>
@@ -239,7 +239,7 @@
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
                   android:clickable="true"
-                  android:text="5" 
+                  android:text="5" android:textStyle="bold"
                   android:onClick="switchToPowerPoint" >
                 </TextView>
             </LinearLayout>
@@ -280,7 +280,7 @@
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
                   android:clickable="true"
-                  android:text="6" 
+                  android:text="6" android:textStyle="bold"
                   android:onClick="switchToPowerPoint" >
                 </TextView>
             </LinearLayout>
@@ -321,7 +321,7 @@
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
                   android:clickable="true"
-                  android:text="7" 
+                  android:text="7" android:textStyle="bold"
                   android:onClick="switchToPowerPoint" >
                 </TextView>
             </LinearLayout>
@@ -362,7 +362,7 @@
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
                   android:clickable="true"
-                  android:text="8" 
+                  android:text="8" android:textStyle="bold"
                   android:onClick="switchToPowerPoint" >
                 </TextView>
             </LinearLayout>

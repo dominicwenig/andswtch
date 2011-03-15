@@ -15,7 +15,6 @@ public class ResponseProcessor {
 	public ResponseProcessor(List<PowerPoint> powerPoints, ExtensionLead extLead) {
 		this.powerPoints = powerPoints;
 		this.extLead = extLead;
-
 	}
 
 	public void processResponse(String response) {
@@ -33,6 +32,8 @@ public class ResponseProcessor {
 		Log.d(TAG, "this response consist of " + reParts.length + " parts.");
 
 		if (reParts.length == 16) {
+			// Extension Lead Name
+			this.extLead.setName(reParts[1]);
 			// the powerpoints are at the positions 7 - 14
 			// -> array starts with 0
 			// -> reParts[6] - reParts[13]
