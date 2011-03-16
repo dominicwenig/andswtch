@@ -126,8 +126,10 @@ public class ExtensionLead implements IExtensionLead {
 	}
 	
 	public void stopAutoRefreshRunning() {
-		this.autoRefresh.stopAutoRefresh();
-		this.autoRefresh = null;
+		if(this.autoRefresh != null) {
+			this.autoRefresh.stopAutoRefresh();
+			this.autoRefresh = null;
+		}
 	}
 	
 	public void startAutoRefreshRunning() {
