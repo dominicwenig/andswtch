@@ -88,6 +88,20 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 	}
 	
 	@Override
+	public void onStart() {
+		super.onStart();
+		this.extLead.sendUpdateMessage();
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		setDelayTime(this.sumSeconds);
+		setEndTime(this.sumSeconds);
+		this.extLead.startAutoRefreshRunning();
+	}
+	
+	@Override
 	public void onStop() {
 		this.extLead.stopAutoRefreshRunning();
 		super.onStop();
@@ -171,14 +185,6 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
                 }
             }
         };
-	
-	@Override
-	public void onResume() {
-		super.onResume();
-		setDelayTime(this.sumSeconds);
-		setEndTime(this.sumSeconds);
-		this.extLead.startAutoRefreshRunning();
-	}
 	
 	public Context getAppContext() {
 		return this.getApplicationContext();

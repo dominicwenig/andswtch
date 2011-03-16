@@ -125,6 +125,13 @@ public class ExtensionLead implements IExtensionLead {
 		return this.config.getUpdateInterval();
 	}
 	
+	public boolean isAutoRefreshRunning() {
+		if(this.autoRefresh != null)
+			return this.autoRefresh.isAutoRefreshRunning();
+		else
+			return false;
+	}
+	
 	public void stopAutoRefreshRunning() {
 		if(this.autoRefresh != null) {
 			this.autoRefresh.stopAutoRefresh();

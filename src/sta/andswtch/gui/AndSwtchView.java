@@ -111,12 +111,19 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 		
 		this.availabilityChecker();
 	}
-
+	
+	@Override
+	public void onStart() {
+		super.onStart();
+		this.extLead.sendUpdateMessage();
+	}
+	
 	@Override
 	protected void onResume() {
 		super.onResume();
 		this.extLead = this.extLeadManager.getExtLeadFromView(this);
-		this.extLead.sendUpdateMessage();
+		if(this.extLead.isAutoRefreshRunning())
+			this.extLead.sendUpdateMessage();
 		this.extLead.startAutoRefreshRunning();
 	}
 	

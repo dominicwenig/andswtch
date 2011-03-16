@@ -27,8 +27,8 @@ public class OptionsMenu extends Activity {
 			}
 			case R.id.exit: {
 				// works but recommended is to let Android worry about the memory management 
-				//android.os.Process.killProcess(android.os.Process.myPid());
-				moveTaskToBack(true);
+				android.os.Process.killProcess(android.os.Process.myPid());
+				//moveTaskToBack(true);
 			}
 	    	default: {
 	    		return super.onOptionsItemSelected(item);

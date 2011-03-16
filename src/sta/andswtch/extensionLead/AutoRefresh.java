@@ -11,6 +11,10 @@ public class AutoRefresh implements Runnable {
 		this.extLead = extLead;
 	}
 	
+	public boolean isAutoRefreshRunning() {
+		return this.isRunning;
+	}
+	
 	public void startAutoRefresh() {
 		if(this.thread == null) 
 			this.thread = new Thread(this);
