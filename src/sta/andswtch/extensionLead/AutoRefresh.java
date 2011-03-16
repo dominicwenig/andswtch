@@ -39,8 +39,6 @@ public class AutoRefresh implements Runnable {
 			}	
 			if(seconds != 0) {
 				this.extLead.sendUpdateMessage();
-			} else {
-				break;
 			}
 		}
 		this.thread = null;
