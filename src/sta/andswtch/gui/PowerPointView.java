@@ -87,6 +87,12 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		this.checkState();
 	}
 	
+	@Override
+	public void onStop() {
+		this.extLead.stopAutoRefreshRunning();
+		super.onStop();
+	}
+	
 	private void init() {
 		this.name = (TextView) findViewById(R.id.ppName);
 		this.onOff = (ToggleButton) findViewById(R.id.onOff);
@@ -171,6 +177,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		super.onResume();
 		setDelayTime(this.sumSeconds);
 		setEndTime(this.sumSeconds);
+		this.extLead.startAutoRefreshRunning();
 	}
 	
 	public Context getAppContext() {

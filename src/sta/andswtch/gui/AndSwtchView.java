@@ -68,7 +68,6 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 		// create the extension lead
 		this.extLeadManager = ExtensionLeadManager.getInstance(this);
 		this.extLead = this.extLeadManager.getExtLeadFromView(this);
-		this.time = new Time();
 		
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.andswtch);
@@ -77,6 +76,8 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 	}
 
 	private void init() {
+		this.time = new Time();
+		
 		this.names = new ArrayList<TextView>();
 		this.names.add((TextView) findViewById(R.id.TextView01));
 		this.names.add((TextView) findViewById(R.id.TextView02));
@@ -116,11 +117,11 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 		super.onResume();
 		this.extLead = this.extLeadManager.getExtLeadFromView(this);
 		this.extLead.sendUpdateMessage();
+		this.extLead.startAutoRefreshRunning();
 	}
 	
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu)
-	{
+	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, 1, 0, R.string.om_refresh);
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -136,6 +137,12 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 				return super.onOptionsItemSelected(item);
 			}
 		}
+	}
+	
+	@Override
+	public void onStop() {
+		this.extLead.stopAutoRefreshRunning();
+		super.onStop();
 	}
 	
 	public Context getAppContext() {

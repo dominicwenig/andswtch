@@ -15,6 +15,7 @@ public class ExtensionLead implements IExtensionLead {
 	private ConnectionManager connectionManager;
 	private ResponseProcessor responseProcessor;
 	private CommandGenerator commandGenerator;
+	private AutoRefresh autoRefresh;
 	private IAndSwtchViews currentView;
 	private String name = "";
 	
@@ -32,6 +33,7 @@ public class ExtensionLead implements IExtensionLead {
 		}
 		this.responseProcessor = new ResponseProcessor(this.powerPoints, this);
 		this.commandGenerator = new CommandGenerator(this.config);
+		this.startAutoRefreshRunning();
 	}
 	
 	public void setCurrentView(IAndSwtchViews v) {
@@ -119,4 +121,19 @@ public class ExtensionLead implements IExtensionLead {
 		this.name = name;
 	}
 	
+	public int getUpdateInterval() {
+		return this.config.getUpdateInterval();
+	}
+	
+	public void stopAutoRefreshRunning() {
+		this.autoRefresh.stopAutoRefresh();
+		this.autoRefresh = null;
+	}
+	
+	public void startAutoRefreshRunning() {
+		if(this.autoRefresh == null) {
+			this.autoRefresh = new AutoRefresh(this);
+		}
+		this.autoRefresh.startAutoRefresh();
+	}
 }

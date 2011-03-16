@@ -52,9 +52,9 @@
 	<string name="ps_autorefresh">Auto Refresh</string>
 	<string name="ps_autorefresh_sum">Enable/Disable auto refresh</string>
 	<string name="ps_autorefreshinterval">Interval</string>
-	<string name="ps_autorefreshinterval_sum">Change the refresh interval</string>
+	<string name="ps_autorefreshinterval_sum">Change the refresh interval in seconds</string>
 	<string name="ps_autorefreshinterval_def">10</string>
-	<string name="ps_autorefreshinterval_dm">Interval in seconds [Default:10sec]</string>
+	<string name="ps_autorefreshinterval_dm">Interval in seconds (Minimum:10sec) [Default:10sec]</string>
 
 <!-- SECURITY-SETTINGS -->
   <string name="ps_cat_securitysettings">Security Settings</string>

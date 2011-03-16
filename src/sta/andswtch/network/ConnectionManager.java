@@ -17,7 +17,7 @@ public class ConnectionManager implements IConnectionManager {
 
 	public ConnectionManager(Config config, ExtensionLead extLead) {
 		this.config = config;
-				this.extLead = extLead;
+		this.extLead = extLead;
 
 		this.sender = new Sender();
 		this.receiver = new Receiver(this);
