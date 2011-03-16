@@ -102,9 +102,9 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 	}
 	
 	@Override
-	public void onStop() {
+	public void onPause() {
+		super.onPause();
 		this.extLead.stopAutoRefreshRunning();
-		super.onStop();
 	}
 	
 	private void init() {
