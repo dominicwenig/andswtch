@@ -37,7 +37,7 @@ public class AutoRefresh implements Runnable {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}	
-			if(seconds != 0) {
+			if(seconds != 0 && this.isRunning) {
 				this.extLead.sendUpdateMessage();
 			}
 		}
