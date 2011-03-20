@@ -56,7 +56,7 @@ public class ConnectionManager implements IConnectionManager {
 		try {
 			this.receiver.start(this.config.getApplicationReceiverPort());
 		} catch (IOException e) {
-			this.errorAlert("failed to start server");
+			//this.errorAlert("failed to start server");
 			Log.e(TAG,
 					"Error: could not start the server, exception: "
 							+ e.getMessage());

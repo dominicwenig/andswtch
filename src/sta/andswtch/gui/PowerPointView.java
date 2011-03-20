@@ -98,7 +98,6 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 	public void onResume() {
 		super.onResume();
 		setDelayTime(this.sumSeconds);
-		setEndTime(this.sumSeconds);
 		this.extLead.startAutoRefreshRunning();
 	}
 
@@ -294,6 +293,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		}
 		startEndTimeCounter();
 		setDelayTime(sumSeconds);
+		onOffDelay.setText(R.string.onOffDelay);
 		//set the timer in extlead timer to 0 to reset it
 		extLead.sendState(this.onOffTag, false, 0);
 		//set the end time in the db to now
