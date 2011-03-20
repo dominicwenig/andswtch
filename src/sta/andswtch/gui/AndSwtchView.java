@@ -6,9 +6,11 @@ import java.util.List;
 import sta.andswtch.R;
 import sta.andswtch.extensionLead.ExtensionLead;
 import sta.andswtch.extensionLead.ExtensionLeadManager;
+import sta.andswtch.gui.timepicker.Util;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.text.format.Time;
@@ -30,6 +32,8 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 	private List<LinearLayout> LL;
 	private List<TextView> names;
 	private List<ToggleButton> buttons;
+	private CountDownTimer sinceLastRefreshTimer=null;
+	private TextView refreshtime;
 	private Time time;
 	
 	private Handler handlerEvent = new Handler() {
@@ -40,6 +44,7 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 					for (int i = 1; i <= ExtensionLead.POWERPOINTCNT; i++) {
 						checkState(buttons.get(i - 1));
 					}
+					startRefreshTimer();
 					break;
 				}
 				case 2: {
@@ -57,7 +62,6 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 			// has to be done HERE (from outa space) cos of different threads
 			availabilityChecker();
 			// change the refresh time
-			setRefreshTime();
 			setName();
 		}
 	};
@@ -109,6 +113,8 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 		this.buttons.add((ToggleButton) findViewById(R.id.Button07));
 		this.buttons.add((ToggleButton) findViewById(R.id.Button08));
 		
+		refreshtime = (TextView) findViewById(R.id.refreshtime);
+		
 		this.availabilityChecker();
 	}
 	
@@ -121,8 +127,8 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 	protected void onResume() {
 		super.onResume();
 		this.extLead = this.extLeadManager.getExtLeadFromView(this);
-		if(this.extLead.isAutoRefreshRunning())
-			this.extLead.sendUpdateMessage();
+
+		this.extLead.sendUpdateMessage();
 		this.extLead.startAutoRefreshRunning();
 	}
 	
@@ -196,10 +202,48 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 		}
 	}
 	
-	private void setRefreshTime() {
-		time.setToNow();
-		TextView refreshtime = (TextView) findViewById(R.id.refreshtime);
-		refreshtime.setText(time.format("%H:%M:%S"));
+	private void startRefreshTimer(){
+		
+		if(sinceLastRefreshTimer!=null){
+			sinceLastRefreshTimer.cancel();
+		}
+		
+		//set the endtime for the counter, if autorefresh is disabled, set to 1 hour
+		long endTimeMillis;
+		if(extLead.getUpdateInterval()==0){
+			endTimeMillis = 60*60*1000; //one hour
+		}
+		else {
+			//set endtimeMillis to updateinterval +3 to ensure, that counter is a little bit longer than update interval
+			endTimeMillis = (extLead.getUpdateInterval()+3)*1000;
+		}
+		
+		sinceLastRefreshTimer = new CountDownTimer(endTimeMillis,1000) {
+			
+			int secondsSinceLastRefresh=0;
+			
+			public void setRefreshTime() {
+				String hour = Util.pad(secondsSinceLastRefresh / (60 * 60));
+				String min = Util.pad((secondsSinceLastRefresh % (60 * 60) / 60));
+				String sec = Util.pad((secondsSinceLastRefresh % (60)));
+
+				refreshtime.setText(hour + ":" + min + ":" + sec);
+			}
+			
+			
+			@Override
+			public void onTick(long millisUntilFinished) {
+				secondsSinceLastRefresh++;
+				setRefreshTime();
+				
+			}
+			
+			@Override
+			public void onFinish() {
+				refreshtime.setText("");
+				
+			}
+		}.start();
 	}
 	
 	private void setName() {

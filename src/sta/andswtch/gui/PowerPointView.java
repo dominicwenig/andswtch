@@ -154,7 +154,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		} else {
 			
 			setDelayTime(sumSeconds);
-			setEndTime(sumSeconds);
+			startEndTimeCounter();
 		}
 
 		
@@ -232,6 +232,9 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		if (countDownTimer != null) {
 			countDownTimer.cancel();
 		}
+		if(endTimeCounter!=null){
+			endTimeCounter.cancel();
+		}
 		onOffDelay.setText(R.string.restartDelay);
 		setEndTime(secsToGo);
 		countDownTimer = new CountDownTimer(secsToGo * 1000, 1000) {
@@ -242,7 +245,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 
 			public void onFinish() {
 				setDelayTime(sumSeconds);
-				setEndTime(sumSeconds);
+				startEndTimeCounter();
 				extLead.sendUpdateMessage();
 				onOffDelay.setText(R.string.onOffDelay);
 			}
@@ -289,7 +292,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		if(countDownTimer!=null){
 			countDownTimer.cancel();
 		}
-		setEndTime(sumSeconds);
+		startEndTimeCounter();
 		setDelayTime(sumSeconds);
 		//set the timer in extlead timer to 0 to reset it
 		extLead.sendState(this.onOffTag, false, 0);
@@ -299,13 +302,33 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		
 	}
 	
+	private void startEndTimeCounter(){
+		endTimeCounter = new CountDownTimer(60*60*1000,1000) {
+			
+			@Override
+			public void onTick(long millisUntilFinished) {
+				setEndTime(sumSeconds);
+			}
+			
+			@Override
+			public void onFinish() {
+				TextView endTimeValueTV = (TextView) findViewById(R.id.endTimeValue);
+				endTimeValueTV.setText("");
+				TextView endTimeTV = (TextView) findViewById(R.id.endTime);
+				endTimeTV.setText("");
+				
+			}
+		}.start();
+	}
+	
+	
 
 	private void setEndTime(int sumSeconds) {
 		Time now = new Time();
 		now.setToNow();
 		Time endTime = new Time();
 		endTime.set(now.toMillis(true) + sumSeconds * 1000);
-		TextView endTimeTV = (TextView) findViewById(R.id.endTime);
-		endTimeTV.setText(endTime.format("%H:%M:%S"));
+		TextView endTimeValueTV = (TextView) findViewById(R.id.endTimeValue);
+		endTimeValueTV.setText(endTime.format("%H:%M:%S"));
 	}
 }

@@ -39,13 +39,13 @@
           android:layout_height="wrap_content"
           android:layout_weight="1.0" 
           android:gravity="left|bottom" >
-		        <TextView
+		        <TextView android:id="@+id/endTime"
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content" 
 		          android:layout_margin="3dip"
 		          android:text="@string/endTime" >
 		        </TextView>
-		        <TextView android:id="@+id/endTime"
+		        <TextView android:id="@+id/endTimeValue"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content" 
               android:layout_margin="3dip"

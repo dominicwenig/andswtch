@@ -65,22 +65,23 @@ public final class R {
         public static final int TextView10=0x7f08001f;
         public static final int allOff=0x7f08001e;
         public static final int allOn=0x7f08001b;
-        public static final int cancelDelayedOff=0x7f080029;
-        public static final int counter=0x7f080027;
+        public static final int cancelDelayedOff=0x7f08002a;
+        public static final int counter=0x7f080028;
         public static final int decrement=0x7f080023;
         public static final int endTime=0x7f080025;
-        public static final int exit=0x7f080030;
-        public static final int hour=0x7f08002b;
+        public static final int endTimeValue=0x7f080026;
+        public static final int exit=0x7f080031;
+        public static final int hour=0x7f08002c;
         public static final int increment=0x7f080021;
-        public static final int minute=0x7f08002c;
-        public static final int onOff=0x7f080026;
-        public static final int onOffDelay=0x7f080028;
+        public static final int minute=0x7f08002d;
+        public static final int onOff=0x7f080027;
+        public static final int onOffDelay=0x7f080029;
         public static final int ppName=0x7f080024;
         public static final int refreshtime=0x7f080000;
-        public static final int second=0x7f08002d;
-        public static final int setTime=0x7f08002a;
-        public static final int settings=0x7f08002f;
-        public static final int timePicker=0x7f08002e;
+        public static final int second=0x7f08002e;
+        public static final int setTime=0x7f08002b;
+        public static final int settings=0x7f080030;
+        public static final int timePicker=0x7f08002f;
         public static final int timepicker_input=0x7f080022;
     }
     public static final class layout {
