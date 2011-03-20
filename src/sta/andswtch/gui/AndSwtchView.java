@@ -135,7 +135,7 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, 1, 0, R.string.om_refresh);
-		menu.getItem(0).setIcon(android.R.drawable.ic_menu_compass);
+		menu.getItem(0).setIcon(R.drawable.ic_menu_refresh);
 		return super.onCreateOptionsMenu(menu);
 	}
 	
