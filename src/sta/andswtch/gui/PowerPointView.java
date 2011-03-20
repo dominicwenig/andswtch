@@ -285,11 +285,17 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 	}
 	
 	public void stopTimer(View v){
-		countDownTimer.cancel();
+		if(countDownTimer!=null){
+			countDownTimer.cancel();
+		}
 		setEndTime(sumSeconds);
 		setDelayTime(sumSeconds);
 		//set the timer in extlead timer to 0 to reset it
 		extLead.sendState(this.onOffTag, false, 0);
+		//set the end time in the db to now
+		ppDbHelper.updatePowerPointRow(onOffTag, 0, hours, minutes,
+				seconds);
+		
 	}
 	
 
