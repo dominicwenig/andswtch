@@ -27,7 +27,6 @@ public class AutoRefresh implements Runnable {
 		this.isRunning = false;
 	}
 	
-	@Override
 	public void run() {
 		this.isRunning = true;
 		while(this.isRunning) {

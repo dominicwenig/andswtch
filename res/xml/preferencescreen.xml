@@ -3,6 +3,19 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:key="first_preferencescreen">
 
+
+<!-- IP-SETTINGS -->    
+    <PreferenceCategory
+      android:title="@string/ps_cat_ipsettings">
+	      <EditTextPreference
+	        style="@style/s"
+	        android:key="IP"
+	        android:title="@string/ps_ipaddress"
+	        android:summary="@string/ps_ipaddress_sum"
+	        android:defaultValue="@string/ps_ipaddress_def"
+	        android:dialogMessage="@string/ps_ipaddress_dm" />
+    </PreferenceCategory>
+
 <!-- PORT-SETTINGS -->    
     <PreferenceCategory
       android:title="@string/ps_cat_portsettings">
@@ -22,16 +35,23 @@
 		      android:dialogMessage="@string/ps_receiverport_dm" />
     </PreferenceCategory>
 
-<!-- IP-SETTINGS -->    
+<!-- SECURITY-SETTINGS -->
     <PreferenceCategory
-      android:title="@string/ps_cat_ipsettings">
-	      <EditTextPreference
-	        style="@style/s"
-	        android:key="IP"
-	        android:title="@string/ps_ipaddress"
-	        android:summary="@string/ps_ipaddress_sum"
-	        android:defaultValue="@string/ps_ipaddress_def"
-	        android:dialogMessage="@string/ps_ipaddress_dm" />
+      android:title="@string/ps_cat_securitysettings">
+        <EditTextPreference
+          style="@style/s"
+          android:key="Username"
+          android:title="@string/ps_username"
+          android:summary="@string/ps_username_sum"
+          android:defaultValue="@string/ps_username_def"
+          android:dialogMessage="@string/ps_username_dm" />
+        <EditTextPreference
+          style="@style/s.password"
+          android:key="Password"
+          android:title="@string/ps_password"
+          android:summary="@string/ps_password_sum" 
+          android:defaultValue="@string/ps_password_def"
+          android:dialogMessage="@string/ps_password_dm" />
     </PreferenceCategory>
 
 <!-- REFRESH-SETTINGS -->    
@@ -53,24 +73,7 @@
         </EditTextPreference>
     </PreferenceCategory>
 
-<!-- SECURITY-SETTINGS -->
-    <PreferenceCategory
-      android:title="@string/ps_cat_securitysettings">
-        <EditTextPreference
-          style="@style/s"
-          android:key="Username"
-          android:title="@string/ps_username"
-          android:summary="@string/ps_username_sum"
-          android:defaultValue="@string/ps_username_def"
-          android:dialogMessage="@string/ps_username_dm" />
-        <EditTextPreference
-          style="@style/s.password"
-          android:key="Password"
-          android:title="@string/ps_password"
-          android:summary="@string/ps_password_sum" 
-          android:defaultValue="@string/ps_password_def"
-          android:dialogMessage="@string/ps_password_dm" />
-    </PreferenceCategory>
+
     
 <!-- OTHER-SETTINGS -->
     <PreferenceCategory

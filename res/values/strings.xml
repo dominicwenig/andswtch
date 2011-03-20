@@ -16,6 +16,7 @@
   <string name="onOffDelay">Start Delay</string>
   <string name="restartDelay">Restart Delay</string>
   <string name="setTime">Choose Time</string>
+  <string name="cancelDelayedOff">Cancel</string>
   <string name="endTime">End Time: </string>
   
 <!-- OM - OptionsMenu -->	
