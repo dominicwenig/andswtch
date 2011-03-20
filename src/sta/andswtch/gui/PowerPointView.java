@@ -134,6 +134,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		hours = row.getHours();
 		minutes = row.getMinutes();
 		seconds = row.getSeconds();
+		sumSeconds = hours * 60 * 60 + minutes * 60 + seconds;
 		// get the last end time
 		Time endTime = row.getEndTime();
 		Log.d(TAG, "end time from db is" + endTime.format("%H:%M:%S"));
@@ -147,16 +148,16 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 			long secDif = (endTime.toMillis(true) - now.toMillis(true)) / 1000;
 			Log.d(TAG, "the time difference for the delay from the database is"
 					+ secDif + "seconds");
-			sumSeconds = (int) secDif;
-			setDelayTime(sumSeconds);
-			setEndTime(sumSeconds);
-			this.startTimer();
+			setDelayTime((int) secDif);
+			setEndTime((int) secDif);
+			this.startTimer((int) secDif);
 		} else {
-			sumSeconds = hours * 60 * 60 + minutes * 60 + seconds;
+			
 			setDelayTime(sumSeconds);
 			setEndTime(sumSeconds);
 		}
 
+		
 		Log.d(TAG, "End time is: " + endTime);
 
 	}
@@ -224,16 +225,16 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		ppDbHelper.updatePowerPointRow(onOffTag, sumSeconds, hours, minutes,
 				seconds);
 
-		startTimer();
+		startTimer(sumSeconds);
 	}
 
-	public void startTimer() {
+	public void startTimer(int secsToGo) {
 		if (countDownTimer != null) {
 			countDownTimer.cancel();
 		}
 		onOffDelay.setText(R.string.restartDelay);
-		setEndTime(this.sumSeconds);
-		countDownTimer = new CountDownTimer(sumSeconds * 1000, 1000) {
+		setEndTime(secsToGo);
+		countDownTimer = new CountDownTimer(secsToGo * 1000, 1000) {
 
 			public void onTick(long millisUntilFinished) {
 				setDelayTime((int) (millisUntilFinished / 1000));

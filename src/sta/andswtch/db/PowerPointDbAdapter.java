@@ -154,6 +154,8 @@ import android.util.Log;
        
         PowerPointRow row = new PowerPointRow(endTime, mCursor.getInt(2), mCursor.getInt(3), mCursor.getInt(4));
         
+        mCursor.close();
+        
         return row;
 
     }
