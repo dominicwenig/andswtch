@@ -149,6 +149,7 @@ public class TimePickerDialog extends AlertDialog implements OnClickListener,
 
     private void updateTitle(int hour, int minute, int second) {
         String title = resources.getString(R.string.tp_title_text);
+            
         setTitle(title+" "+
                  Util.pad(hour)+":"+Util.pad(minute)+":"+Util.pad(second));
     }

@@ -17,6 +17,10 @@
 
 package sta.andswtch.gui.timepicker;
 
+import sta.andswtch.R;
+import android.text.format.Time;
+import android.widget.TextView;
+
 public class Util {
     public static String pad(int c) {
         if (c >= 10)
@@ -24,4 +28,13 @@ public class Util {
         else
             return "0" + String.valueOf(c);
     }
+    
+    public static String secToFormattedEndTimeFromNow(int sumSeconds){
+		Time now = new Time();
+		now.setToNow();
+		Time endTime = new Time();
+		endTime.set(now.toMillis(true) + sumSeconds * 1000);
+		return endTime.format("%H:%M:%S");
+    }
+    
 }

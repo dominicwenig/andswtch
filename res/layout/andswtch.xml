@@ -27,7 +27,7 @@
 		          android:layout_width="fill_parent" 
 		          android:layout_height="wrap_content"
 		          android:layout_marginLeft="10dip"
-		          android:text="00:00:00" >
+		          android:text="@string/notConnected" >
 		        </TextView>
         </LinearLayout>
         

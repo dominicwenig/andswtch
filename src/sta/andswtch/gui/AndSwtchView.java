@@ -240,8 +240,8 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 			
 			@Override
 			public void onFinish() {
-				refreshtime.setText("");
-				
+				extLead.sendUpdateMessage();
+			//	refreshtime.setText(R.string);
 			}
 		}.start();
 	}

@@ -4,6 +4,7 @@
 
 <!-- MAIN -->
   <string name="refresh">Last Refresh:</string>
+  <string name="notConnected">Not Connected</string>
   <string name="switchAllOn">Switch All On</string>
   <string name="allOn">on all</string>
   <string name="switchAllOff">Switch All Off</string>
@@ -76,7 +77,7 @@
 	
 <!-- Time Picker -->
 
-<string name="tp_title_text">Delay</string>
+<string name="tp_title_text">End Time</string>
 <string name="tp_countdown_start">Start</string>
 <string name="tp_cancel_txt">Cancel</string>
 </resources>

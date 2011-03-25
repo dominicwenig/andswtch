@@ -46,7 +46,7 @@ import android.util.Log;
                     + "endTime String not null, hours integer not null," 
                     + "minutes integer not null,seconds integer not null);";
 
-    private static final String DATABASE_NAME = "andswtch";
+    private static final String DATABASE_NAME = "andswtchTest";
     private static final String DATABASE_TABLE = "powerPoints";
     private static final int DATABASE_VERSION = 1;
 

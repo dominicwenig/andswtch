@@ -121,6 +121,9 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 			Log.d(TAG, "Tag of this view is " + onOffTag);
 			this.name.setText(this.extLead.getPowerPointName(this.onOffTag));
 		}
+		else{
+			Log.e(TAG, "Tag of ppwerPointView is null");
+		}
 		String name = extra.getString("name");
 		this.setTitle("AndSwtch - " + name);
 
@@ -324,11 +327,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 	
 
 	private void setEndTime(int sumSeconds) {
-		Time now = new Time();
-		now.setToNow();
-		Time endTime = new Time();
-		endTime.set(now.toMillis(true) + sumSeconds * 1000);
 		TextView endTimeValueTV = (TextView) findViewById(R.id.endTimeValue);
-		endTimeValueTV.setText(endTime.format("%H:%M:%S"));
+		endTimeValueTV.setText(Util.secToFormattedEndTimeFromNow(sumSeconds));
 	}
 }
