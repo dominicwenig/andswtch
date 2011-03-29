@@ -50,6 +50,13 @@ public class ExtensionLead implements IExtensionLead {
 		byte[] command = this.commandGenerator.generateSwitchDelayedCommand(id, on, time);
 		this.connectionManager.sendWithoutReceive(command);
 	}
+	
+	public void sendState(int id, boolean on) {
+		String command = this.commandGenerator.generateSwitchCommand(id, on);
+		this.connectionManager.sendAndReceive(command);
+	}
+	
+	
 
 	public void sendStateAll(boolean on) {
 		byte[] command = this.commandGenerator.generateSwitchAllCommand(on, powerPoints);

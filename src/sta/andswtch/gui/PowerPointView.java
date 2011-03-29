@@ -249,7 +249,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 			public void onFinish() {
 				setDelayTime(sumSeconds);
 				startEndTimeCounter();
-				extLead.sendUpdateMessage();
+				extLead.sendState(onOffTag, false);
 				onOffDelay.setText(R.string.onOffDelay);
 			}
 
