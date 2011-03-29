@@ -57,13 +57,15 @@
           android:layout_height="wrap_content"
           android:layout_weight="1.0" 
           android:gravity="right" >
-		        <ToggleButton android:id="@+id/onOff" 
+		        <ImageButton android:id="@+id/onOff" 
+		          android:src="@drawable/offbutton"
+		          android:background="@android:color/transparent"
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content" 
 		          android:layout_margin="3dip"
 		          android:layout_gravity="right"
 		          android:onClick="onOff" >
-		        </ToggleButton>
+		        </ImageButton>
         </LinearLayout>
     </LinearLayout>
 

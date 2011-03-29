@@ -79,7 +79,7 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                            		<ImageButton android:id="@+id/Button01" android:src="@drawable/onbutton"
+                            		<ImageButton android:id="@+id/Button01" android:src="@drawable/offbutton"
         									android:layout_width="wrap_content"
        									    android:layout_height="wrap_content"
      									    android:background="@android:color/transparent"
@@ -122,7 +122,7 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                            		<ImageButton android:id="@+id/Button02" android:src="@drawable/onbutton"
+                            		<ImageButton android:id="@+id/Button02" android:src="@drawable/offbutton"
         									android:layout_width="wrap_content"
        									    android:layout_height="wrap_content"
      									    android:background="@android:color/transparent"
@@ -165,7 +165,7 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                            		<ImageButton android:id="@+id/Button03" android:src="@drawable/onbutton"
+                            		<ImageButton android:id="@+id/Button03" android:src="@drawable/offbutton"
         									android:layout_width="wrap_content"
        									    android:layout_height="wrap_content"
      									    android:background="@android:color/transparent"
@@ -207,7 +207,7 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                            		<ImageButton android:id="@+id/Button04" android:src="@drawable/onbutton"
+                            		<ImageButton android:id="@+id/Button04" android:src="@drawable/offbutton"
         									android:layout_width="wrap_content"
        									    android:layout_height="wrap_content"
      									    android:background="@android:color/transparent"
@@ -248,7 +248,7 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                            		<ImageButton android:id="@+id/Button05" android:src="@drawable/onbutton"
+                            		<ImageButton android:id="@+id/Button05" android:src="@drawable/offbutton"
         									android:layout_width="wrap_content"
        									    android:layout_height="wrap_content"
      									    android:background="@android:color/transparent"
@@ -289,7 +289,7 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                            		<ImageButton android:id="@+id/Button06" android:src="@drawable/onbutton"
+                            		<ImageButton android:id="@+id/Button06" android:src="@drawable/offbutton"
         									android:layout_width="wrap_content"
        									    android:layout_height="wrap_content"
      									    android:background="@android:color/transparent"
@@ -330,7 +330,7 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                            		<ImageButton android:id="@+id/Button07" android:src="@drawable/onbutton"
+                            		<ImageButton android:id="@+id/Button07" android:src="@drawable/offbutton"
         									android:layout_width="wrap_content"
        									    android:layout_height="wrap_content"
      									    android:background="@android:color/transparent"
@@ -371,7 +371,7 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                            		<ImageButton android:id="@+id/Button08"  android:src="@drawable/onbutton"
+                            		<ImageButton android:id="@+id/Button08"  android:src="@drawable/offbutton"
                             				android:layout_width="wrap_content"
        									    android:layout_height="wrap_content"
      									    android:background="@android:color/transparent"
@@ -402,7 +402,7 @@
 <!-- LINEARLAYOUT for switch all on and switch all off -->        
         <LinearLayout 
           android:layout_width="fill_parent" 
-          android:layout_height="wrap_content"
+          android:layout_height="70px"
           android:background="#aaaaaaaa"
           android:orientation="horizontal" 
           android:gravity="center" >
@@ -413,20 +413,16 @@
               android:orientation="vertical" 
               android:gravity="center"
               android:visibility="invisible" >
-		            <TextView android:id="@+id/TextView09"
-			            android:layout_width="wrap_content" 
-			            android:layout_height="wrap_content"
-			            android:layout_marginTop="6dip"
-			            android:text="@string/switchAllOn" >
-			          </TextView>
-			          <Button android:id="@+id/Button09" 
+			          <ImageButton android:id="@+id/Button09" 
+			          android:scaleType="fitCenter"
+			          android:src="@drawable/onbuttonall"
 		              android:layout_width="wrap_content" 
-		              android:layout_height="wrap_content"
+		              android:layout_height="fill_parent"
 		              android:layout_marginBottom="6dip"
-		              android:text="@string/allOn" 
+		              android:background="@android:color/transparent"
 		              android:onClick="onOff" 
 		              android:tag="9" >
-		            </Button>
+		            </ImageButton>
             </LinearLayout>
        		  <LinearLayout android:id="@+id/allOff"
               android:layout_width="wrap_content" 
@@ -435,20 +431,16 @@
               android:orientation="vertical" 
               android:gravity="center"
               android:visibility="invisible" >
-							  <TextView android:id="@+id/TextView10" 
-		              android:layout_width="wrap_content" 
-		              android:layout_height="wrap_content"
-		              android:layout_marginTop="6dip" 
-		              android:text="@string/switchAllOff" >
-		            </TextView>
-		            <Button android:id="@+id/Button10" 
+		            <ImageButton android:id="@+id/Button10" 
+		            	  android:scaleType="fitCenter"
+		               	  android:src="@drawable/offbuttonall"
 				          android:layout_width="wrap_content" 
-				          android:layout_height="wrap_content"
+				          android:layout_height="fill_parent"
+				          android:background="@android:color/transparent"
 				          android:layout_marginBottom="6dip"
-				          android:text="@string/allOff" 
 				          android:onClick="onOff" 
 				          android:tag="10" >
-			          </Button>
+			          </ImageButton>
 	          </LinearLayout>
 	      </LinearLayout>
 

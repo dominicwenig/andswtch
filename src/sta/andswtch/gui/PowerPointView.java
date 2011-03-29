@@ -19,6 +19,7 @@ import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -31,7 +32,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 	private ExtensionLead extLead;
 	private TextView name;
 	private TextView counter;
-	private ToggleButton onOff;
+	private ImageButton onOff;
 	private Button onOffDelay;
 	private CountDownTimer countDownTimer = null;
 	private CountDownTimer endTimeCounter = null;
@@ -109,7 +110,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 
 	private void init() {
 		this.name = (TextView) findViewById(R.id.ppName);
-		this.onOff = (ToggleButton) findViewById(R.id.onOff);
+		this.onOff = (ImageButton) findViewById(R.id.onOff);
 		this.onOffDelay = (Button) findViewById(R.id.onOffDelay);
 		this.counter = (TextView) findViewById(R.id.counter);
 
@@ -278,11 +279,11 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 	}
 
 	private void setOn() {
-		this.onOff.setChecked(true);
+		this.onOff.setImageResource(R.drawable.onbutton);
 	}
 
 	private void setOff() {
-		this.onOff.setChecked(false);
+		this.onOff.setImageResource(R.drawable.offbutton);
 	}
 
 	private void setName() {
