@@ -55,8 +55,6 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 					Toast toast = Toast.makeText(context, text, duration);
 					toast.show();
 					
-					setOff(buttons.get(7));
-					
 				}
 				default: {
 					super.handleMessage(msg);
