@@ -77,7 +77,7 @@
 	
 <!-- Time Picker -->
 
-<string name="tp_title_text">End Time</string>
+<string name="tp_title_text">Delay</string>
 <string name="tp_countdown_start">Start</string>
 <string name="tp_cancel_txt">Cancel</string>
 </resources>
