@@ -29,7 +29,7 @@ public class ExtensionLead implements IExtensionLead {
 		this.config = new Config(this.currentView.getAppContext());
 		this.connectionManager = new ConnectionManager(this.config, this);
 		for (int id = 1; id <= POWERPOINTCNT; id++) {
-			this.addPowerPoint(id - 1, "No. " + id, false, false);
+			this.addPowerPoint(id - 1, "No. " + id, true, false);
 		}
 		this.responseProcessor = new ResponseProcessor(this.powerPoints, this);
 		this.commandGenerator = new CommandGenerator(this.config);

@@ -79,13 +79,13 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-							  <ToggleButton android:id="@+id/Button01" 
-				          android:layout_width="wrap_content" 
-				          android:layout_height="wrap_content" 
-		              android:layout_margin="3dip"
-				          android:onClick="onOff" 
-				          android:tag="1" >
-							  </ToggleButton>
+                            		<ImageButton android:id="@+id/Button01" android:src="@drawable/onbutton"
+        									android:layout_width="wrap_content"
+       									    android:layout_height="wrap_content"
+     									    android:background="@android:color/transparent"
+     									    android:onClick="onOff" 
+				          					android:tag="1">
+              						</ImageButton>
 							  <Button 
 							    android:layout_width="wrap_content" 
 		              android:layout_height="fill_parent"
@@ -122,13 +122,13 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-			          <ToggleButton android:id="@+id/Button02" 
-				          android:layout_width="wrap_content" 
-				          android:layout_height="wrap_content" 
-                  android:layout_margin="3dip"
-				          android:onClick="onOff" 
-				          android:tag="2" >
-			          </ToggleButton>
+                            		<ImageButton android:id="@+id/Button02" android:src="@drawable/onbutton"
+        									android:layout_width="wrap_content"
+       									    android:layout_height="wrap_content"
+     									    android:background="@android:color/transparent"
+     									    android:onClick="onOff" 
+				          					android:tag="2">
+              						</ImageButton>
 		            <Button 
 		              android:layout_width="wrap_content" 
 		              android:layout_height="fill_parent"
@@ -165,13 +165,13 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-						    <ToggleButton android:id="@+id/Button03" 
-							    android:layout_width="wrap_content" 
-							    android:layout_height="wrap_content"
-							    android:layout_margin="3dip"
-							    android:onClick="onOff" 
-							    android:tag="3" >
-							  </ToggleButton>
+                            		<ImageButton android:id="@+id/Button03" android:src="@drawable/onbutton"
+        									android:layout_width="wrap_content"
+       									    android:layout_height="wrap_content"
+     									    android:background="@android:color/transparent"
+     									    android:onClick="onOff" 
+				          					android:tag="3">
+              						</ImageButton>
 		            <Button 
 		              android:layout_width="wrap_content" 
 		              android:layout_height="fill_parent"
@@ -207,13 +207,13 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                <ToggleButton android:id="@+id/Button04" 
-                  android:layout_width="wrap_content" 
-                  android:layout_height="wrap_content" 
-                  android:layout_margin="3dip"
-                  android:onClick="onOff" 
-                  android:tag="4" >
-                </ToggleButton>
+                            		<ImageButton android:id="@+id/Button04" android:src="@drawable/onbutton"
+        									android:layout_width="wrap_content"
+       									    android:layout_height="wrap_content"
+     									    android:background="@android:color/transparent"
+     									    android:onClick="onOff" 
+				          					android:tag="4">
+              						</ImageButton>
                 <Button 
                   android:layout_width="wrap_content" 
                   android:layout_height="fill_parent"
@@ -248,13 +248,13 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                <ToggleButton android:id="@+id/Button05" 
-                  android:layout_width="wrap_content" 
-                  android:layout_height="wrap_content" 
-                  android:layout_margin="3dip"
-                  android:onClick="onOff" 
-                  android:tag="5" >
-                </ToggleButton>
+                            		<ImageButton android:id="@+id/Button05" android:src="@drawable/onbutton"
+        									android:layout_width="wrap_content"
+       									    android:layout_height="wrap_content"
+     									    android:background="@android:color/transparent"
+     									    android:onClick="onOff" 
+				          					android:tag="5">
+              						</ImageButton>
                 <Button 
                   android:layout_width="wrap_content" 
                   android:layout_height="fill_parent"
@@ -289,13 +289,13 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                <ToggleButton android:id="@+id/Button06" 
-                  android:layout_width="wrap_content" 
-                  android:layout_height="wrap_content" 
-                  android:layout_margin="3dip"
-                  android:onClick="onOff" 
-                  android:tag="6" >
-                </ToggleButton>
+                            		<ImageButton android:id="@+id/Button06" android:src="@drawable/onbutton"
+        									android:layout_width="wrap_content"
+       									    android:layout_height="wrap_content"
+     									    android:background="@android:color/transparent"
+     									    android:onClick="onOff" 
+				          					android:tag="6">
+              						</ImageButton>
                 <Button 
                   android:layout_width="wrap_content" 
                   android:layout_height="fill_parent"
@@ -330,13 +330,13 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                <ToggleButton android:id="@+id/Button07" 
-                  android:layout_width="wrap_content" 
-                  android:layout_height="wrap_content" 
-                  android:layout_margin="3dip"
-                  android:onClick="onOff" 
-                  android:tag="7" >
-                </ToggleButton>
+                            		<ImageButton android:id="@+id/Button07" android:src="@drawable/onbutton"
+        									android:layout_width="wrap_content"
+       									    android:layout_height="wrap_content"
+     									    android:background="@android:color/transparent"
+     									    android:onClick="onOff" 
+				          					android:tag="7">
+              						</ImageButton>
                 <Button 
                   android:layout_width="wrap_content" 
                   android:layout_height="fill_parent"
@@ -371,13 +371,13 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                <ToggleButton android:id="@+id/Button08" 
-                  android:layout_width="wrap_content" 
-                  android:layout_height="wrap_content" 
-                  android:layout_margin="3dip"
-                  android:onClick="onOff" 
-                  android:tag="8" >
-                </ToggleButton>
+                            		<ImageButton android:id="@+id/Button08"  android:src="@drawable/onbutton"
+                            				android:layout_width="wrap_content"
+       									    android:layout_height="wrap_content"
+     									    android:background="@android:color/transparent"
+     									    android:onClick="onOff" 
+				          					android:tag="8">
+              						</ImageButton>
                 <Button 
                   android:layout_width="wrap_content" 
                   android:layout_height="fill_parent"
@@ -454,5 +454,7 @@
 
 <!-- END OF GLOBAL LINEARLAYOUT -->	  
 	  </LinearLayout>
+
+
 
 </ScrollView>

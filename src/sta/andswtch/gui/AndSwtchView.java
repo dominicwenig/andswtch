@@ -17,6 +17,7 @@ import android.text.format.Time;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +32,7 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 	private ExtensionLead extLead;
 	private List<LinearLayout> LL;
 	private List<TextView> names;
-	private List<ToggleButton> buttons;
+	private List<ImageButton> buttons;
 	private CountDownTimer sinceLastRefreshTimer=null;
 	private TextView refreshtime;
 	private Time time;
@@ -53,6 +54,9 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 					int duration = Toast.LENGTH_SHORT;
 					Toast toast = Toast.makeText(context, text, duration);
 					toast.show();
+					
+					setOff(buttons.get(7));
+					
 				}
 				default: {
 					super.handleMessage(msg);
@@ -103,15 +107,15 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 		this.LL.add((LinearLayout) findViewById(R.id.LL07));
 		this.LL.add((LinearLayout) findViewById(R.id.LL08));
 		
-		this.buttons = new ArrayList<ToggleButton>();
-		this.buttons.add((ToggleButton) findViewById(R.id.Button01));
-		this.buttons.add((ToggleButton) findViewById(R.id.Button02));
-		this.buttons.add((ToggleButton) findViewById(R.id.Button03));
-		this.buttons.add((ToggleButton) findViewById(R.id.Button04));
-		this.buttons.add((ToggleButton) findViewById(R.id.Button05));
-		this.buttons.add((ToggleButton) findViewById(R.id.Button06));
-		this.buttons.add((ToggleButton) findViewById(R.id.Button07));
-		this.buttons.add((ToggleButton) findViewById(R.id.Button08));
+		this.buttons = new ArrayList<ImageButton>();
+		this.buttons.add((ImageButton) findViewById(R.id.Button01));
+		this.buttons.add((ImageButton) findViewById(R.id.Button02));
+		this.buttons.add((ImageButton) findViewById(R.id.Button03));
+		this.buttons.add((ImageButton) findViewById(R.id.Button04));
+		this.buttons.add((ImageButton) findViewById(R.id.Button05));
+		this.buttons.add((ImageButton) findViewById(R.id.Button06));
+		this.buttons.add((ImageButton) findViewById(R.id.Button07));
+		this.buttons.add((ImageButton) findViewById(R.id.Button08));
 		
 		refreshtime = (TextView) findViewById(R.id.refreshtime);
 		
@@ -275,7 +279,7 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 		startActivity(toLaunch);
 	}
 	
-	private void checkState(ToggleButton btn) {
+	private void checkState(ImageButton btn) {
 		String tagString = (String) btn.getTag();
 		if (tagString != null) {
 			int tag = Integer.parseInt(tagString);
@@ -287,14 +291,15 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 		}
 	}
 
-	private void setOn(ToggleButton btn) {
-		btn.setChecked(true);
+	private void setOn(ImageButton btn) {
+		btn.setImageResource(R.drawable.onbutton);
+		
 		//btn.setBackgroundColor(Color.GREEN);
 		//btn.setText("ON");
 	}
 
-	private void setOff(ToggleButton btn) {
-		btn.setChecked(false);
+	private void setOff(ImageButton btn) {
+		btn.setImageResource(R.drawable.offbutton);
 		//btn.setBackgroundColor(Color.RED);
 		//btn.setText("OFF");
 	}
