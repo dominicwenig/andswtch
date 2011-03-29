@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent" 
-	android:layout_height="fill_parent" 
+	android:layout_height="fill_parent"
+	android:background="#222222FF" 
 	android:fadeScrollbars="true" 
 	android:fadingEdge="vertical" 
 	android:fillViewport="true" >
@@ -59,7 +60,7 @@
           android:layout_width="fill_parent" 
           android:layout_height="wrap_content" 
           android:gravity="center_vertical|fill_horizontal"
-          android:visibility="gone" >
+          android:visibility="visible" >
             <LinearLayout
               android:layout_width="fill_parent" 
               android:layout_height="wrap_content"
@@ -79,18 +80,22 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                            		<ImageButton android:id="@+id/Button01" android:src="@drawable/offbutton"
-        									android:layout_width="wrap_content"
-       									    android:layout_height="wrap_content"
-     									    android:background="@android:color/transparent"
-     									    android:onClick="onOff" 
-				          					android:tag="1">
-              						</ImageButton>
+                <ImageButton android:id="@+id/Button01" android:src="@drawable/offbutton"
+								  android:layout_width="wrap_content"
+							    android:layout_height="wrap_content"
+					        android:background="@android:color/transparent"
+					        android:onClick="onOff" 
+     					    android:tag="1">
+     						</ImageButton>
 							  <Button 
 							    android:layout_width="wrap_content" 
 		              android:layout_height="fill_parent"
-		              android:layout_margin="3dip"
-		              android:text=">"
+                  android:layout_margin="3dip"
+                  android:paddingLeft="10dip"
+		              android:paddingRight="6dip"
+		              android:text=">" android:textStyle="bold"
+		              android:textColor="#FFFFFF"
+		              android:background="@android:color/transparent"
 		              android:onClick="switchToPowerPoint"
 		              android:tag="1" >
 							  </Button>
@@ -122,18 +127,22 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                            		<ImageButton android:id="@+id/Button02" android:src="@drawable/offbutton"
-        									android:layout_width="wrap_content"
-       									    android:layout_height="wrap_content"
-     									    android:background="@android:color/transparent"
-     									    android:onClick="onOff" 
-				          					android:tag="2">
-              						</ImageButton>
+            		<ImageButton android:id="@+id/Button02" android:src="@drawable/offbutton"
+								  android:layout_width="wrap_content"
+							    android:layout_height="wrap_content"
+					        android:background="@android:color/transparent"
+					        android:onClick="onOff" 
+     					    android:tag="2">
+     						</ImageButton>
 		            <Button 
 		              android:layout_width="wrap_content" 
 		              android:layout_height="fill_parent"
                   android:layout_margin="3dip" 
-		              android:text=">"
+		              android:paddingLeft="10dip"
+                  android:paddingRight="6dip"
+                  android:text=">" android:textStyle="bold"
+                  android:textColor="#FFFFFF"
+                  android:background="@android:color/transparent"
 		              android:onClick="switchToPowerPoint"
 		              android:tag="2" >
 		            </Button>
@@ -165,18 +174,22 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                            		<ImageButton android:id="@+id/Button03" android:src="@drawable/offbutton"
-        									android:layout_width="wrap_content"
-       									    android:layout_height="wrap_content"
-     									    android:background="@android:color/transparent"
-     									    android:onClick="onOff" 
-				          					android:tag="3">
-              						</ImageButton>
+            		<ImageButton android:id="@+id/Button03" android:src="@drawable/offbutton"
+								  android:layout_width="wrap_content"
+							    android:layout_height="wrap_content"
+					        android:background="@android:color/transparent"
+					        android:onClick="onOff" 
+     					    android:tag="3">
+     						</ImageButton>
 		            <Button 
 		              android:layout_width="wrap_content" 
 		              android:layout_height="fill_parent"
 		              android:layout_margin="3dip"
-		              android:text=">"
+		              android:paddingLeft="10dip"
+                  android:paddingRight="6dip"
+                  android:text=">" android:textStyle="bold"
+                  android:textColor="#FFFFFF"
+                  android:background="@android:color/transparent"
 		              android:onClick="switchToPowerPoint"
 		              android:tag="3" >
 	              </Button>
@@ -199,7 +212,8 @@
                   android:layout_height="wrap_content"
                   android:clickable="true"
                   android:text="4" android:textStyle="bold"
-                  android:onClick="switchToPowerPoint" >
+                  android:onClick="switchToPowerPoint"
+                  android:tag="4" >
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -207,19 +221,24 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                            		<ImageButton android:id="@+id/Button04" android:src="@drawable/offbutton"
-        									android:layout_width="wrap_content"
-       									    android:layout_height="wrap_content"
-     									    android:background="@android:color/transparent"
-     									    android:onClick="onOff" 
-				          					android:tag="4">
-              						</ImageButton>
+                <ImageButton android:id="@+id/Button04" android:src="@drawable/offbutton"
+							    android:layout_width="wrap_content"
+						      android:layout_height="wrap_content"
+				          android:background="@android:color/transparent"
+				          android:onClick="onOff" 
+    					    android:tag="4">
+    						</ImageButton>
                 <Button 
                   android:layout_width="wrap_content" 
                   android:layout_height="fill_parent"
                   android:layout_margin="3dip"
-                  android:text=">"
-                  android:onClick="switchToPowerPoint" >
+                  android:paddingLeft="10dip"
+                  android:paddingRight="6dip"
+                  android:text=">" android:textStyle="bold"
+                  android:textColor="#FFFFFF"
+                  android:background="@android:color/transparent"
+                  android:onClick="switchToPowerPoint"
+                  android:tag="4" >
                 </Button>
             </LinearLayout>
         </LinearLayout>
@@ -240,7 +259,8 @@
                   android:layout_height="wrap_content"
                   android:clickable="true"
                   android:text="5" android:textStyle="bold"
-                  android:onClick="switchToPowerPoint" >
+                  android:onClick="switchToPowerPoint"
+                  android:tag="5" >
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -248,19 +268,24 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                            		<ImageButton android:id="@+id/Button05" android:src="@drawable/offbutton"
-        									android:layout_width="wrap_content"
-       									    android:layout_height="wrap_content"
-     									    android:background="@android:color/transparent"
-     									    android:onClick="onOff" 
-				          					android:tag="5">
-              						</ImageButton>
+                <ImageButton android:id="@+id/Button05" android:src="@drawable/offbutton"
+								  android:layout_width="wrap_content"
+							    android:layout_height="wrap_content"
+					        android:background="@android:color/transparent"
+					        android:onClick="onOff" 
+     					    android:tag="5">
+     						</ImageButton>
                 <Button 
                   android:layout_width="wrap_content" 
                   android:layout_height="fill_parent"
                   android:layout_margin="3dip"
-                  android:text=">"
-                  android:onClick="switchToPowerPoint" >
+                  android:paddingLeft="10dip"
+                  android:paddingRight="6dip"
+                  android:text=">" android:textStyle="bold"
+                  android:textColor="#FFFFFF"
+                  android:background="@android:color/transparent"
+                  android:onClick="switchToPowerPoint"
+                  android:tag="5" >
                 </Button>
             </LinearLayout>
         </LinearLayout>
@@ -281,7 +306,8 @@
                   android:layout_height="wrap_content"
                   android:clickable="true"
                   android:text="6" android:textStyle="bold"
-                  android:onClick="switchToPowerPoint" >
+                  android:onClick="switchToPowerPoint"
+                  android:tag="6" >
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -289,19 +315,24 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                            		<ImageButton android:id="@+id/Button06" android:src="@drawable/offbutton"
-        									android:layout_width="wrap_content"
-       									    android:layout_height="wrap_content"
-     									    android:background="@android:color/transparent"
-     									    android:onClick="onOff" 
-				          					android:tag="6">
-              						</ImageButton>
+                <ImageButton android:id="@+id/Button06" android:src="@drawable/offbutton"
+								  android:layout_width="wrap_content"
+							    android:layout_height="wrap_content"
+					        android:background="@android:color/transparent"
+					        android:onClick="onOff" 
+     					    android:tag="6">
+     						</ImageButton>
                 <Button 
                   android:layout_width="wrap_content" 
                   android:layout_height="fill_parent"
                   android:layout_margin="3dip"
-                  android:text=">"
-                  android:onClick="switchToPowerPoint" >
+                  android:paddingLeft="10dip"
+                  android:paddingRight="6dip"
+                  android:text=">" android:textStyle="bold"
+                  android:textColor="#FFFFFF"
+                  android:background="@android:color/transparent"
+                  android:onClick="switchToPowerPoint"
+                  android:tag="6" >
                 </Button>
             </LinearLayout>
         </LinearLayout>
@@ -322,7 +353,8 @@
                   android:layout_height="wrap_content"
                   android:clickable="true"
                   android:text="7" android:textStyle="bold"
-                  android:onClick="switchToPowerPoint" >
+                  android:onClick="switchToPowerPoint"
+                  android:tag="7" >
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -330,19 +362,24 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                            		<ImageButton android:id="@+id/Button07" android:src="@drawable/offbutton"
-        									android:layout_width="wrap_content"
-       									    android:layout_height="wrap_content"
-     									    android:background="@android:color/transparent"
-     									    android:onClick="onOff" 
-				          					android:tag="7">
-              						</ImageButton>
+                <ImageButton android:id="@+id/Button07" android:src="@drawable/offbutton"
+								  android:layout_width="wrap_content"
+							    android:layout_height="wrap_content"
+					        android:background="@android:color/transparent"
+					        android:onClick="onOff" 
+     					    android:tag="7">
+     						</ImageButton>
                 <Button 
                   android:layout_width="wrap_content" 
                   android:layout_height="fill_parent"
                   android:layout_margin="3dip"
-                  android:text=">"
-                  android:onClick="switchToPowerPoint" >
+                  android:paddingLeft="10dip"
+                  android:paddingRight="6dip"
+                  android:text=">" android:textStyle="bold"
+                  android:textColor="#FFFFFF"
+                  android:background="@android:color/transparent"
+                  android:onClick="switchToPowerPoint"
+                  android:tag="7" >
                 </Button>
             </LinearLayout>
         </LinearLayout>
@@ -363,7 +400,8 @@
                   android:layout_height="wrap_content"
                   android:clickable="true"
                   android:text="8" android:textStyle="bold"
-                  android:onClick="switchToPowerPoint" >
+                  android:onClick="switchToPowerPoint"
+                  android:tag="8" >
                 </TextView>
             </LinearLayout>
             <LinearLayout
@@ -371,19 +409,24 @@
               android:layout_height="wrap_content" 
               android:layout_weight="1.0" 
               android:gravity="right|center_vertical" >
-                            		<ImageButton android:id="@+id/Button08"  android:src="@drawable/offbutton"
-                            				android:layout_width="wrap_content"
-       									    android:layout_height="wrap_content"
-     									    android:background="@android:color/transparent"
-     									    android:onClick="onOff" 
-				          					android:tag="8">
-              						</ImageButton>
+                <ImageButton android:id="@+id/Button08"  android:src="@drawable/offbutton"
+                  android:layout_width="wrap_content"
+							    android:layout_height="wrap_content"
+					        android:background="@android:color/transparent"
+					        android:onClick="onOff" 
+     					    android:tag="8">
+     						</ImageButton>
                 <Button 
                   android:layout_width="wrap_content" 
                   android:layout_height="fill_parent"
                   android:layout_margin="3dip"
-                  android:text=">"
-                  android:onClick="switchToPowerPoint" >
+                  android:paddingLeft="10dip"
+                  android:paddingRight="6dip"
+                  android:text=">" android:textStyle="bold"
+                  android:textColor="#FFFFFF"
+                  android:background="@android:color/transparent"
+                  android:onClick="switchToPowerPoint"
+                  android:tag="8" >
                 </Button>
             </LinearLayout>
         </LinearLayout>
@@ -402,23 +445,20 @@
 <!-- LINEARLAYOUT for switch all on and switch all off -->        
         <LinearLayout 
           android:layout_width="fill_parent" 
-          android:layout_height="70px"
-          android:background="#aaaaaaaa"
+          android:layout_height="fill_parent"
           android:orientation="horizontal" 
-          android:gravity="center" >
+          android:gravity="bottom" >
             <LinearLayout android:id="@+id/allOn"
               android:layout_width="wrap_content" 
               android:layout_height="wrap_content"
-              android:layout_weight="0.5"
+              android:layout_weight="1.0"
               android:orientation="vertical" 
               android:gravity="center"
               android:visibility="invisible" >
 			          <ImageButton android:id="@+id/Button09" 
-			          android:scaleType="fitCenter"
-			          android:src="@drawable/onbuttonall"
+			            android:src="@drawable/onbuttonall"
 		              android:layout_width="wrap_content" 
-		              android:layout_height="fill_parent"
-		              android:layout_marginBottom="6dip"
+		              android:layout_height="wrap_content"
 		              android:background="@android:color/transparent"
 		              android:onClick="onOff" 
 		              android:tag="9" >
@@ -427,17 +467,15 @@
        		  <LinearLayout android:id="@+id/allOff"
               android:layout_width="wrap_content" 
               android:layout_height="wrap_content"
-              android:layout_weight="0.5"
+              android:layout_weight="1.0"
               android:orientation="vertical" 
               android:gravity="center"
               android:visibility="invisible" >
 		            <ImageButton android:id="@+id/Button10" 
-		            	  android:scaleType="fitCenter"
-		               	  android:src="@drawable/offbuttonall"
+		            	android:src="@drawable/offbuttonall"
 				          android:layout_width="wrap_content" 
-				          android:layout_height="fill_parent"
+				          android:layout_height="wrap_content"
 				          android:background="@android:color/transparent"
-				          android:layout_marginBottom="6dip"
 				          android:onClick="onOff" 
 				          android:tag="10" >
 			          </ImageButton>
