@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent" 
 	android:layout_height="fill_parent"
-	android:background="#222222FF" 
+	android:background="@drawable/backgroundrepeat" 
 	android:fadeScrollbars="true" 
 	android:fadingEdge="vertical" 
 	android:fillViewport="true" >
@@ -33,7 +33,7 @@
         </LinearLayout>
         
 <!-- VIEW for a line -->
-        <View
+<!--    <View
           android:layout_width="fill_parent"
           android:layout_height="1dip"
           android:background="#ff106510"
@@ -42,11 +42,13 @@
           android:layout_marginTop="6dip"
           android:layout_marginBottom="12dip" >
         </View>
+-->
 
 <!-- LINEARLAYOUT LOADER -->
         <LinearLayout android:id="@+id/LL00"
           android:layout_width="fill_parent" 
-          android:layout_height="wrap_content" 
+          android:layout_height="wrap_content"
+          android:layout_margin="10dip"
           android:gravity="center"
           android:visibility="visible" >
             <ProgressBar android:id="@+id/ProgressBar01" 
@@ -57,6 +59,8 @@
 
 <!-- LINEARLAYOUT for power point 1 -->        
         <LinearLayout android:id="@+id/LL01"
+          android:background="@drawable/llayout"
+          android:layout_margin="3dip"
           android:layout_width="fill_parent" 
           android:layout_height="wrap_content" 
           android:gravity="center_vertical|fill_horizontal"
@@ -64,8 +68,7 @@
             <LinearLayout
               android:layout_width="fill_parent" 
               android:layout_height="wrap_content"
-              android:layout_weight="1.0"
-              android:padding="10dip" >
+              android:layout_weight="1.0" >
 		            <TextView android:id="@+id/TextView01" 
 			            android:layout_width="wrap_content" 
 			            android:layout_height="wrap_content"
@@ -87,23 +90,23 @@
 					        android:onClick="onOff" 
      					    android:tag="1">
      						</ImageButton>
-							  <Button 
+							  <TextView 
 							    android:layout_width="wrap_content" 
-		              android:layout_height="fill_parent"
-                  android:layout_margin="3dip"
-                  android:paddingLeft="10dip"
+		              android:layout_height="wrap_content"
+                  android:paddingLeft="20dip"
 		              android:paddingRight="6dip"
+		              android:clickable="true"
 		              android:text=">" android:textStyle="bold"
-		              android:textColor="#FFFFFF"
-		              android:background="@android:color/transparent"
 		              android:onClick="switchToPowerPoint"
 		              android:tag="1" >
-							  </Button>
+							  </TextView>
 					  </LinearLayout>
 		    </LinearLayout>
 
 <!-- LINEARLAYOUT for power point 2 -->
         <LinearLayout android:id="@+id/LL02"
+          android:background="@drawable/llayout"
+          android:layout_margin="3dip"
           android:layout_width="fill_parent" 
           android:layout_height="wrap_content" 
           android:gravity="center_vertical|fill_horizontal"
@@ -111,8 +114,7 @@
             <LinearLayout
               android:layout_width="fill_parent" 
               android:layout_height="wrap_content"
-              android:layout_weight="1.0"
-              android:padding="10dip" >
+              android:layout_weight="1.0" >
 				        <TextView android:id="@+id/TextView02" 
 			            android:layout_width="wrap_content" 
 			            android:layout_height="wrap_content" 
@@ -134,23 +136,23 @@
 					        android:onClick="onOff" 
      					    android:tag="2">
      						</ImageButton>
-		            <Button 
-		              android:layout_width="wrap_content" 
-		              android:layout_height="fill_parent"
-                  android:layout_margin="3dip" 
-		              android:paddingLeft="10dip"
+		            <TextView 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="wrap_content"
+                  android:paddingLeft="20dip"
                   android:paddingRight="6dip"
+                  android:clickable="true"
                   android:text=">" android:textStyle="bold"
-                  android:textColor="#FFFFFF"
-                  android:background="@android:color/transparent"
-		              android:onClick="switchToPowerPoint"
-		              android:tag="2" >
-		            </Button>
+                  android:onClick="switchToPowerPoint"
+                  android:tag="2" >
+                </TextView>
             </LinearLayout>
         </LinearLayout>
 
 <!-- LINEARLAYOUT for power point 3 -->        
         <LinearLayout android:id="@+id/LL03"
+          android:background="@drawable/llayout"
+          android:layout_margin="3dip"
           android:layout_width="fill_parent" 
           android:layout_height="wrap_content" 
           android:gravity="center_vertical|fill_horizontal"
@@ -158,8 +160,7 @@
 					  <LinearLayout
               android:layout_width="fill_parent" 
               android:layout_height="wrap_content"
-              android:layout_weight="1.0"
-              android:padding="10dip" >
+              android:layout_weight="1.0" >
 							  <TextView android:id="@+id/TextView03" 
 							    android:layout_width="wrap_content" 
 							    android:layout_height="wrap_content" 
@@ -181,23 +182,23 @@
 					        android:onClick="onOff" 
      					    android:tag="3">
      						</ImageButton>
-		            <Button 
-		              android:layout_width="wrap_content" 
-		              android:layout_height="fill_parent"
-		              android:layout_margin="3dip"
-		              android:paddingLeft="10dip"
+		            <TextView 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="wrap_content"
+                  android:paddingLeft="20dip"
                   android:paddingRight="6dip"
+                  android:clickable="true"
                   android:text=">" android:textStyle="bold"
-                  android:textColor="#FFFFFF"
-                  android:background="@android:color/transparent"
-		              android:onClick="switchToPowerPoint"
-		              android:tag="3" >
-	              </Button>
+                  android:onClick="switchToPowerPoint"
+                  android:tag="3" >
+                </TextView>
             </LinearLayout>
 	      </LinearLayout>
 
 <!-- LINEARLAYOUT for power point 4 -->        
         <LinearLayout android:id="@+id/LL04"
+          android:background="@drawable/llayout"
+          android:layout_margin="3dip"
           android:layout_width="fill_parent" 
           android:layout_height="wrap_content" 
           android:gravity="center_vertical|fill_horizontal"
@@ -205,8 +206,7 @@
             <LinearLayout
               android:layout_width="fill_parent" 
               android:layout_height="wrap_content"
-              android:layout_weight="1.0"
-              android:padding="10dip" >
+              android:layout_weight="1.0" >
                 <TextView android:id="@+id/TextView04" 
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
@@ -228,23 +228,23 @@
 				          android:onClick="onOff" 
     					    android:tag="4">
     						</ImageButton>
-                <Button 
+                <TextView 
                   android:layout_width="wrap_content" 
-                  android:layout_height="fill_parent"
-                  android:layout_margin="3dip"
-                  android:paddingLeft="10dip"
+                  android:layout_height="wrap_content"
+                  android:paddingLeft="20dip"
                   android:paddingRight="6dip"
+                  android:clickable="true"
                   android:text=">" android:textStyle="bold"
-                  android:textColor="#FFFFFF"
-                  android:background="@android:color/transparent"
                   android:onClick="switchToPowerPoint"
                   android:tag="4" >
-                </Button>
+                </TextView>
             </LinearLayout>
         </LinearLayout>
 
 <!-- LINEARLAYOUT for power point 5 -->        
         <LinearLayout android:id="@+id/LL05"
+          android:background="@drawable/llayout"
+          android:layout_margin="3dip"
           android:layout_width="fill_parent" 
           android:layout_height="wrap_content" 
           android:gravity="center_vertical|fill_horizontal"
@@ -252,8 +252,7 @@
             <LinearLayout
               android:layout_width="fill_parent" 
               android:layout_height="wrap_content"
-              android:layout_weight="1.0"
-              android:padding="10dip" >
+              android:layout_weight="1.0" >
                 <TextView android:id="@+id/TextView05" 
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
@@ -275,23 +274,23 @@
 					        android:onClick="onOff" 
      					    android:tag="5">
      						</ImageButton>
-                <Button 
+                <TextView 
                   android:layout_width="wrap_content" 
-                  android:layout_height="fill_parent"
-                  android:layout_margin="3dip"
-                  android:paddingLeft="10dip"
+                  android:layout_height="wrap_content"
+                  android:paddingLeft="20dip"
                   android:paddingRight="6dip"
+                  android:clickable="true"
                   android:text=">" android:textStyle="bold"
-                  android:textColor="#FFFFFF"
-                  android:background="@android:color/transparent"
                   android:onClick="switchToPowerPoint"
                   android:tag="5" >
-                </Button>
+                </TextView>
             </LinearLayout>
         </LinearLayout>
 
 <!-- LINEARLAYOUT for power point 6 -->        
         <LinearLayout android:id="@+id/LL06"
+          android:background="@drawable/llayout"
+          android:layout_margin="3dip"
           android:layout_width="fill_parent" 
           android:layout_height="wrap_content" 
           android:gravity="center_vertical|fill_horizontal"
@@ -299,8 +298,7 @@
             <LinearLayout
               android:layout_width="fill_parent" 
               android:layout_height="wrap_content"
-              android:layout_weight="1.0"
-              android:padding="10dip" >
+              android:layout_weight="1.0" >
                 <TextView android:id="@+id/TextView06" 
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
@@ -322,23 +320,23 @@
 					        android:onClick="onOff" 
      					    android:tag="6">
      						</ImageButton>
-                <Button 
+                <TextView 
                   android:layout_width="wrap_content" 
-                  android:layout_height="fill_parent"
-                  android:layout_margin="3dip"
-                  android:paddingLeft="10dip"
+                  android:layout_height="wrap_content"
+                  android:paddingLeft="20dip"
                   android:paddingRight="6dip"
+                  android:clickable="true"
                   android:text=">" android:textStyle="bold"
-                  android:textColor="#FFFFFF"
-                  android:background="@android:color/transparent"
                   android:onClick="switchToPowerPoint"
                   android:tag="6" >
-                </Button>
+                </TextView>
             </LinearLayout>
         </LinearLayout>
 
 <!-- LINEARLAYOUT for power point 7 -->        
         <LinearLayout android:id="@+id/LL07"
+          android:background="@drawable/llayout"
+          android:layout_margin="3dip"
           android:layout_width="fill_parent" 
           android:layout_height="wrap_content" 
           android:gravity="center_vertical|fill_horizontal"
@@ -346,8 +344,7 @@
             <LinearLayout
               android:layout_width="fill_parent" 
               android:layout_height="wrap_content"
-              android:layout_weight="1.0"
-              android:padding="10dip" >
+              android:layout_weight="1.0" >
                 <TextView android:id="@+id/TextView07" 
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
@@ -369,23 +366,23 @@
 					        android:onClick="onOff" 
      					    android:tag="7">
      						</ImageButton>
-                <Button 
+                <TextView 
                   android:layout_width="wrap_content" 
-                  android:layout_height="fill_parent"
-                  android:layout_margin="3dip"
-                  android:paddingLeft="10dip"
+                  android:layout_height="wrap_content"
+                  android:paddingLeft="20dip"
                   android:paddingRight="6dip"
+                  android:clickable="true"
                   android:text=">" android:textStyle="bold"
-                  android:textColor="#FFFFFF"
-                  android:background="@android:color/transparent"
                   android:onClick="switchToPowerPoint"
                   android:tag="7" >
-                </Button>
+                </TextView>
             </LinearLayout>
         </LinearLayout>
         
 <!-- LINEARLAYOUT for power point 8 -->        
         <LinearLayout android:id="@+id/LL08"
+          android:background="@drawable/llayout"
+          android:layout_margin="3dip"
           android:layout_width="fill_parent" 
           android:layout_height="wrap_content" 
           android:gravity="center_vertical|fill_horizontal"
@@ -393,8 +390,7 @@
             <LinearLayout
               android:layout_width="fill_parent" 
               android:layout_height="wrap_content"
-              android:layout_weight="1.0"
-              android:padding="10dip" >
+              android:layout_weight="1.0" >
                 <TextView android:id="@+id/TextView08" 
                   android:layout_width="wrap_content" 
                   android:layout_height="wrap_content"
@@ -416,31 +412,18 @@
 					        android:onClick="onOff" 
      					    android:tag="8">
      						</ImageButton>
-                <Button 
+                <TextView 
                   android:layout_width="wrap_content" 
-                  android:layout_height="fill_parent"
-                  android:layout_margin="3dip"
-                  android:paddingLeft="10dip"
+                  android:layout_height="wrap_content"
+                  android:paddingLeft="20dip"
                   android:paddingRight="6dip"
+                  android:clickable="true"
                   android:text=">" android:textStyle="bold"
-                  android:textColor="#FFFFFF"
-                  android:background="@android:color/transparent"
                   android:onClick="switchToPowerPoint"
                   android:tag="8" >
-                </Button>
+                </TextView>
             </LinearLayout>
         </LinearLayout>
-
-<!-- VIEW for a line -->        
-        <View
-          android:layout_width="fill_parent"
-          android:layout_height="1dip"
-          android:background="#ff106510"
-          android:layout_marginLeft="6dip"
-          android:layout_marginRight="6dip"
-          android:layout_marginTop="6dip"
-          android:layout_marginBottom="12dip" >
-        </View>
 
 <!-- LINEARLAYOUT for switch all on and switch all off -->        
         <LinearLayout 

@@ -59,6 +59,7 @@
       android:title="@string/ps_cat_autorefresh">
         <CheckBoxPreference
           android:key="RefreshOnOff"
+          android:enabled="true"
           android:title="@string/ps_autorefresh"
           android:summary="@string/ps_autorefresh_sum" >
         </CheckBoxPreference>

@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
-  android:background="#222222FF" 
+  android:background="@drawable/backgroundrepeat" 
   android:orientation="vertical">
   
 <!-- LINEARLAYOUT for last update -->        
@@ -27,7 +27,7 @@
       android:layout_marginLeft="6dip"
       android:layout_marginRight="6dip"
       android:layout_marginTop="6dip"
-      android:layout_marginBottom="12dip" >
+      android:layout_marginBottom="6dip" >
     </View>
 
 <!-- ONOFF -->
@@ -63,15 +63,14 @@
 		          android:background="@android:color/transparent"
 		          android:layout_width="wrap_content"
 		          android:layout_height="wrap_content" 
-		          android:layout_margin="3dip"
-		          android:layout_gravity="right"
 		          android:onClick="onOff" >
 		        </ImageButton>
         </LinearLayout>
     </LinearLayout>
 
        
-    <TextView android:id="@+id/counter" 
+    <TextView android:id="@+id/counter"
+        android:background="@drawable/llayout" 
         android:layout_width="fill_parent" 
         android:layout_height="wrap_content" 
         android:gravity="center"
@@ -90,31 +89,36 @@
       android:layout_marginTop="10dip" 
       android:orientation="horizontal"
       android:gravity="center" >  
-			  <Button android:id="@+id/onOffDelay" 
-			  android:layout_width="fill_parent"
+			  <Button android:id="@+id/onOffDelay"
+			    android:background="@drawable/llayout" 
+			    android:layout_width="fill_parent"
 		      android:layout_height="fill_parent"
 		      android:layout_weight="1.0"
 		      android:text="@string/onOffDelay"
+		      android:textColor="#FFFFFFFF"
 		      android:onClick="onOff"
 		      android:tag="0" >
 		    </Button>
-		    <Button android:id="@+id/cancelDelayedOff" 
-			  android:layout_width="fill_parent"
+		    <Button android:id="@+id/cancelDelayedOff"
+		      android:background="@drawable/llayout"  
+			    android:layout_width="fill_parent"
 		      android:layout_height="fill_parent"
 		      android:layout_weight="1.0"
 		      android:text="@string/cancelDelayedOff"
-		      android:onClick="stopTimer"
+		      android:textColor="#FFFFFFFF"
+          android:onClick="stopTimer"
 		      android:tag="1" >
 		    </Button>
-		    <Button android:id="@+id/setTime" 
-			  android:layout_width="fill_parent"
+		    <Button android:id="@+id/setTime"
+		      android:background="@drawable/llayout"  
+			    android:layout_width="fill_parent"
 		      android:layout_height="fill_parent"
 		      android:layout_weight="1.0"
 		      android:text="@string/setTime"
+		      android:textColor="#FFFFFFFF"
 		      android:onClick="selectTime"
 		      android:tag="2" >
 		    </Button>
-
 	  </LinearLayout>
     
  
