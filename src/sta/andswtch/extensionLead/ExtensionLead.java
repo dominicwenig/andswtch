@@ -77,8 +77,8 @@ public class ExtensionLead implements IExtensionLead {
 		this.currentView.updateActivity();
 	}
 
-	public void errorOccured(String message){
-		this.currentView.showErrorMessage(message);
+	public void errorOccured(int messageResourceId){
+		this.currentView.showErrorMessage(messageResourceId);
 	}
 
 	private void addPowerPoint(int id, String name, boolean enable, boolean on) {

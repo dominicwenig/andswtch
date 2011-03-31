@@ -13,7 +13,7 @@ public interface IExtensionLead {
 
 	public abstract void updateDatastructure(String response);
 
-	public abstract void errorOccured(String message);
+	public abstract void errorOccured(int message);
 
 	public abstract boolean isPowerPointOn(int id);
 

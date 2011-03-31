@@ -1,5 +1,6 @@
 package sta.andswtch.gui;
 
+import java.security.acl.LastOwnerException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 
 	private final int TAG_ALL_ON = 9;
 	private final int TAG_ALL_OFF = 10;
+	private final int CONNECTIONTIMEOUTLIMIT = 3;
 	
 	private ExtensionLeadManager extLeadManager;
 	private ExtensionLead extLead;
@@ -36,6 +38,10 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 	private CountDownTimer sinceLastRefreshTimer=null;
 	private TextView refreshtime;
 	private Time time;
+	private boolean showToastMessages = true;
+	private boolean showNotConnectedMessage = true;
+	private int connectionTimeoutCount = 0;
+	
 	
 	private Handler handlerEvent = new Handler() {
 		@Override
@@ -46,14 +52,36 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 						checkState(buttons.get(i - 1));
 					}
 					startRefreshTimer();
+					showNotConnectedMessage = true;
+					connectionTimeoutCount=0;
 					break;
 				}
 				case 2: {
-					Context context = getApplicationContext();
-					CharSequence text = (String) msg.obj;
-					int duration = Toast.LENGTH_SHORT;
-					Toast toast = Toast.makeText(context, text, duration);
-					toast.show();
+					if (showToastMessages) {
+						Context context = getApplicationContext();
+						String text = (String) msg.obj;
+						int duration = Toast.LENGTH_SHORT;
+						Toast toast = Toast.makeText(context, text, duration);
+						if(text.equals(getString(R.string.errorConnectionTimeOut)) && showNotConnectedMessage){
+							toast.show();
+							connectionTimeoutCount++;
+							if (connectionTimeoutCount>=CONNECTIONTIMEOUTLIMIT) {
+								if(sinceLastRefreshTimer!=null){
+									sinceLastRefreshTimer.cancel();
+								}
+								refreshtime.setText(R.string.notConnected);
+								showNotConnectedMessage=false;
+							}
+							//if message is connection timed out, show only if boolean is set
+						}
+						else if (!text.equals(getString(R.string.errorConnectionTimeOut))){
+							toast.show();
+							//if text is not connection timed out!
+						}
+							
+						
+					}
+
 					
 				}
 				default: {
@@ -128,6 +156,8 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		this.connectionTimeoutCount=0;
+		this.showToastMessages = true;
 		this.extLead = this.extLeadManager.getExtLeadFromView(this);
 
 		this.extLead.sendUpdateMessage();
@@ -157,6 +187,7 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 	@Override
 	public void onPause() {
 		super.onPause();
+		this.showToastMessages = false;
 		this.extLead.stopAutoRefreshRunning();
 	}
 	
@@ -176,6 +207,11 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 		msg.obj = message;
 		this.handlerEvent.sendMessage(msg);
 	}
+	
+	public void showErrorMessage(int messageResourceId) {
+		this.showErrorMessage(this.getAppContext().getString(messageResourceId));
+	}
+	
 
 	private void availabilityChecker() {
 		int cntUnavailables = 0;
@@ -212,13 +248,8 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 		
 		//set the endtime for the counter, if autorefresh is disabled, set to 1 hour
 		long endTimeMillis;
-		if(extLead.getUpdateInterval()==0){
-			endTimeMillis = 60*60*1000; //one hour
-		}
-		else {
-			//set endtimeMillis to updateinterval +3 to ensure, that counter is a little bit longer than update interval
-			endTimeMillis = (extLead.getUpdateInterval()+3)*1000;
-		}
+		endTimeMillis = 60*60*1000; //one hour
+		
 		
 		sinceLastRefreshTimer = new CountDownTimer(endTimeMillis,1000) {
 			

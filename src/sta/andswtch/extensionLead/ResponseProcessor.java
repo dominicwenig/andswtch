@@ -1,6 +1,8 @@
 package sta.andswtch.extensionLead;
 
 import java.util.List;
+
+import sta.andswtch.R;
 import android.util.Log;
 
 public class ResponseProcessor {
@@ -49,7 +51,7 @@ public class ResponseProcessor {
 					this.setState(i, true);
 				} else {
 					Log.w(TAG, "error while parsing respose: powerpoint wrong");
-					this.extLead.errorOccured("error while parsing respose: powerpoint wrong");
+					this.extLead.errorOccured(R.string.errorWrongPowerpoint);
 				}
 				// set powerpoint name
 				String ppName = wholeName.substring(0, wholeName.length() - 2);
@@ -75,10 +77,10 @@ public class ResponseProcessor {
 
 		} else {
 			if (reParts[reParts.length - 1].trim().equalsIgnoreCase("Err")) {
-				this.extLead.errorOccured("Error occured: check username and password");
+				this.extLead.errorOccured(R.string.errorUserPassword);
 				Log.e(TAG, "Error occured within the response");
 			} else {
-				this.extLead.errorOccured("Response didn't match pattern: please check powerpoint names with the aid of the webinterface");
+				this.extLead.errorOccured(R.string.errorPowerpointNames);
 				Log.e(TAG, "To many parts received, please check the names of the power points");
 			}
 		}

@@ -9,6 +9,8 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.util.Enumeration;
 
+import sta.andswtch.R;
+
 import android.util.Log;
 
 public class Receiver implements Runnable {
@@ -74,7 +76,7 @@ public class Receiver implements Runnable {
 					.getData()));
 
 		} catch (SocketTimeoutException e) {
-			this.connectionManager.errorAlert("Connection timed out");
+			this.connectionManager.errorAlert(R.string.errorConnectionTimeOut);
 			this.socket.close();
 		} catch (Exception e) {
 			Log.e(TAG, "S: Error", e);
@@ -108,7 +110,7 @@ public class Receiver implements Runnable {
 				}
 			}
 		} catch (SocketException ex) {
-			this.connectionManager.errorAlert("no network permission");
+			this.connectionManager.errorAlert(R.string.errorNoNetworkPermission);
 			Log.e(TAG,
 					"error while attemting to find out the local IP: "
 							+ ex.toString());

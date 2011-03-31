@@ -8,6 +8,6 @@ public interface IAndSwtchViews {
 	
 	public void updateActivity();
 	
-	public void showErrorMessage(String message);
+	public void showErrorMessage(int  messageResourceId);
 	
 }

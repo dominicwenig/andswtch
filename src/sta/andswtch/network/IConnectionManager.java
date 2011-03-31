@@ -2,7 +2,7 @@ package sta.andswtch.network;
 
 public interface IConnectionManager {
 
-	public abstract void errorAlert(String errorMessage);
+	public abstract void errorAlert(int errorMessageId);
 
 	public abstract void sendWithoutReceive(byte[] command);
 

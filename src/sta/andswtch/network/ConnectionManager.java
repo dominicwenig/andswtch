@@ -2,6 +2,7 @@ package sta.andswtch.network;
 
 import java.io.IOException;
 
+import sta.andswtch.R;
 import sta.andswtch.extensionLead.Config;
 import sta.andswtch.extensionLead.ExtensionLead;
 import android.util.Log;
@@ -23,8 +24,8 @@ public class ConnectionManager implements IConnectionManager {
 		this.receiver = new Receiver(this);
 	}
 
-	public void errorAlert(String errorMessage) {
-		this.extLead.errorOccured(errorMessage);
+	public void errorAlert(int errorMessageRsrcId) {
+		this.extLead.errorOccured(errorMessageRsrcId);
 	}
 
 	private void send(byte[] command) throws IOException {
@@ -42,7 +43,7 @@ public class ConnectionManager implements IConnectionManager {
 			this.send(command);
 		} catch (IOException e) {
 			e.printStackTrace();
-			this.errorAlert("failed to send the command, are you connected to a network?");
+			this.errorAlert(R.string.errorNoConnection);
 			Log.e(TAG,
 					"failed to send the packet with the following command : "
 							+ new String(command) + "to " + config.getHost()
@@ -86,7 +87,7 @@ public class ConnectionManager implements IConnectionManager {
 			this.send(command);
 		} catch (IOException e) {
 			e.printStackTrace();
-			this.errorAlert("failed to send the command, are you connected to a network?");
+			this.errorAlert(R.string.errorNoConnection);
 			Log.e(TAG,
 					"failed to send the packet with the following command : "
 							+ new String(command) + "to " + config.getHost()

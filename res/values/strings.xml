@@ -20,6 +20,16 @@
   <string name="cancelDelayedOff">Cancel</string>
   <string name="endTime">End Time: </string>
   
+<!-- Error messages --> 
+  <!--  network errors --> 
+  <string name="errorConnectionTimeOut">Connection Timed Out</string>
+  <string name="errorNoConnection">failed to send the command, are you connected to a network?</string>
+  <string name="errorNoNetworkPermission">no network permission</string>
+  
+  <!-- response processor errors -->
+  <string name="errorWrongPowerpoint">error while parsing respose: powerpoint wrong</string>
+  <string name="errorUserPassword">Error occured: check username and password</string>
+  <string name="errorPowerpointNames">Response didnt match pattern: please check powerpoint names with the aid of the webinterface</string>
 <!-- OM - OptionsMenu -->	
 	<string name="om_refresh">Refresh</string>
 	<string name="om_settings">Settings</string>

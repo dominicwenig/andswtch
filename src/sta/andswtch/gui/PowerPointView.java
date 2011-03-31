@@ -27,6 +27,7 @@ import android.widget.ToggleButton;
 public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 
 	private PowerPointDbAdapter ppDbHelper;
+	private final int CONNECTIONTIMEOUTLIMIT = 3;
 
 	private ExtensionLeadManager extLeadManager;
 	private ExtensionLead extLead;
@@ -42,6 +43,9 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 	private int minutes = 0;
 	private int seconds = 0;
 	TimePickerDialog timePickerDialog = null;
+	private boolean showToastMessages = true;
+	private boolean showNotConnectedMessage = true;
+	private int connectionTimeoutCount = 0;
 
 	private final String TAG = PowerPointView.class.getName();
 
@@ -56,11 +60,24 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 				break;
 			}
 			case 2: {
-				Context context = getApplicationContext();
-				CharSequence text = (String) msg.obj;
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();
+				if (showToastMessages) {
+					Context context = getApplicationContext();
+					String text = (String) msg.obj;
+					int duration = Toast.LENGTH_SHORT;
+					Toast toast = Toast.makeText(context, text, duration);
+					if(text.equals(getString(R.string.errorConnectionTimeOut)) && showNotConnectedMessage){
+						toast.show();
+						connectionTimeoutCount++;
+						if (connectionTimeoutCount>=CONNECTIONTIMEOUTLIMIT) {
+							showNotConnectedMessage=false;
+						}
+						//if message is connection timed out, show only if boolean is set
+					}
+					else if (!text.equals(getString(R.string.errorConnectionTimeOut))){
+						toast.show();
+						//if text is not connection timed out!
+					}
+				}
 			}
 			default: {
 				super.handleMessage(msg);
@@ -98,6 +115,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 	@Override
 	public void onResume() {
 		super.onResume();
+		this.showToastMessages=true;
 		setDelayTime(this.sumSeconds);
 		this.extLead.startAutoRefreshRunning();
 	}
@@ -105,6 +123,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 	@Override
 	public void onPause() {
 		super.onPause();
+		this.showToastMessages=false;
 		this.extLead.stopAutoRefreshRunning();
 	}
 
@@ -206,6 +225,10 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		msg.what = 2;
 		msg.obj = message;
 		this.handlerEvent.sendMessage(msg);
+	}
+	
+	public void showErrorMessage(int messageResourceId) {
+		this.showErrorMessage(this.getAppContext().getString(messageResourceId));
 	}
 
 	public void onOff(View v) {
