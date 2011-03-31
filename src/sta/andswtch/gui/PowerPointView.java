@@ -81,7 +81,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.powerpoint);
+		this.setContentView(R.layout.powerpoint2);
 
 		this.extLeadManager = ExtensionLeadManager.getInstance(this);
 		this.extLead = this.extLeadManager.getExtLeadFromView(this);

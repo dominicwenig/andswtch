@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@drawable/backgroundrepeat" 
+  android:orientation="vertical">
+
+<!-- LINEARLAYOUT for end time -->        
+        <LinearLayout
+          android:layout_width="fill_parent" 
+          android:layout_height="wrap_content"
+          android:layout_marginTop="10dip" 
+          android:orientation="horizontal" >
+            <TextView android:id="@+id/endTime"
+              android:layout_width="wrap_content" 
+              android:layout_height="wrap_content"
+              android:text="@string/endTime" >
+            </TextView>
+            <TextView android:id="@+id/endTimeValue"
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="10dip"
+              android:text="" >
+            </TextView>
+        </LinearLayout>
+
+<!-- LINEARLAYOUT for power point -->        
+        <LinearLayout
+          android:background="@drawable/llayout"
+          android:layout_margin="3dip"
+          android:layout_width="fill_parent" 
+          android:layout_height="wrap_content" 
+          android:gravity="center_vertical|fill_horizontal" >
+            <LinearLayout
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content"
+              android:layout_weight="1.0" >
+                <TextView android:id="@+id/ppName" 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="wrap_content"
+                  android:text="Name" android:textStyle="bold" >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content" 
+              android:layout_weight="1.0" 
+              android:gravity="right|center_vertical" >
+                <ImageButton android:id="@+id/onOff" 
+                  android:src="@drawable/offbutton"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:background="@android:color/transparent"
+                  android:onClick="onOff" >
+                </ImageButton>
+                <TextView 
+                  android:layout_width="wrap_content" 
+                  android:layout_height="wrap_content"
+                  android:paddingLeft="20dip"
+                  android:paddingRight="6dip"
+                  android:text=" " >
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+
+<!-- TEXTVIEW Counter -->       
+    <TextView android:id="@+id/counter"
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content" 
+        android:gravity="center"
+        android:textSize="70sp"
+        android:clickable="true"
+        android:onClick="selectTime"
+        android:text="00:00:00"
+    />
+  
+<!-- TEXTVIEW for Delay in seconds -->  
+    <LinearLayout
+      android:layout_width="fill_parent" 
+      android:layout_height="wrap_content"
+      android:layout_marginTop="6dip" 
+      android:orientation="horizontal"
+      android:gravity="center" >  
+			  <Button android:id="@+id/onOffDelay"
+			    android:background="@drawable/llayout" 
+			    android:layout_width="fill_parent"
+		      android:layout_height="fill_parent"
+		      android:layout_weight="1.0"
+		      android:text="@string/onOffDelay"
+		      android:textColor="#FFFFFFFF"
+		      android:onClick="onOff"
+		      android:tag="0" >
+		    </Button>
+		    <Button android:id="@+id/cancelDelayedOff"
+		      android:background="@drawable/llayout"  
+			    android:layout_width="fill_parent"
+		      android:layout_height="fill_parent"
+		      android:layout_weight="1.0"
+		      android:text="@string/cancelDelayedOff"
+		      android:textColor="#FFFFFFFF"
+          android:onClick="stopTimer"
+		      android:tag="1" >
+		    </Button>
+		    <Button android:id="@+id/setTime"
+		      android:background="@drawable/llayout"  
+			    android:layout_width="fill_parent"
+		      android:layout_height="fill_parent"
+		      android:layout_weight="1.0"
+		      android:text="@string/setTime"
+		      android:textColor="#FFFFFFFF"
+		      android:onClick="selectTime"
+		      android:tag="2" >
+		    </Button>
+	  </LinearLayout>
+    
+ 
+</LinearLayout>

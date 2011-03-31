@@ -105,8 +105,9 @@ public final class R {
         public static final int andswtch=0x7f030000;
         public static final int number_picker=0x7f030001;
         public static final int powerpoint=0x7f030002;
-        public static final int time_picker=0x7f030003;
-        public static final int time_picker_dialog=0x7f030004;
+        public static final int powerpoint2=0x7f030003;
+        public static final int time_picker=0x7f030004;
+        public static final int time_picker_dialog=0x7f030005;
     }
     public static final class menu {
         public static final int optionsmenu=0x7f070000;
