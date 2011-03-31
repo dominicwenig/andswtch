@@ -133,6 +133,16 @@ public class ExtensionLead implements IExtensionLead {
 		return this.config.getUpdateInterval();
 	}
 	
+	public int getEnabledPowerPointNumber(){
+		int count=0;
+		for (PowerPoint pp : powerPoints) {
+			if(pp.isEnabled()){
+				count++;
+			}
+		}
+		return count;
+	}
+	
 	public boolean isAutoRefreshRunning() {
 		if(this.autoRefresh != null)
 			return this.autoRefresh.isAutoRefreshRunning();

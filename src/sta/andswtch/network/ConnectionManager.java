@@ -10,6 +10,8 @@ import android.util.Log;
 public class ConnectionManager implements IConnectionManager {
 
 	private static final String TAG = ConnectionManager.class.getName();
+
+	private static final double TIMEFAKTOR = 0.7;
 	
 	private ExtensionLead extLead;
 	private Config config;
@@ -55,7 +57,7 @@ public class ConnectionManager implements IConnectionManager {
 	private void startReceive() {
 		Log.d(TAG, "start a server to receive the response");
 		try {
-			this.receiver.start(this.config.getApplicationReceiverPort());
+			this.receiver.start(this.config.getApplicationReceiverPort(), this.calculateTimeoutSeconds());
 		} catch (IOException e) {
 			//this.errorAlert("failed to start server");
 			Log.e(TAG,
@@ -64,6 +66,17 @@ public class ConnectionManager implements IConnectionManager {
 			e.printStackTrace();
 		}
 
+	}
+
+	private int calculateTimeoutSeconds() {
+		
+		
+		int ppNumber = extLead.getEnabledPowerPointNumber();
+		int time = (int)(ppNumber * TIMEFAKTOR);
+		if(time<2){
+			time=2;
+		}
+		return time;
 	}
 
 	/**

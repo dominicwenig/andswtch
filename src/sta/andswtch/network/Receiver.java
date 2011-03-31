@@ -26,12 +26,14 @@ public class Receiver implements Runnable {
 	private Thread thread;
 	private DatagramPacket packet;
 
+
 	public Receiver(IConnectionManager conManager) {
 		this.connectionManager = conManager;
 	}
 
-	public void start(int port) throws IOException {
+	public void start(int port, int timeOutSeconds) throws IOException {
 
+		
 		InetAddress localIP = getLocalIpAddress();
 		String localIPString;
 		if(localIP==null){
@@ -46,6 +48,7 @@ public class Receiver implements Runnable {
 
 		this.thread = new Thread(this, "Andswtch UDP_Server");
 		this.socket = new DatagramSocket(port, localIP);
+		this.socket.setSoTimeout(timeOutSeconds*1000);
 
 		if (inactive == true) {
 			Log.d(TAG, "starting server at  " + localIPString + ":" + port);
@@ -59,7 +62,7 @@ public class Receiver implements Runnable {
 
 	public void run() {
 		try {
-			this.socket.setSoTimeout(2000);
+
 
 			byte[] buf = new byte[400];
 
