@@ -1,6 +1,5 @@
 package sta.andswtch.gui;
 
-import java.security.acl.LastOwnerException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +21,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 

@@ -10,7 +10,6 @@ import java.net.SocketTimeoutException;
 import java.util.Enumeration;
 
 import sta.andswtch.R;
-
 import android.util.Log;
 
 public class Receiver implements Runnable {

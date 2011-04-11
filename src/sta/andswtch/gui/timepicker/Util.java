@@ -17,9 +17,7 @@
 
 package sta.andswtch.gui.timepicker;
 
-import sta.andswtch.R;
 import android.text.format.Time;
-import android.widget.TextView;
 
 public class Util {
     public static String pad(int c) {
