@@ -12,7 +12,7 @@ public class ConnectionManager implements IConnectionManager {
 	private static final String TAG = ConnectionManager.class.getName();
 
 	private static final double TIMEFAKTOR = 0.5;
-	
+
 	private ExtensionLead extLead;
 	private Config config;
 	private Sender sender;
@@ -57,9 +57,10 @@ public class ConnectionManager implements IConnectionManager {
 	private void startReceive() {
 		Log.d(TAG, "start a server to receive the response");
 		try {
-			this.receiver.start(this.config.getApplicationReceiverPort(), this.calculateTimeoutSeconds());
+			this.receiver.start(this.config.getApplicationReceiverPort(),
+					this.calculateTimeoutSeconds());
 		} catch (IOException e) {
-			//this.errorAlert("failed to start server");
+			// this.errorAlert("failed to start server");
 			Log.e(TAG,
 					"Error: could not start the server, exception: "
 							+ e.getMessage());
@@ -69,10 +70,9 @@ public class ConnectionManager implements IConnectionManager {
 	}
 
 	private int calculateTimeoutSeconds() {
-		
-		
+
 		int ppNumber = extLead.getEnabledPowerPointNumber();
-		int time = 2+(int)(ppNumber * TIMEFAKTOR);
+		int time = 2 + (int) (ppNumber * TIMEFAKTOR);
 		return time;
 	}
 
@@ -107,8 +107,8 @@ public class ConnectionManager implements IConnectionManager {
 	}
 
 	/**
-	 * send the response to the ExtensionLead object to update the
-	 * data structure.
+	 * send the response to the ExtensionLead object to update the data
+	 * structure.
 	 */
 	public void updateDatastructure(String response) {
 		this.extLead.updateDatastructure(response);

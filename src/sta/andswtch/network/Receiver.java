@@ -25,29 +25,27 @@ public class Receiver implements Runnable {
 	private Thread thread;
 	private DatagramPacket packet;
 
-
 	public Receiver(IConnectionManager conManager) {
 		this.connectionManager = conManager;
 	}
 
 	public void start(int port, int timeOutSeconds) throws IOException {
 
-		
 		InetAddress localIP = getLocalIpAddress();
 		String localIPString;
-		if(localIP==null){
-			throw new IOException("Cannot get a local IP Address, are you connected to a network?");
-		}else{
-			 localIPString = localIP.getHostAddress();
+		if (localIP == null) {
+			throw new IOException(
+					"Cannot get a local IP Address, are you connected to a network?");
+		} else {
+			localIPString = localIP.getHostAddress();
 		}
-		
 
 		Log.d(TAG, "try to create a DatagramSocket" + localIPString + ":"
 				+ port);
 
 		this.thread = new Thread(this, "Andswtch UDP_Server");
 		this.socket = new DatagramSocket(port, localIP);
-		this.socket.setSoTimeout(timeOutSeconds*1000);
+		this.socket.setSoTimeout(timeOutSeconds * 1000);
 
 		if (inactive == true) {
 			Log.d(TAG, "starting server at  " + localIPString + ":" + port);
@@ -61,7 +59,6 @@ public class Receiver implements Runnable {
 
 	public void run() {
 		try {
-
 
 			byte[] buf = new byte[400];
 
@@ -112,7 +109,8 @@ public class Receiver implements Runnable {
 				}
 			}
 		} catch (SocketException ex) {
-			this.connectionManager.errorAlert(R.string.errorNoNetworkPermission);
+			this.connectionManager
+					.errorAlert(R.string.errorNoNetworkPermission);
 			Log.e(TAG,
 					"error while attemting to find out the local IP: "
 							+ ex.toString());

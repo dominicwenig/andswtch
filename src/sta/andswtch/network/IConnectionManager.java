@@ -21,8 +21,8 @@ public interface IConnectionManager {
 	public abstract void sendAndReceive(byte[] command);
 
 	/**
-	 * send the response to the ExtensionLead object to update the
-	 * data structure.
+	 * send the response to the ExtensionLead object to update the data
+	 * structure.
 	 */
 	public abstract void updateDatastructure(String response);
 

@@ -7,10 +7,10 @@ import sta.andswtch.gui.IAndSwtchViews;
 import sta.andswtch.network.ConnectionManager;
 
 public class ExtensionLead implements IExtensionLead {
-	
+
 	public static final int POWERPOINTCNT = 8;
 	private static final boolean DEVELOP = false;
-	
+
 	private List<PowerPoint> powerPoints;
 	private Config config;
 	private ConnectionManager connectionManager;
@@ -19,12 +19,12 @@ public class ExtensionLead implements IExtensionLead {
 	private AutoRefresh autoRefresh;
 	private IAndSwtchViews currentView;
 	private String name = "";
-	
+
 	public ExtensionLead(IAndSwtchViews currentView) {
 		this.currentView = currentView;
 		this.init();
 	}
-	
+
 	private void init() {
 		this.powerPoints = new ArrayList<PowerPoint>();
 		this.config = new Config(this.currentView.getAppContext());
@@ -36,7 +36,7 @@ public class ExtensionLead implements IExtensionLead {
 		this.commandGenerator = new CommandGenerator(this.config);
 		this.startAutoRefreshRunning();
 	}
-	
+
 	public void setCurrentView(IAndSwtchViews v) {
 		this.currentView = v;
 	}
@@ -48,19 +48,19 @@ public class ExtensionLead implements IExtensionLead {
 	}
 
 	public void sendState(int id, boolean on, int time) {
-		byte[] command = this.commandGenerator.generateSwitchDelayedCommand(id, on, time);
+		byte[] command = this.commandGenerator.generateSwitchDelayedCommand(id,
+				on, time);
 		this.connectionManager.sendWithoutReceive(command);
 	}
-	
+
 	public void sendState(int id, boolean on) {
 		String command = this.commandGenerator.generateSwitchCommand(id, on);
 		this.connectionManager.sendAndReceive(command);
 	}
-	
-	
 
 	public void sendStateAll(boolean on) {
-		byte[] command = this.commandGenerator.generateSwitchAllCommand(on, powerPoints);
+		byte[] command = this.commandGenerator.generateSwitchAllCommand(on,
+				powerPoints);
 		this.connectionManager.sendAndReceive(command);
 	}
 
@@ -71,13 +71,14 @@ public class ExtensionLead implements IExtensionLead {
 
 	public void updateDatastructure(String response) {
 		if (this.responseProcessor == null) {
-			this.responseProcessor = new ResponseProcessor(this.powerPoints, this);
+			this.responseProcessor = new ResponseProcessor(this.powerPoints,
+					this);
 		}
 		this.responseProcessor.processResponse(response);
 		this.currentView.updateActivity();
 	}
 
-	public void errorOccured(int messageResourceId){
+	public void errorOccured(int messageResourceId) {
 		this.currentView.showErrorMessage(messageResourceId);
 	}
 
@@ -120,7 +121,7 @@ public class ExtensionLead implements IExtensionLead {
 	public String getPassword() {
 		return this.config.getPassword();
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -128,37 +129,37 @@ public class ExtensionLead implements IExtensionLead {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public int getUpdateInterval() {
 		return this.config.getUpdateInterval();
 	}
-	
-	public int getEnabledPowerPointNumber(){
-		int count=0;
+
+	public int getEnabledPowerPointNumber() {
+		int count = 0;
 		for (PowerPoint pp : powerPoints) {
-			if(pp.isEnabled()){
+			if (pp.isEnabled()) {
 				count++;
 			}
 		}
 		return count;
 	}
-	
+
 	public boolean isAutoRefreshRunning() {
-		if(this.autoRefresh != null)
+		if (this.autoRefresh != null)
 			return this.autoRefresh.isAutoRefreshRunning();
 		else
 			return false;
 	}
-	
+
 	public void stopAutoRefreshRunning() {
-		if(this.autoRefresh != null) {
+		if (this.autoRefresh != null) {
 			this.autoRefresh.stopAutoRefresh();
 			this.autoRefresh = null;
 		}
 	}
-	
+
 	public void startAutoRefreshRunning() {
-		if(this.autoRefresh == null) {
+		if (this.autoRefresh == null) {
 			this.autoRefresh = new AutoRefresh(this);
 		}
 		this.autoRefresh.startAutoRefresh();

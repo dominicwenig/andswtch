@@ -30,149 +30,169 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 /**
- * A dialog that prompts the user for the time of day using a {@link TimePicker}.
+ * A dialog that prompts the user for the time of day using a {@link TimePicker}
+ * .
  */
-public class TimePickerDialog extends AlertDialog implements OnClickListener, 
-        TimePicker.OnTimeChangedListener {
+public class TimePickerDialog extends AlertDialog implements OnClickListener,
+		TimePicker.OnTimeChangedListener {
 
-    /**
-     * The callback interface used to indicate the user is done filling in
-     * the time (they clicked on the 'Set' button).
-     */
-    public interface OnTimeSetListener {
+	/**
+	 * The callback interface used to indicate the user is done filling in the
+	 * time (they clicked on the 'Set' button).
+	 */
+	public interface OnTimeSetListener {
 
-        /**
-         * @param view The view associated with this listener.
-         * @param hour The hour that was set.
-         * @param minute The minute that was set.
-         * @param second The second that was set.
-         * @param cancel If the set is cancel
-         */
-        void onTimeSet(TimePicker view, int hour, int minute, int second, boolean cancel);
-    }
+		/**
+		 * @param view
+		 *            The view associated with this listener.
+		 * @param hour
+		 *            The hour that was set.
+		 * @param minute
+		 *            The minute that was set.
+		 * @param second
+		 *            The second that was set.
+		 * @param cancel
+		 *            If the set is cancel
+		 */
+		void onTimeSet(TimePicker view, int hour, int minute, int second,
+				boolean cancel);
+	}
 
-    private static final String HOUR = "hour";
-    private static final String MINUTE = "minute";
-    private static final String SECOND = "second";
-    
-    private final TimePicker mTimePicker;
-    private final OnTimeSetListener mCallback;
-    
-    private int mInitialHour;
-    private int mInitialMinute;
-    private int mInitialSecond;
+	private static final String HOUR = "hour";
+	private static final String MINUTE = "minute";
+	private static final String SECOND = "second";
 
-    private Resources resources;
+	private final TimePicker mTimePicker;
+	private final OnTimeSetListener mCallback;
 
-    /**
-     * @param context Parent.
-     * @param callBack How parent is notified.
-     * @param hour The initial hour.
-     * @param minute The initial minute.
-     * @param second The initial second.
-     */
-    public TimePickerDialog(Context context,
-            OnTimeSetListener callBack,
-            int hour, int minute, int second) {
-//        this(context, R.style.Theme_Dialog_Alert,
-        this(context, 0, callBack, hour, minute, second);
-    }
+	private int mInitialHour;
+	private int mInitialMinute;
+	private int mInitialSecond;
 
-    /**
-     * @param context Parent.
-     * @param theme the theme to apply to this dialog
-     * @param callBack How parent is notified.
-     * @param hour The initial hour.
-     * @param minute The initial minute.
-     * @param second The initial second.
-     */
-    public TimePickerDialog(Context context,
-            int theme,
-            OnTimeSetListener callBack,
-            int hour, int minute, int second) {
-        // super(context, theme);
-        super(context);
-        resources = context.getResources();
+	private Resources resources;
 
-        mCallback = callBack;
-        mInitialHour = hour;
-        mInitialMinute = minute;
-        mInitialSecond = second;
+	/**
+	 * @param context
+	 *            Parent.
+	 * @param callBack
+	 *            How parent is notified.
+	 * @param hour
+	 *            The initial hour.
+	 * @param minute
+	 *            The initial minute.
+	 * @param second
+	 *            The initial second.
+	 */
+	public TimePickerDialog(Context context, OnTimeSetListener callBack,
+			int hour, int minute, int second) {
+		// this(context, R.style.Theme_Dialog_Alert,
+		this(context, 0, callBack, hour, minute, second);
+	}
 
-        updateTitle(mInitialHour, mInitialMinute, mInitialSecond);
-        
-        setButton(BUTTON_POSITIVE, context.getText(R.string.tp_countdown_start), this);
-        setButton(BUTTON_NEGATIVE, context.getText(R.string.tp_cancel_txt), this);
-        setIcon(R.drawable.ic_dialog_time);
+	/**
+	 * @param context
+	 *            Parent.
+	 * @param theme
+	 *            the theme to apply to this dialog
+	 * @param callBack
+	 *            How parent is notified.
+	 * @param hour
+	 *            The initial hour.
+	 * @param minute
+	 *            The initial minute.
+	 * @param second
+	 *            The initial second.
+	 */
+	public TimePickerDialog(Context context, int theme,
+			OnTimeSetListener callBack, int hour, int minute, int second) {
+		// super(context, theme);
+		super(context);
+		resources = context.getResources();
 
-        LayoutInflater inflater = 
-                (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.time_picker_dialog, null);
-        setView(view);
-        mTimePicker = (TimePicker) view.findViewById(R.id.timePicker);
+		mCallback = callBack;
+		mInitialHour = hour;
+		mInitialMinute = minute;
+		mInitialSecond = second;
 
-        // initialize state
-        mTimePicker.setCurrentHour(mInitialHour);
-        mTimePicker.setCurrentMinute(mInitialMinute);
-        mTimePicker.setCurrentSecond(mInitialSecond);
-        mTimePicker.setOnTimeChangedListener(this);
-    }
+		updateTitle(mInitialHour, mInitialMinute, mInitialSecond);
 
-    public void onClick(DialogInterface dialog, int which) {
-        boolean cancel = false;
-        Log.i(this.getClass().getName(), new Integer(which).toString());
-        if (which == BUTTON_NEGATIVE) {cancel=true;}
-        if (mCallback != null) {
-            mTimePicker.clearFocus();
-            mCallback.onTimeSet(mTimePicker, mTimePicker.getCurrentHour(), 
-                    mTimePicker.getCurrentMinute(), mTimePicker.getCurrentSecond(),cancel);
-        }
-    }
+		setButton(BUTTON_POSITIVE,
+				context.getText(R.string.tp_countdown_start), this);
+		setButton(BUTTON_NEGATIVE, context.getText(R.string.tp_cancel_txt),
+				this);
+		setIcon(R.drawable.ic_dialog_time);
 
-    public void onTimeChanged(TimePicker view, int hour, int minute, int second) {
-        // FIXME: Enable them only the first time
-        if (hour > 0 || minute > 0 || second > 0) { 
-            getButton(BUTTON_POSITIVE).setEnabled(true);
-            getButton(BUTTON_NEGATIVE).setEnabled(true);
-        } else {
-            getButton(BUTTON_POSITIVE).setEnabled(false);
-            getButton(BUTTON_NEGATIVE).setEnabled(true);
-        }
-        updateTitle(hour, minute, second);
-    }
-    
-    public void updateTime(int hour, int minute, int second) {
-        mTimePicker.setCurrentHour(hour);
-        mTimePicker.setCurrentMinute(minute);
-        mTimePicker.setCurrentSecond(second);
-    }
+		LayoutInflater inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View view = inflater.inflate(R.layout.time_picker_dialog, null);
+		setView(view);
+		mTimePicker = (TimePicker) view.findViewById(R.id.timePicker);
 
-    private void updateTitle(int hour, int minute, int second) {
-        String title = resources.getString(R.string.tp_title_text);
-            
-        setTitle(title+" "+
-                 Util.pad(hour)+":"+Util.pad(minute)+":"+Util.pad(second));
-    }
-    
-    @Override
-    public Bundle onSaveInstanceState() {
-        Bundle state = super.onSaveInstanceState();
-        state.putInt(HOUR, mTimePicker.getCurrentHour());
-        state.putInt(MINUTE, mTimePicker.getCurrentMinute());
-        state.putInt(SECOND, mTimePicker.getCurrentSecond());
-        return state;
-    }
-    
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        int hour = savedInstanceState.getInt(HOUR);
-        int minute = savedInstanceState.getInt(MINUTE);
-        int second = savedInstanceState.getInt(SECOND);
-        mTimePicker.setCurrentHour(hour);
-        mTimePicker.setCurrentMinute(minute);
-        mTimePicker.setCurrentSecond(second);
-        mTimePicker.setOnTimeChangedListener(this);
-        updateTitle(hour, minute, second);
-    }
+		// initialize state
+		mTimePicker.setCurrentHour(mInitialHour);
+		mTimePicker.setCurrentMinute(mInitialMinute);
+		mTimePicker.setCurrentSecond(mInitialSecond);
+		mTimePicker.setOnTimeChangedListener(this);
+	}
+
+	public void onClick(DialogInterface dialog, int which) {
+		boolean cancel = false;
+		Log.i(this.getClass().getName(), new Integer(which).toString());
+		if (which == BUTTON_NEGATIVE) {
+			cancel = true;
+		}
+		if (mCallback != null) {
+			mTimePicker.clearFocus();
+			mCallback.onTimeSet(mTimePicker, mTimePicker.getCurrentHour(),
+					mTimePicker.getCurrentMinute(),
+					mTimePicker.getCurrentSecond(), cancel);
+		}
+	}
+
+	public void onTimeChanged(TimePicker view, int hour, int minute, int second) {
+		// FIXME: Enable them only the first time
+		if (hour > 0 || minute > 0 || second > 0) {
+			getButton(BUTTON_POSITIVE).setEnabled(true);
+			getButton(BUTTON_NEGATIVE).setEnabled(true);
+		} else {
+			getButton(BUTTON_POSITIVE).setEnabled(false);
+			getButton(BUTTON_NEGATIVE).setEnabled(true);
+		}
+		updateTitle(hour, minute, second);
+	}
+
+	public void updateTime(int hour, int minute, int second) {
+		mTimePicker.setCurrentHour(hour);
+		mTimePicker.setCurrentMinute(minute);
+		mTimePicker.setCurrentSecond(second);
+	}
+
+	private void updateTitle(int hour, int minute, int second) {
+		String title = resources.getString(R.string.tp_title_text);
+
+		setTitle(title + " " + Util.pad(hour) + ":" + Util.pad(minute) + ":"
+				+ Util.pad(second));
+	}
+
+	@Override
+	public Bundle onSaveInstanceState() {
+		Bundle state = super.onSaveInstanceState();
+		state.putInt(HOUR, mTimePicker.getCurrentHour());
+		state.putInt(MINUTE, mTimePicker.getCurrentMinute());
+		state.putInt(SECOND, mTimePicker.getCurrentSecond());
+		return state;
+	}
+
+	@Override
+	public void onRestoreInstanceState(Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+		int hour = savedInstanceState.getInt(HOUR);
+		int minute = savedInstanceState.getInt(MINUTE);
+		int second = savedInstanceState.getInt(SECOND);
+		mTimePicker.setCurrentHour(hour);
+		mTimePicker.setCurrentMinute(minute);
+		mTimePicker.setCurrentSecond(second);
+		mTimePicker.setOnTimeChangedListener(this);
+		updateTitle(hour, minute, second);
+	}
 }

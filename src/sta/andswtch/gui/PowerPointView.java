@@ -1,6 +1,5 @@
 package sta.andswtch.gui;
 
-
 import sta.andswtch.R;
 import sta.andswtch.db.PowerPointDbAdapter;
 import sta.andswtch.db.PowerPointRow;
@@ -64,17 +63,19 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 					String text = (String) msg.obj;
 					int duration = Toast.LENGTH_SHORT;
 					Toast toast = Toast.makeText(context, text, duration);
-					if(text.equals(getString(R.string.errorConnectionTimeOut)) && showNotConnectedMessage){
+					if (text.equals(getString(R.string.errorConnectionTimeOut))
+							&& showNotConnectedMessage) {
 						toast.show();
 						connectionTimeoutCount++;
-						if (connectionTimeoutCount>=CONNECTIONTIMEOUTLIMIT) {
-							showNotConnectedMessage=false;
+						if (connectionTimeoutCount >= CONNECTIONTIMEOUTLIMIT) {
+							showNotConnectedMessage = false;
 						}
-						//if message is connection timed out, show only if boolean is set
-					}
-					else if (!text.equals(getString(R.string.errorConnectionTimeOut))){
+						// if message is connection timed out, show only if
+						// boolean is set
+					} else if (!text
+							.equals(getString(R.string.errorConnectionTimeOut))) {
 						toast.show();
-						//if text is not connection timed out!
+						// if text is not connection timed out!
 					}
 				}
 			}
@@ -114,7 +115,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 	@Override
 	public void onResume() {
 		super.onResume();
-		this.showToastMessages=true;
+		this.showToastMessages = true;
 		setDelayTime(this.sumSeconds);
 		this.extLead.startAutoRefreshRunning();
 	}
@@ -122,7 +123,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 	@Override
 	public void onPause() {
 		super.onPause();
-		this.showToastMessages=false;
+		this.showToastMessages = false;
 		this.extLead.stopAutoRefreshRunning();
 	}
 
@@ -139,8 +140,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 			this.onOffTag = Integer.parseInt(tagString);
 			Log.d(TAG, "Tag of this view is " + onOffTag);
 			this.name.setText(this.extLead.getPowerPointName(this.onOffTag));
-		}
-		else{
+		} else {
 			Log.e(TAG, "Tag of ppwerPointView is null");
 		}
 		String name = extra.getString("name");
@@ -173,12 +173,11 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 			setEndTime((int) secDif);
 			this.startTimer((int) secDif);
 		} else {
-			
+
 			setDelayTime(sumSeconds);
 			startEndTimeCounter();
 		}
 
-		
 		Log.d(TAG, "End time is: " + endTime);
 
 	}
@@ -225,7 +224,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		msg.obj = message;
 		this.handlerEvent.sendMessage(msg);
 	}
-	
+
 	public void showErrorMessage(int messageResourceId) {
 		this.showErrorMessage(this.getAppContext().getString(messageResourceId));
 	}
@@ -257,7 +256,7 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		if (countDownTimer != null) {
 			countDownTimer.cancel();
 		}
-		if(endTimeCounter!=null){
+		if (endTimeCounter != null) {
 			endTimeCounter.cancel();
 		}
 		onOffDelay.setText(R.string.restartDelay);
@@ -312,42 +311,39 @@ public class PowerPointView extends OptionsMenu implements IAndSwtchViews {
 		if (this.extLead.getName() != "")
 			this.setTitle("AndSwtch - " + this.extLead.getName());
 	}
-	
-	public void stopTimer(View v){
-		if(countDownTimer!=null){
+
+	public void stopTimer(View v) {
+		if (countDownTimer != null) {
 			countDownTimer.cancel();
 		}
 		startEndTimeCounter();
 		setDelayTime(sumSeconds);
 		onOffDelay.setText(R.string.onOffDelay);
-		//set the timer in extlead timer to 0 to reset it
+		// set the timer in extlead timer to 0 to reset it
 		extLead.sendState(this.onOffTag, false, 0);
-		//set the end time in the db to now
-		ppDbHelper.updatePowerPointRow(onOffTag, 0, hours, minutes,
-				seconds);
-		
+		// set the end time in the db to now
+		ppDbHelper.updatePowerPointRow(onOffTag, 0, hours, minutes, seconds);
+
 	}
-	
-	private void startEndTimeCounter(){
-		endTimeCounter = new CountDownTimer(60*60*1000,1000) {
-			
+
+	private void startEndTimeCounter() {
+		endTimeCounter = new CountDownTimer(60 * 60 * 1000, 1000) {
+
 			@Override
 			public void onTick(long millisUntilFinished) {
 				setEndTime(sumSeconds);
 			}
-			
+
 			@Override
 			public void onFinish() {
 				TextView endTimeValueTV = (TextView) findViewById(R.id.endTimeValue);
 				endTimeValueTV.setText("");
 				TextView endTimeTV = (TextView) findViewById(R.id.endTime);
 				endTimeTV.setText("");
-				
+
 			}
 		}.start();
 	}
-	
-	
 
 	private void setEndTime(int sumSeconds) {
 		TextView endTimeValueTV = (TextView) findViewById(R.id.endTimeValue);

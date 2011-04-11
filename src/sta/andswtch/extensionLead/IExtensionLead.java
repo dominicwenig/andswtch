@@ -2,7 +2,6 @@ package sta.andswtch.extensionLead;
 
 public interface IExtensionLead {
 
-
 	public abstract void switchState(int id);
 
 	public abstract void sendState(int id, boolean on, int time);
