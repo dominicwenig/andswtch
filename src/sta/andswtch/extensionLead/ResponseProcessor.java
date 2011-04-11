@@ -61,6 +61,16 @@ public class ResponseProcessor {
 			Integer seg_dis = Integer.parseInt(reParts[14]);		
 			
 			String binaryString = Integer.toBinaryString(seg_dis);
+			
+			StringBuffer fillZero = new StringBuffer();
+			//fill with 0 from right
+			if(binaryString.length() < powerPoints.size()){
+				for (int i = 0; i < this.powerPoints.size() - binaryString.length(); i++) {
+					fillZero.append("0");
+				}
+				fillZero.append(binaryString);
+				binaryString = fillZero.toString();
+			}
 
 			Log.d(TAG, "Segment Disabled Value is " + seg_dis + " represents "
 					+ binaryString);
