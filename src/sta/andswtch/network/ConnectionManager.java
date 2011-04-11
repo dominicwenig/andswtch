@@ -11,7 +11,7 @@ public class ConnectionManager implements IConnectionManager {
 
 	private static final String TAG = ConnectionManager.class.getName();
 
-	private static final double TIMEFAKTOR = 0.7;
+	private static final double TIMEFAKTOR = 0.5;
 	
 	private ExtensionLead extLead;
 	private Config config;
@@ -72,10 +72,7 @@ public class ConnectionManager implements IConnectionManager {
 		
 		
 		int ppNumber = extLead.getEnabledPowerPointNumber();
-		int time = (int)(ppNumber * TIMEFAKTOR);
-		if(time<2){
-			time=2;
-		}
+		int time = 2+(int)(ppNumber * TIMEFAKTOR);
 		return time;
 	}
 

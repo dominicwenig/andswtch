@@ -73,17 +73,5 @@
           android:dialogMessage="@string/ps_autorefreshinterval_dm" >
         </EditTextPreference>
     </PreferenceCategory>
-
-
-    
-<!-- OTHER-SETTINGS -->
-    <PreferenceCategory
-      android:title="@string/ps_cat_other">
-        <PreferenceScreen
-	        android:key="second_preferencescreen"
-	        android:title="@string/ps_help" >
-            <Preference android:selectable="false" />
-	      </PreferenceScreen>
-    </PreferenceCategory>
     
 </PreferenceScreen>

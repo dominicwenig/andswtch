@@ -221,6 +221,7 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 			if(this.extLead.isPowerPointEnable(i)) {
 				this.LL.get(i).setVisibility(View.VISIBLE);
 				this.names.get(i - 1).setText(this.extLead.getPowerPointName(i));
+				this.checkState(this.buttons.get(i-1));
 			}
 			else {
 				this.LL.get(i).setVisibility(View.GONE);
