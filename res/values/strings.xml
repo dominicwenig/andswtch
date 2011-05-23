@@ -27,9 +27,9 @@
   <string name="errorNoNetworkPermission">no network permission</string>
   
   <!-- response processor errors -->
-  <string name="errorWrongPowerpoint">error while parsing respose: powerpoint wrong</string>
+  <string name="errorWrongPowerpoint">error while parsing response</string>
   <string name="errorUserPassword">Error occured: check username and password</string>
-  <string name="errorPowerpointNames">Response didnt match pattern: please check powerpoint names with the aid of the webinterface</string>
+  <string name="errorPowerpointNames">Response did not match pattern: please check powerpoint names through webinterface</string>
 <!-- OM - OptionsMenu -->	
 	<string name="om_refresh">Refresh</string>
 	<string name="om_settings">Settings</string>

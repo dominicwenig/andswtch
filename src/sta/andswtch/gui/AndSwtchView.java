@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
-import android.text.format.Time;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,7 +34,6 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 	private List<ImageButton> buttons;
 	private CountDownTimer sinceLastRefreshTimer = null;
 	private TextView refreshtime;
-	private Time time;
 	private boolean showToastMessages = true;
 	private boolean showNotConnectedMessage = true;
 	private int connectionTimeoutCount = 0;
@@ -107,8 +105,6 @@ public class AndSwtchView extends OptionsMenu implements IAndSwtchViews {
 	}
 
 	private void init() {
-		this.time = new Time();
-
 		this.names = new ArrayList<TextView>();
 		this.names.add((TextView) findViewById(R.id.TextView01));
 		this.names.add((TextView) findViewById(R.id.TextView02));
